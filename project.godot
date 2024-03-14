@@ -11,12 +11,23 @@ config_version=5
 [application]
 
 config/name="poodle"
-config/features=PackedStringArray("4.1", "GL Compatibility")
+config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
 
 driver/enable_input=true
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "teal",
+"res://concept/": "gray"
+}
+
+[gui]
+
+theme/custom="res://concept/test_theme.tres"
 
 [rendering]
 

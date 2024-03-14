@@ -3,7 +3,11 @@ extends Node
 ## Audio Record Proof of Concept
 ##
 ## A sample scene to test microphone audio recording.
-## It has two toggle buttons: record and mute.
+## It has three toggle buttons: record, mute and playback.
+## 
+## It also has a list of all recordings in this session.
+## All recordings can be played by selecting (double click or enter).
+##
 ## Note: for this scene to work,
 ## [member ProjectSettings.audio/driver/enable_input]
 ## must be [code]true[/code].
@@ -17,6 +21,9 @@ var recordings: Array[AudioStreamWAV] = []
 func _ready():
 	%Toggle.toggled.connect(_toggle_recording)
 	%Mute.toggled.connect(_toggle_mute)
+	%Playback.toggled.connect(_toggle_playback)
+	%ItemList.item_activated.connect(_on_item_activated)
+	$RecordReplay.finished.connect(_toggle_mute.bind(false))
 
 # When microphone is muted, recording toggle button is disabled.
 func _toggle_mute(disabled: bool):
@@ -28,6 +35,17 @@ func _toggle_recording(active: bool):
 		start_recording()
 	else:
 		stop_recording()
+
+func _toggle_playback(active: bool):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(&"RecordPlayback"), not active)
+
+func _on_item_activated(index: int):
+	if index > recordings.size():
+		return
+	var recording = recordings[index]
+	_toggle_mute(true)
+	$RecordReplay.stream = recording
+	$RecordReplay.play()
 
 ## Starts a new recording. [br]
 ## When a new recording starts,
@@ -50,3 +68,4 @@ func stop_recording():
 ## Saves the current recording.
 func save_recording():
 	recordings.append(record.get_recording())
+	%ItemList.add_item(Time.get_time_string_from_system())

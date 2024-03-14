@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdf57hapkw603"]
+
+[ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/player_screen_indicator.tscn" id="1_61jat"]
+[ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
+
+[sub_resource type="GDScript" id="GDScript_lnfh3"]
+resource_name = "test_tree"
+script/source = "@tool
+extends Tree
+
+func _ready():
+	var root = create_item()
+	root.set_text(0, \"Clase 2: Ejemplo\")
+	root.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
+	for i in 10:
+		var section = create_item(root)
+		section.set_text(0, \"Sección {}\".format([i+1], \"{}\"))
+		for j in 3:
+			var subsection = create_item(section)
+			subsection.set_text(0, \"Subsección {0}.{1}\".format([i+1, j+1]))
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw2kf"]
+atlas = ExtResource("2_caqkq")
+region = Rect2(200, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar7p2"]
+atlas = ExtResource("2_caqkq")
+region = Rect2(200, 350, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2vqn"]
+atlas = ExtResource("2_caqkq")
+region = Rect2(200, 450, 50, 50)
+
+[node name="ClassWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 200
+
+[node name="Sections" type="PanelContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="HSplitContainer/Sections"]
+layout_mode = 2
+script = SubResource("GDScript_lnfh3")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="Viewport" type="VSplitContainer" parent="HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Whiteboard" type="Control" parent="HSplitContainer/HSplitContainer/Viewport"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(940, 551)
+render_target_update_mode = 4
+
+[node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
+layout_mode = 1
+
+[node name="Playback" type="PanelContainer" parent="HSplitContainer/HSplitContainer/Viewport"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/Playback"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("AtlasTexture_mw2kf")
+
+[node name="Button2" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("AtlasTexture_ar7p2")
+
+[node name="Button3" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = SubResource("AtlasTexture_o2vqn")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "00:00"
+
+[node name="HSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 20.0
+scrollable = false
+
+[node name="Label2" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "00:00"
+
+[node name="Transcription" type="PanelContainer" parent="HSplitContainer/HSplitContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Transcription"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/Transcription/VBoxContainer"]
+layout_mode = 2
+text = "lol"
