@@ -26,6 +26,6 @@ extends Resource
 ## Date of the last file modification
 @export var date: Date
 ## Relative path to license file
-@export var license: String
+@export_file var license: String
 ## Version of the editor used to create or modify the file
 @export var editor_version: String
