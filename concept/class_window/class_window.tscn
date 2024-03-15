@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdf57hapkw603"]
 
-[ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/player_screen_indicator.tscn" id="1_61jat"]
+[ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
 
 [sub_resource type="GDScript" id="GDScript_lnfh3"]
