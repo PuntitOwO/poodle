@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ClassMetadata" load_steps=2 format=3 uid="uid://cew6pjlmafut0"]
+
+[ext_resource type="Script" path="res://core/resources/class/class_metadata.gd" id="1_xtlgi"]
+
+[resource]
+script = ExtResource("1_xtlgi")
+name = ""
+description = ""
+course = ""
+author_name = ""
+author_description = ""
+file_version = ""
+license = ""
+editor_version = ""
