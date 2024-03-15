@@ -22,7 +22,9 @@ driver/enable_input=true
 
 folder_colors={
 "res://assets/": "teal",
-"res://concept/": "gray"
+"res://concept/": "gray",
+"res://core/": "green",
+"res://script_templates/": "gray"
 }
 
 [gui]
