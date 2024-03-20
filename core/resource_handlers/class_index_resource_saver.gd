@@ -24,7 +24,7 @@ func _save(resource: Resource, path: String, _flags: int):
         return ERR_INVALID_DATA
     
     var data: Dictionary = resource.serialize()
-    var json: String = JSON.stringify(data)
+    var json: String = JSON.stringify(data, "\t")
 
     var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
     if file == null:
