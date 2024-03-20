@@ -35,7 +35,7 @@ enum PlaybackControlEntityType {
 
 func serialize() -> Dictionary:
     return {
-        "type": type,
+        "type": "pause",
     }
 
 # 13. private methods: define all private methods here, use _ as preffix

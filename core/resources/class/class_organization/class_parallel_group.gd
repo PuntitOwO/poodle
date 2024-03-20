@@ -11,7 +11,7 @@ extends ClassGroup
 # 4. enums: define enums here
 
 # 5. constants: define constants here
-const GROUP_TYPE = "parallel"
+const GROUP_TYPE: String = "parallel"
 
 # 6. export variables: define all export variables in groups here
 
@@ -29,8 +29,9 @@ const GROUP_TYPE = "parallel"
 # 12. public methods: define all public methods here
 
 func serialize() -> Dictionary:
-    var serialized = super.serialize()
+    var serialized: Dictionary = super.serialize()
     serialized["type"] = GROUP_TYPE
+    print_debug(serialized)
     return serialized
 
 # 13. private methods: define all private methods here, use _ as preffix

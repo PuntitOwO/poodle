@@ -28,9 +28,12 @@ extends Resource
 # 12. public methods: define all public methods here
 
 func serialize() -> Dictionary:
-    return {
-        "entities": entities.map(func(e): e.serialize()),
+    var serialized: Dictionary = {
+        "entities": entities.map(func(e): return e.serialize()),
+        "type": null,
     }
+    print_debug(serialized)
+    return serialized
 
 # 13. private methods: define all private methods here, use _ as preffix
 
