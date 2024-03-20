@@ -1,3 +1,4 @@
+@tool
 # 1. class name: fill the class name
 class_name ClassIndex
 extends Resource

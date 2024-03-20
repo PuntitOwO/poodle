@@ -1,3 +1,4 @@
+@tool
 # 1. class name: uncomment and fill the class name
 class_name MathTextEntity
 extends Resource
