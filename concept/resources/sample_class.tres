@@ -7,13 +7,13 @@
 [ext_resource type="Script" path="res://core/resources/class/class_organization/class_parallel_group.gd" id="5_csasb"]
 [ext_resource type="Script" path="res://core/resources/class/class_organization/class_slide.gd" id="6_4qxia"]
 
-[sub_resource type="Resource" id="Resource_rm4tx"]
+[sub_resource type="Resource" id="Resource_q0y7x"]
 script = ExtResource("4_38hje")
 type = 0
 
 [sub_resource type="Resource" id="Resource_tjvgb"]
 script = ExtResource("5_csasb")
-entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_rm4tx")])
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([])
 
 [sub_resource type="Resource" id="Resource_4ahko"]
 script = ExtResource("6_4qxia")
@@ -28,5 +28,5 @@ slides = Array[ExtResource("6_4qxia")]([SubResource("Resource_4ahko")])
 [resource]
 script = ExtResource("1_k7mu1")
 metadata = ExtResource("1_aspss")
-entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([])
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_q0y7x")])
 sections = Array[ExtResource("3_ydfld")]([SubResource("Resource_t18gp")])

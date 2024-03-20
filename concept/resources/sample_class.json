@@ -1,0 +1,32 @@
+{
+	"entities": [
+		{
+			"type": "pause"
+		}
+	],
+	"metadata": {
+		"author_description": "The author of Poodle\nhttps://puntito.cl",
+		"author_name": "Christopher Marin",
+		"course": "CC0000 Sample course",
+		"date": -62167132800,
+		"description": "A sample class",
+		"editor_version": "v1.0.0",
+		"file_version": "v1.0.0",
+		"license": "res://concept/resources/LICENSE.md",
+		"name": "Sample class"
+	},
+	"sections": [
+		{
+			"name": "Main section",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [],
+						"type": "parallel"
+					},
+					"name": "First slide"
+				}
+			]
+		}
+	]
+}

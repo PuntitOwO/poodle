@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_ocvcj"]
 script = ExtResource("1_3ueuk")
-date = "15/03/2024"
+date = "{0}-{1}-{2}"
 
 [resource]
 script = ExtResource("1_xtlgi")
