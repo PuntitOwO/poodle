@@ -27,6 +27,12 @@ extends Resource
 
 # 12. public methods: define all public methods here
 
+func serialize() -> Dictionary:
+    return {
+        "name": name,
+        "slides": slides.map(func(slide): slide.serialize()),
+    }
+
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

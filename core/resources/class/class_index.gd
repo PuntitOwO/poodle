@@ -28,6 +28,13 @@ extends Resource
 
 # 12. public methods: define all public methods here
 
+func serialize() -> Dictionary:
+    var data = {
+        "metadata": metadata.serialize(),
+        "entities": entities.map(func(e): return e.serialize()),
+        "sections": sections.map(func(e): return e.serialize()),
+    }
+    return data
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

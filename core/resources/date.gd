@@ -38,6 +38,9 @@ func _init():
 
 # 12. public methods: define all public methods here
 
+func serialize() -> int:
+	return _date
+
 # 13. private methods: define all private methods here, use _ as preffix
 func _reverse_date_format(input:String) -> String:
 	var elements := input.split("-")

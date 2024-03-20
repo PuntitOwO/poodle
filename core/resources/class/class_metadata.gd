@@ -29,3 +29,16 @@ extends Resource
 @export_file var license: String
 ## Version of the editor used to create or modify the file
 @export var editor_version: String
+
+func serialize() -> Dictionary:
+    return {
+        "name": name,
+        "description": description,
+        "course": course,
+        "author_name": author_name,
+        "author_description": author_description,
+        "file_version": file_version,
+        "date": date.serialize(),
+        "license": license,
+        "editor_version": editor_version
+    }

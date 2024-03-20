@@ -10,6 +10,7 @@ extends ClassGroup
 # 4. enums: define enums here
 
 # 5. constants: define constants here
+const GROUP_TYPE = "chain"
 
 # 6. export variables: define all export variables in groups here
 
@@ -25,6 +26,11 @@ extends ClassGroup
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
+
+func serialize() -> Dictionary:
+    var serialized = super.serialize()
+    serialized["type"] = "chain"
+    return serialized
 
 # 13. private methods: define all private methods here, use _ as preffix
 
