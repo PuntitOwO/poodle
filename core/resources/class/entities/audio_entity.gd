@@ -26,8 +26,12 @@ extends Entity
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
+func get_class_name() -> String:
+    return "AudioEntity"
+
 func serialize() -> Dictionary:
     return {
+        "entity_type": get_class_name(),
         "audio_path": audio_path
     }
 # 13. private methods: define all private methods here, use _ as preffix

@@ -3,9 +3,10 @@ class_name TextEntry
 extends ScriptEntry
 
 ## A [ScriptEntry] that represents a text
-const ENTRY_TYPE = "text"
+func get_class_name() -> String:
+    return "TextEntry"
 
 func serialize() -> Dictionary:
     var data = super.serialize()
-    data["type"] = ENTRY_TYPE
+    data["entity_type"] = get_class_name()
     return data

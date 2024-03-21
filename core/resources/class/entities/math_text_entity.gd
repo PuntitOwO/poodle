@@ -13,7 +13,7 @@ extends TextEntity
 # 4. enums: define enums here
 
 # 5. constants: define constants here
-const TEXT_TYPE = "math"
+
 # 6. export variables: define all export variables in groups here
 
 # 7. public variables: define all public variables here
@@ -27,10 +27,9 @@ const TEXT_TYPE = "math"
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
-func serialize() -> Dictionary:
-    var data = super.serialize()
-    data["type"] = TEXT_TYPE
-    return data
+func get_class_name() -> String:
+    return "MathTextEntity"
+
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

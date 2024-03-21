@@ -3,6 +3,8 @@ class_name Entity
 extends Resource
 
 ## Base class for EntityResource types
+func get_class_name() -> String:
+    return "Entity"
 
 func serialize():
-    printerr("Entity.serialize() not implemented")
+    push_error("Entity.serialize() not implemented")

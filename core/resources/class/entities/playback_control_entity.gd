@@ -18,7 +18,6 @@ enum PlaybackControlEntityType {
 # 5. constants: define constants here
 
 # 6. export variables: define all export variables in groups here
-@export var type: PlaybackControlEntityType = PlaybackControlEntityType.PAUSE
 
 # 7. public variables: define all public variables here
 
@@ -32,10 +31,12 @@ enum PlaybackControlEntityType {
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
+func get_class_name() -> String:
+    return "PlaybackControlEntity"
 
 func serialize() -> Dictionary:
     return {
-        "type": "pause",
+        "entity_type": get_class_name()
     }
 
 # 13. private methods: define all private methods here, use _ as preffix

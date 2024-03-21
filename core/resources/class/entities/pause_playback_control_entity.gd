@@ -1,12 +1,10 @@
 @tool
-# 1. class name: uncomment and fill the class name
-class_name CodeTextEntity
-extends TextEntity
+# 1. class name: fill the class name
+class_name PausePlaybackControlEntity
+extends PlaybackControlEntity
 
 # 2. docs: use docstring (##) to generate docs for this file
-## A TextEntity that holds code
-##
-## This class is used to hold code in a TextEntity that can be used to generate a code block
+## A [PlaybackControlEntity] that represents an infinite pause
 
 # 3. signals: define signals here
 
@@ -22,15 +20,15 @@ extends TextEntity
 
 # 9. onready variables: define all onready variables here
 
+
 # 10. init virtual methods: define _init, _enter_tree and _ready mothods here
 
 # 11. virtual methods: define other virtual methos here
+func get_class_name() -> String:
+    return "PausePlaybackControlEntity"
 
 # 12. public methods: define all public methods here
-func get_class_name() -> String:
-    return "CodeTextEntity"
 
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here
-

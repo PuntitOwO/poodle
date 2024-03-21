@@ -28,8 +28,12 @@ extends Entity
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
+func get_class_name() -> String:
+    return "ScriptEntity"
+
 func serialize() -> Dictionary:
     return {
+        "entity_type": get_class_name(),
         "script_entries": script_entries.map(func(e): return e.serialize())   
     }
 # 13. private methods: define all private methods here, use _ as preffix

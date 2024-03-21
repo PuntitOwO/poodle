@@ -3,9 +3,10 @@ class_name CommentEntry
 extends ScriptEntry
 
 ## A [ScriptEntry] that represents a comment
-const ENTRY_TYPE = "comment"
+func get_class_name() -> String:
+    return "CommentEntry"
 
 func serialize() -> Dictionary:
     var data = super.serialize()
-    data["type"] = ENTRY_TYPE
+    data["entity_type"] = get_class_name()
     return data
