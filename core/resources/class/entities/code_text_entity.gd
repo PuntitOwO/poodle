@@ -1,7 +1,7 @@
 @tool
 # 1. class name: uncomment and fill the class name
 class_name CodeTextEntity
-extends Resource
+extends TextEntity
 
 # 2. docs: use docstring (##) to generate docs for this file
 ## A TextEntity that holds code
@@ -13,7 +13,7 @@ extends Resource
 # 4. enums: define enums here
 
 # 5. constants: define constants here
-
+const TEXT_TYPE = "code"
 # 6. export variables: define all export variables in groups here
 
 # 7. public variables: define all public variables here
@@ -27,7 +27,10 @@ extends Resource
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
-
+func serialize() -> Dictionary:
+    var data = super.serialize()
+    data["type"] = TEXT_TYPE
+    return data
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

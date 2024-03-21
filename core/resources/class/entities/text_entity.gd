@@ -1,7 +1,7 @@
 @tool
 # 1. class name: uncomment and fill the class name
 class_name TextEntity
-extends Resource
+extends Entity
 
 # 2. docs: use docstring (##) to generate docs for this file
 ## An EntityResource that contains text
@@ -33,7 +33,11 @@ extends Resource
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
-
+func serialize() -> Dictionary:
+    return {
+        "content": content,
+        "type": null,
+    }
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

@@ -27,7 +27,11 @@ extends Entity
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
-
+func serialize() -> Dictionary:
+    var points_array: Array = Array(points)
+    return {
+        "points": points_array.map(func(v): return {"x": v.x, "y": v.y}),
+    }
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

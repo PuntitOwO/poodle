@@ -15,7 +15,7 @@ extends Entity
 # 6. export variables: define all export variables in groups here
 @export_file() var audio_path: String
 # 7. public variables: define all public variables here
-var id: int
+
 # 8. private variables: define all private variables here, use _ as preffix
 
 # 9. onready variables: define all onready variables here
@@ -26,7 +26,10 @@ var id: int
 # 11. virtual methods: define other virtual methos here
 
 # 12. public methods: define all public methods here
-
+func serialize() -> Dictionary:
+    return {
+        "audio_path": audio_path
+    }
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here
