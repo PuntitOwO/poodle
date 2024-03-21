@@ -1,19 +1,74 @@
-[gd_resource type="Resource" script_class="ClassIndex" load_steps=11 format=3 uid="uid://cvcb4bqok6n0y"]
+[gd_resource type="Resource" script_class="ClassIndex" load_steps=32 format=3 uid="uid://cvcb4bqok6n0y"]
 
 [ext_resource type="Resource" uid="uid://cew6pjlmafut0" path="res://concept/resources/sample_class_metadata.tres" id="1_aspss"]
 [ext_resource type="Script" path="res://core/resources/class/class_index.gd" id="1_k7mu1"]
 [ext_resource type="Script" path="res://core/resources/class/class_organization/class_section.gd" id="3_ydfld"]
-[ext_resource type="Script" path="res://core/resources/class/entities/playback_control_entity.gd" id="4_38hje"]
+[ext_resource type="Script" path="res://core/resources/class/entities/audio_entity.gd" id="5_aa68v"]
 [ext_resource type="Script" path="res://core/resources/class/class_organization/class_parallel_group.gd" id="5_csasb"]
 [ext_resource type="Script" path="res://core/resources/class/class_organization/class_slide.gd" id="6_4qxia"]
+[ext_resource type="Script" path="res://core/resources/class/entities/image_entity.gd" id="6_ylmrk"]
+[ext_resource type="Script" path="res://core/resources/class/entities/line_entity.gd" id="7_f52p3"]
+[ext_resource type="Script" path="res://core/resources/class/entities/pause_playback_control_entity.gd" id="8_0lekp"]
+[ext_resource type="Script" path="res://core/resources/class/entities/script_entity.gd" id="9_44ghd"]
+[ext_resource type="Script" path="res://core/resources/class/script_entries/text_entry.gd" id="10_qyncb"]
+[ext_resource type="Script" path="res://core/resources/class/script_entries/comment_entry.gd" id="11_ya1qm"]
+[ext_resource type="Script" path="res://core/resources/class/script_entries/alt_text_entry.gd" id="12_28q85"]
+[ext_resource type="Script" path="res://core/resources/class/entities/cite_text_entity.gd" id="13_qgr1c"]
+[ext_resource type="Script" path="res://core/resources/class/entities/code_text_entity.gd" id="14_dvukx"]
+[ext_resource type="Script" path="res://core/resources/class/entities/math_text_entity.gd" id="15_t7h8i"]
 
-[sub_resource type="Resource" id="Resource_q0y7x"]
-script = ExtResource("4_38hje")
-type = 0
+[sub_resource type="Resource" id="Resource_u6eeq"]
+script = ExtResource("8_0lekp")
+
+[sub_resource type="Resource" id="Resource_vawum"]
+script = ExtResource("5_aa68v")
+audio_path = "res://icon.svg"
+
+[sub_resource type="Resource" id="Resource_sulob"]
+script = ExtResource("6_ylmrk")
+image_path = "res://icon.svg"
+
+[sub_resource type="Resource" id="Resource_v11td"]
+script = ExtResource("7_f52p3")
+points = PackedVector2Array(0, 0, 100, 100)
+
+[sub_resource type="Resource" id="Resource_xep5h"]
+script = ExtResource("8_0lekp")
+
+[sub_resource type="Resource" id="Resource_rjseq"]
+script = ExtResource("10_qyncb")
+content = "¿Qué es el relator?"
+
+[sub_resource type="Resource" id="Resource_qhn7a"]
+script = ExtResource("11_ya1qm")
+content = "Mostrar captura de pantalla"
+
+[sub_resource type="Resource" id="Resource_h8er6"]
+script = ExtResource("12_28q85")
+content = "Captura de pantalla del relator"
+
+[sub_resource type="Resource" id="Resource_jfghp"]
+script = ExtResource("9_44ghd")
+script_entries = Array[Resource("res://core/resources/class/script_entries/script_entry.gd")]([SubResource("Resource_rjseq"), SubResource("Resource_qhn7a"), SubResource("Resource_h8er6")])
+
+[sub_resource type="Resource" id="Resource_lcsrt"]
+script = ExtResource("13_qgr1c")
+content = "Pondría tus manos al fuego
+~ Lmateu"
+
+[sub_resource type="Resource" id="Resource_ps0l2"]
+script = ExtResource("14_dvukx")
+content = "def henlo():
+    print(\"henlo worl\")"
+
+[sub_resource type="Resource" id="Resource_8a6jo"]
+script = ExtResource("15_t7h8i")
+content = "2 + 2 = sqrt(2)"
 
 [sub_resource type="Resource" id="Resource_tjvgb"]
 script = ExtResource("5_csasb")
-entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([])
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_vawum"), SubResource("Resource_sulob"), SubResource("Resource_v11td"), SubResource("Resource_xep5h"), SubResource("Resource_jfghp"), SubResource("Resource_lcsrt"), SubResource("Resource_ps0l2"), SubResource("Resource_8a6jo")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
 
 [sub_resource type="Resource" id="Resource_4ahko"]
 script = ExtResource("6_4qxia")
@@ -28,5 +83,5 @@ slides = Array[ExtResource("6_4qxia")]([SubResource("Resource_4ahko")])
 [resource]
 script = ExtResource("1_k7mu1")
 metadata = ExtResource("1_aspss")
-entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_q0y7x")])
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_u6eeq")])
 sections = Array[ExtResource("3_ydfld")]([SubResource("Resource_t18gp")])
