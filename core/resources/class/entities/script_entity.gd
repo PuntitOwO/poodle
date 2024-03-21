@@ -36,6 +36,11 @@ func serialize() -> Dictionary:
         "entity_type": get_class_name(),
         "script_entries": script_entries.map(func(e): return e.serialize())   
     }
+
+func load_data(data: Dictionary) -> void:
+    script_entries = []
+    for entry in data["script_entries"]:
+        script_entries.append(ScriptEntry.deserialize(entry))
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

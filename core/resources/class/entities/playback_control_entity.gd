@@ -11,9 +11,6 @@ extends Entity
 # 3. signals: define signals here
 
 # 4. enums: define enums here
-enum PlaybackControlEntityType {
-    PAUSE,
-}
 
 # 5. constants: define constants here
 
@@ -38,6 +35,9 @@ func serialize() -> Dictionary:
     return {
         "entity_type": get_class_name()
     }
+
+func load_data(_data: Dictionary) -> void:
+    pass
 
 # 13. private methods: define all private methods here, use _ as preffix
 

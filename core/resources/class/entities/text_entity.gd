@@ -41,6 +41,9 @@ func serialize() -> Dictionary:
         "entity_type": get_class_name(),
         "content": content,
     }
+
+func load_data(data: Dictionary) -> void:
+    content = data["content"]
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

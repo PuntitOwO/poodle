@@ -41,9 +41,21 @@ func get_class_name() -> String:
 func serialize() -> Dictionary:
     var serialized: Dictionary = {
         "entities": entities.map(func(e): return e.serialize()),
+        "groups": groups.map(func(g): return g.serialize()),
         "group_type": get_class_name(),
     }
     return serialized
+
+static func deserialize(data: Dictionary) -> ClassGroup:
+    var instance: ClassGroup = ClassDB.instantiate(data["group_type"])
+    instance.entities = []
+    for entity in data["entities"]:
+        instance.entities.append(Entity.deserialize(entity))
+    instance.groups = []
+    for group in data["groups"]:
+        instance.groups.append(Entity.deserialize(group))
+    instance.load_data(data)
+    return instance
 
 # 13. private methods: define all private methods here, use _ as preffix
 func _validate():

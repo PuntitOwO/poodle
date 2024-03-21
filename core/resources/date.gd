@@ -42,6 +42,11 @@ func _init():
 func serialize() -> int:
 	return _date
 
+static func deserialize(data: int) -> Date:
+	var instance: Date = Date.new()
+	instance._date = data
+	return instance
+
 # 13. private methods: define all private methods here, use _ as preffix
 func _reverse_date_format(input:String) -> String:
 	var elements := input.split("-")

@@ -44,6 +44,5 @@ func _load(path: String, _original_path: String, _use_sub_threads: bool, _cache_
     if typeof(json.data) != TYPE_DICTIONARY:
         return ERR_INVALID_DATA
     
-    var class_index: ClassIndex = ClassIndex.new()
-    class_index.deserialize(json.data)
+    var class_index: ClassIndex = ClassIndex.deserialize(json.data)
     return class_index

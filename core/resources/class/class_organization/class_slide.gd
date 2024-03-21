@@ -34,6 +34,12 @@ func serialize() -> Dictionary:
         "content_root": content_root.serialize()
     }
 
+static func deserialize(data: Dictionary) -> ClassSlide:
+    var instance: ClassSlide = ClassSlide.new()
+    instance.name = data["name"]
+    instance.content_root = ClassGroup.deserialize(data["content_root"])
+    return instance
+
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

@@ -43,3 +43,15 @@ func serialize() -> Dictionary:
         "license": license,
         "editor_version": editor_version
     }
+
+static func deserialize(data: Dictionary) -> ClassMetadata:
+    var instance: ClassMetadata = ClassMetadata.new()
+    instance.name = data["name"]
+    instance.description = data["description"]
+    instance.author_name = data["author_name"]
+    instance.author_description = data["author_description"]
+    instance.file_version = data["file_version"]
+    instance.date = Date.deserialize(data["date"])
+    instance.license = data["license"]
+    instance.editor_version = data["editor_version"]
+    return instance

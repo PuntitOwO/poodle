@@ -13,5 +13,8 @@ func serialize() -> Dictionary:
 
 static func deserialize(data: Dictionary) -> Entity:
     var instance = ClassDB.instantiate(data["entity_type"])
-    instance.deserialize(data)
+    instance.load_data(data)
     return instance
+
+func load_data(_data: Dictionary) -> void:
+    pass

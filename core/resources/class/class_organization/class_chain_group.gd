@@ -29,6 +29,10 @@ extends ClassGroup
 func get_class_name() -> String:
     return "ClassChainGroup"
 
+func load_data(_data: Dictionary) -> void:
+    pass
+
+
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

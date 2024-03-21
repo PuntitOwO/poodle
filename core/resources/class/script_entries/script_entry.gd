@@ -39,6 +39,15 @@ func serialize() -> Dictionary:
         "entity_type": get_class_name(),
         "content": content,
     }
+
+static func deserialize(data: Dictionary) -> ScriptEntry:
+    var instance: ScriptEntry = ClassDB.instantiate(data["entity_type"])
+    instance.content = data["content"]
+    instance.load_data(data)
+    return instance
+
+func load_data(_data: Dictionary) -> void:
+    pass
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

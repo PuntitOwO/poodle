@@ -36,6 +36,18 @@ func serialize() -> Dictionary:
         "sections": sections.map(func(e): return e.serialize()),
     }
     return data
+
+static func deserialize(data: Dictionary) -> ClassIndex:
+    var instance = ClassIndex.new()
+    instance.metadata = ClassMetadata.deserialize(data["metadata"])
+    instance.entities = []
+    for entity in data["entities"]:
+        instance.entities.append(Entity.deserialize(entity))
+    instance.sections = []
+    for section in data["sections"]:
+        instance.sections.append(ClassSection.deserialize(section))
+    return instance
+
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

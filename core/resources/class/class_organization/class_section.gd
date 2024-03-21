@@ -34,6 +34,13 @@ func serialize() -> Dictionary:
         "slides": slides.map(func(slide): return slide.serialize()),
     }
 
+static func deserialize(data: Dictionary) -> ClassSection:
+    var instance = ClassSection.new()
+    instance.name = data["name"]
+    instance.slides = []
+    for slide in data["slides"]:
+        instance.slides.append(ClassSlide.deserialize(slide))
+    return instance
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here

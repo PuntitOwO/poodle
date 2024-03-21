@@ -36,6 +36,12 @@ func serialize() -> Dictionary:
         "entity_type": get_class_name(),
         "points": points_array.map(func(v): return {"x": v.x, "y": v.y}),
     }
+
+func load_data(data: Dictionary) -> void:
+    var points_array: Array = []
+    for point in data["points"]:
+        points_array.append(Vector2(point["x"], point["y"]))
+    points = PackedVector2Array(points_array)
 # 13. private methods: define all private methods here, use _ as preffix
 
 # 14. subclasses: define all subclasses here
