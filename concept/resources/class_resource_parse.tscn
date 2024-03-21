@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bilqkhkilajb8"]
+
+[ext_resource type="Script" path="res://concept/resources/class_resource_parse.gd" id="1_nrgyp"]
+
+[node name="ClassResourceParse" type="Node"]
+script = ExtResource("1_nrgyp")
+file = "res://concept/resources/sample_class.json"
