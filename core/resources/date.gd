@@ -51,7 +51,8 @@ static func deserialize(data: int) -> Date:
 func _reverse_date_format(input:String) -> String:
 	var elements := input.split("-")
 	elements.reverse()
-	return "{0}-{1}-{2}".format(elements)
+	var element_array := Array(elements)
+	return "{0}-{1}-{2}".format(element_array)
 
 # 14. subclasses: define all subclasses here
 

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://core/resources/date.gd" id="1_3ueuk"]
 [ext_resource type="Script" path="res://core/resources/class/class_metadata.gd" id="1_xtlgi"]
 
-[sub_resource type="Resource" id="Resource_ocvcj"]
+[sub_resource type="Resource" id="Resource_686ka"]
 script = ExtResource("1_3ueuk")
-date = "{0}-{1}-{2}"
+date = "22-03-2024"
 
 [resource]
 script = ExtResource("1_xtlgi")
@@ -16,6 +16,6 @@ author_name = "Christopher Marin"
 author_description = "The author of Poodle
 https://puntito.cl"
 file_version = "v1.0.0"
-date = SubResource("Resource_ocvcj")
+date = SubResource("Resource_686ka")
 license = "res://concept/resources/LICENSE.md"
 editor_version = "v1.0.0"
