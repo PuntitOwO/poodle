@@ -14,8 +14,8 @@ extends Resource
 
 # 6. export variables: define all export variables in groups here
 @export var metadata: ClassMetadata
-@export var entities: Array[Entity]
-@export var sections: Array[ClassSection]
+@export var entities: Array[Entity] = []
+@export var sections: Array[ClassSection] = []
 # 7. public variables: define all public variables here
 
 # 8. private variables: define all private variables here, use _ as preffix
@@ -30,23 +30,21 @@ extends Resource
 # 12. public methods: define all public methods here
 
 func serialize() -> Dictionary:
-    var data = {
-        "metadata": metadata.serialize(),
-        "entities": entities.map(func(e): return e.serialize()),
-        "sections": sections.map(func(e): return e.serialize()),
-    }
-    return data
+	var data = {
+		"metadata": metadata.serialize(),
+		"entities": entities.map(func(e): return e.serialize()),
+		"sections": sections.map(func(e): return e.serialize()),
+	}
+	return data
 
 static func deserialize(data: Dictionary) -> ClassIndex:
-    var instance = ClassIndex.new()
-    instance.metadata = ClassMetadata.deserialize(data["metadata"])
-    instance.entities = []
-    for entity in data["entities"]:
-        instance.entities.append(Entity.deserialize(entity))
-    instance.sections = []
-    for section in data["sections"]:
-        instance.sections.append(ClassSection.deserialize(section))
-    return instance
+	var instance = ClassIndex.new()
+	instance.metadata = ClassMetadata.deserialize(data["metadata"])
+	for entity in data["entities"]:
+		instance.entities.append(Entity.deserialize(entity))
+	for section in data["sections"]:
+		instance.sections.append(ClassSection.deserialize(section))
+	return instance
 
 # 13. private methods: define all private methods here, use _ as preffix
 

@@ -8,7 +8,7 @@ extends ResourceFormatSaver
 ## Returns the list of extensions available for saving the resource,
 ## in this case, only json.
 func _get_recognized_extensions(_resource: Resource) -> PackedStringArray:
-    return PackedStringArray(["json"])
+    return PackedStringArray(["ito"])
 
 ## Returns whether the resource can be saved by this saver.
 ## In this case, only [ClassIndex] resources can be saved.

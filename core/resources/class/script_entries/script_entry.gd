@@ -41,7 +41,7 @@ func serialize() -> Dictionary:
     }
 
 static func deserialize(data: Dictionary) -> ScriptEntry:
-    var instance: ScriptEntry = ClassDB.instantiate(data["entity_type"])
+    var instance: ScriptEntry = CustomClassDB.instantiate(data["entity_type"])
     instance.content = data["content"]
     instance.load_data(data)
     return instance

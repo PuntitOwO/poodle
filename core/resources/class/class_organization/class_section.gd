@@ -14,7 +14,7 @@ extends Resource
 
 # 6. export variables: define all export variables in groups here
 @export var name: String
-@export var slides: Array[ClassSlide]
+@export var slides: Array[ClassSlide] = []
 # 7. public variables: define all public variables here
 
 # 8. private variables: define all private variables here, use _ as preffix
@@ -37,7 +37,6 @@ func serialize() -> Dictionary:
 static func deserialize(data: Dictionary) -> ClassSection:
     var instance = ClassSection.new()
     instance.name = data["name"]
-    instance.slides = []
     for slide in data["slides"]:
         instance.slides.append(ClassSlide.deserialize(slide))
     return instance

@@ -38,7 +38,6 @@ func serialize() -> Dictionary:
     }
 
 func load_data(data: Dictionary) -> void:
-    script_entries = []
     for entry in data["script_entries"]:
         script_entries.append(ScriptEntry.deserialize(entry))
 # 13. private methods: define all private methods here, use _ as preffix
