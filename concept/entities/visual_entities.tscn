@@ -1,13 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cssoxtkjtgxy4"]
+[gd_scene load_steps=7 format=3 uid="uid://cssoxtkjtgxy4"]
 
 [ext_resource type="Script" path="res://concept/entities/cite_text_concept.gd" id="1_j48qi"]
 [ext_resource type="Script" path="res://core/resources/class/entities/cite_text_entity.gd" id="2_fnl7h"]
 [ext_resource type="Script" path="res://concept/entities/code_text_concept.gd" id="3_5jmn0"]
+[ext_resource type="Script" path="res://core/resources/class/entities/code_text_entity.gd" id="4_8yfiw"]
 
 [sub_resource type="Resource" id="Resource_k3u75"]
 script = ExtResource("2_fnl7h")
 content = "Pondría tus manos al fuego
 ~ LMateu"
+
+[sub_resource type="Resource" id="Resource_m1r8i"]
+script = ExtResource("4_8yfiw")
+content = "func _ready():
+	_play()
+
+func _play():
+	var code_block: CodeEdit = CodeEdit.new()
+	code_block.text = resource.content
+	add_child(code_block)
+"
 
 [node name="VisualEntities" type="Node2D"]
 
@@ -20,6 +32,7 @@ resource = SubResource("Resource_k3u75")
 [node name="CodeText" type="Node2D" parent="TextEntities"]
 position = Vector2(300, 0)
 script = ExtResource("3_5jmn0")
+resource = SubResource("Resource_m1r8i")
 
 [node name="MathText" type="Node2D" parent="TextEntities"]
 position = Vector2(600, 0)
