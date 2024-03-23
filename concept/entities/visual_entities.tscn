@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cssoxtkjtgxy4"]
+
+[ext_resource type="Script" path="res://concept/entities/cite_text_concept.gd" id="1_j48qi"]
+[ext_resource type="Script" path="res://core/resources/class/entities/cite_text_entity.gd" id="2_fnl7h"]
+
+[sub_resource type="Resource" id="Resource_k3u75"]
+script = ExtResource("2_fnl7h")
+content = "Pondría tus manos al fuego
+~ LMateu"
+
+[node name="VisualEntities" type="Node2D"]
+
+[node name="TextEntities" type="Node2D" parent="."]
+
+[node name="CiteText" type="Node2D" parent="TextEntities"]
+script = ExtResource("1_j48qi")
+resource = SubResource("Resource_k3u75")
+
+[node name="CodeText" type="Node2D" parent="TextEntities"]
+
+[node name="MathText" type="Node2D" parent="TextEntities"]
+
+[node name="ImageEntity" type="Node2D" parent="."]
+
+[node name="LineEntity" type="Node2D" parent="."]
