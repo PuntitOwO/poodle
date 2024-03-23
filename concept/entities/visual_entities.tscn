@@ -34,9 +34,6 @@ position = Vector2(300, 0)
 script = ExtResource("3_5jmn0")
 resource = SubResource("Resource_m1r8i")
 
-[node name="MathText" type="Node2D" parent="TextEntities"]
-position = Vector2(600, 0)
-
 [node name="ImageEntity" type="Node2D" parent="."]
 position = Vector2(0, 300)
 

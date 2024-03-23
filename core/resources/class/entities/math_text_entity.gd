@@ -6,7 +6,9 @@ extends TextEntity
 # 2. docs: use docstring (##) to generate docs for this file
 ## A TextEntity that holds a math expression
 ##
-## This class is used to hold a math expression in a TextEntity that can be used to generate a math block
+## This class is used to hold a math expression in a TextEntity that can be used to generate a math block.
+## This is not yet implemented.
+## @experimental
 
 # 3. signals: define signals here
 
