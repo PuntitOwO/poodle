@@ -1,0 +1,10 @@
+[gd_resource type="CodeHighlighter" format=3 uid="uid://lj0aiq6xxnec"]
+
+[resource]
+number_color = Color(0.607843, 0.960784, 0.847059, 1)
+symbol_color = Color(0.670588, 0.788235, 1, 1)
+function_color = Color(0.32549, 0.666667, 0.952941, 1)
+member_variable_color = Color(0.737255, 0.878431, 1, 1)
+keyword_colors = {
+"func": Color(1, 0.439216, 0.521569, 1)
+}
