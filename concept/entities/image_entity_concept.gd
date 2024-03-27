@@ -8,6 +8,8 @@ func _ready():
 
 func _play():
 	var sprite: Sprite2D = Sprite2D.new()
-	sprite.texture = ImageTexture.create_from_image(Image.load_from_file(resource.image_path))
+	var image: Image = Image.load_from_file(resource.image_path)
+	image.resize(300, 300)
+	sprite.texture = ImageTexture.create_from_image(image)
 	sprite.centered = false
 	add_child(sprite)
