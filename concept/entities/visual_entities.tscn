@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cssoxtkjtgxy4"]
+[gd_scene load_steps=10 format=3 uid="uid://cssoxtkjtgxy4"]
 
 [ext_resource type="Script" path="res://concept/entities/cite_text_concept.gd" id="1_j48qi"]
 [ext_resource type="Script" path="res://core/resources/class/entities/cite_text_entity.gd" id="2_fnl7h"]
 [ext_resource type="Script" path="res://concept/entities/code_text_concept.gd" id="3_5jmn0"]
 [ext_resource type="Script" path="res://core/resources/class/entities/code_text_entity.gd" id="4_8yfiw"]
+[ext_resource type="Script" path="res://concept/entities/image_entity_concept.gd" id="5_o516n"]
+[ext_resource type="Script" path="res://core/resources/class/entities/image_entity.gd" id="6_5yxj0"]
 
 [sub_resource type="Resource" id="Resource_k3u75"]
 script = ExtResource("2_fnl7h")
@@ -21,6 +23,10 @@ func _play():
 	add_child(code_block)
 "
 
+[sub_resource type="Resource" id="Resource_njj82"]
+script = ExtResource("6_5yxj0")
+image_path = "res://concept/entities/1.png"
+
 [node name="VisualEntities" type="Node2D"]
 
 [node name="TextEntities" type="Node2D" parent="."]
@@ -36,6 +42,8 @@ resource = SubResource("Resource_m1r8i")
 
 [node name="ImageEntity" type="Node2D" parent="."]
 position = Vector2(0, 300)
+script = ExtResource("5_o516n")
+resource = SubResource("Resource_njj82")
 
 [node name="LineEntity" type="Node2D" parent="."]
 position = Vector2(300, 300)
