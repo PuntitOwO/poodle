@@ -1,0 +1,31 @@
+[gd_scene load_steps=10 format=3 uid="uid://dojejdb0i214l"]
+
+[ext_resource type="Script" path="res://core/resources/class/entities/audio_entity.gd" id="2_s2y32"]
+[ext_resource type="PackedScene" uid="uid://oaxxagjdj12p" path="res://core/widgets/image_widget.tscn" id="3_b0t06"]
+[ext_resource type="Script" path="res://core/resources/class/entities/image_entity.gd" id="4_88h83"]
+[ext_resource type="PackedScene" uid="uid://dyh75vkj58pw3" path="res://core/widgets/line_widget.tscn" id="5_02hra"]
+[ext_resource type="PackedScene" uid="uid://biha46ac5k722" path="res://core/widgets/audio_widget.tscn" id="5_cm2m6"]
+[ext_resource type="Script" path="res://core/resources/class/entities/line_entity.gd" id="6_8qqxi"]
+
+[sub_resource type="Resource" id="Resource_gdhxc"]
+script = ExtResource("2_s2y32")
+audio_path = "res://concept/entities/0.ogg"
+
+[sub_resource type="Resource" id="Resource_5gm74"]
+script = ExtResource("4_88h83")
+image_path = "res://concept/entities/1.png"
+
+[sub_resource type="Resource" id="Resource_kcdi7"]
+script = ExtResource("6_8qqxi")
+points = PackedVector2Array(0, 100, 100, 0, 50, 0, 100, 0, 100, 50)
+
+[node name="WidgetsConcept" type="Node2D"]
+
+[node name="AudioWidget" parent="." instance=ExtResource("5_cm2m6")]
+entity = SubResource("Resource_gdhxc")
+
+[node name="ImageWidget" parent="." instance=ExtResource("3_b0t06")]
+entity = SubResource("Resource_5gm74")
+
+[node name="LineWidget" parent="." instance=ExtResource("5_02hra")]
+entity = SubResource("Resource_kcdi7")
