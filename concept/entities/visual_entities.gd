@@ -7,3 +7,7 @@ func _ready():
 
 func _on_timeout():
 	propagate_call("play")
+
+func _unhandled_key_input(event):
+	if event.keycode == KEY_SPACE:
+		get_tree().reload_current_scene()
