@@ -27,7 +27,8 @@ static func instantiate(group: ClassGroup, entities: Array[Entity]) -> GroupCont
 func load_data(group: ClassGroup, entities: Array[Entity]) -> void:
     for entity in group.entities:
         var entity_node: Widget = _instantiate_entity(entity, entities)
-        add_child(entity_node)
+        if is_instance_valid(entity_node):
+            add_child(entity_node)
     for child_group in group.groups:
         var child_group_node: Node2D = GroupController.instantiate(child_group, entities)
         add_child(child_group_node)
@@ -36,7 +37,7 @@ func _instantiate_entity(wrapper: EntityWrapper, entities: Array[Entity]) -> Wid
     var entity: Entity = entities[wrapper.entity_id]
     if !_has_widget(entity):
         push_error("Error instantiating entity: " + entity.get_class_name() + ", widget not found")
-        return Widget.new()
+        return null
     var widget: Widget = _get_widget(entity)
     widget.entity = entity
     widget.init(wrapper.get_properties())
