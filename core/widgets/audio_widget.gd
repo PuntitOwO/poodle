@@ -16,5 +16,6 @@ func play(_duration: float) -> void:
 func reset():
 	pass
 
-func get_duration() -> float:
+## Returns the duration of the audio in seconds.
+func compute_duration() -> float:
 	return audio.stream.get_length()

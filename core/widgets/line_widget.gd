@@ -18,8 +18,9 @@ func play(duration: float) -> void:
 	line.show()
 	if tween:
 		tween.kill()
-	tween = create_tween()
-	tween.tween_method(_add_points, 0, len(entity.points) - 1, duration)
+	if !is_zero_approx(duration):
+		tween = create_tween()
+		tween.tween_method(_add_points, 0, len(entity.points) - 1, duration)
 
 func reset():
 	if tween:

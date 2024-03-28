@@ -20,9 +20,10 @@ func play(duration: float) -> void:
 	label.show()
 	if tween:
 		tween.kill()
-	label.visible_ratio = 0
-	tween = create_tween()
-	tween.tween_property(label, "visible_ratio", 1, duration)
+	if !is_zero_approx(duration):
+		label.visible_ratio = 0
+		tween = create_tween()
+		tween.tween_property(label, "visible_ratio", 1, duration)
 
 func reset():
 	if tween:

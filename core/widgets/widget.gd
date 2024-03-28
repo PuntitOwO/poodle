@@ -4,7 +4,9 @@ extends Node2D
 ## A widget is a visual element that can be played and reset.
 ## This class defines the main API for a widget.
 
-
+## Compute the duration of the widget animation.
+func compute_duration() -> float:
+	return 0.0
 
 ## Called when the node enters the scene tree for the first time.
 ## It is a good place to initialize the node with the entity's properties
