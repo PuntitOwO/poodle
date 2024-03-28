@@ -5,10 +5,11 @@ extends Widget
 @onready var label: Label = $Label
 var tween: Tween
 
-func _ready():
-	init()	
-
-func init() -> void:
+func init(properties: Dictionary) -> void:
+	if properties.has("position"):
+		position = properties["position"]
+	if properties.has("size"):
+		label.size = properties["size"]
 	label.text = entity.text
 
 func play(duration: float) -> void:

@@ -5,10 +5,9 @@ extends Widget
 @onready var line: Line2D = $Line
 var tween: Tween
 
-func _ready():
-	init()
-
-func init() -> void:
+func init(properties: Dictionary) -> void:
+	if properties.has("position"):
+		position = properties["position"]
 	line.hide()
 
 func play(duration: float) -> void:

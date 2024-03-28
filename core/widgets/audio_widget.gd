@@ -5,10 +5,7 @@ extends Widget
 @onready var audio: AudioStreamPlayer = $Audio
 var tween: Tween
 
-func _ready():
-	init()
-
-func init() -> void:
+func init(_properties: Dictionary) -> void:
 	var packet_sequence := AudioStreamOggVorbis.load_from_file(entity.audio_path) 
 	audio.stream = packet_sequence
 
