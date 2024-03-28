@@ -22,15 +22,15 @@
 
 [sub_resource type="Resource" id="Resource_vawum"]
 script = ExtResource("5_aa68v")
-audio_path = "res://icon.svg"
+audio_path = "res://concept/entities/0.ogg"
 
 [sub_resource type="Resource" id="Resource_sulob"]
 script = ExtResource("6_ylmrk")
-image_path = "res://icon.svg"
+image_path = "res://concept/entities/1.png"
 
 [sub_resource type="Resource" id="Resource_v11td"]
 script = ExtResource("7_f52p3")
-points = PackedVector2Array(0, 0, 100, 100)
+points = PackedVector2Array(25, 0, 25, 50, 25, 100, 25, 100, 25, 100, 0, 75, 25, 100, 50, 75)
 
 [sub_resource type="Resource" id="Resource_xep5h"]
 script = ExtResource("8_0lekp")

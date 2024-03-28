@@ -1,23 +1,47 @@
 {
 	"entities": [
 		{
-			"audio_path": "res://icon.svg",
+			"audio_path": "res://concept/entities/0.ogg",
 			"entity_type": "AudioEntity"
 		},
 		{
 			"entity_type": "ImageEntity",
-			"image_path": "res://icon.svg"
+			"image_path": "res://concept/entities/1.png"
 		},
 		{
 			"entity_type": "LineEntity",
 			"points": [
 				{
-					"x": 0,
+					"x": 25,
 					"y": 0
 				},
 				{
-					"x": 100,
+					"x": 25,
+					"y": 50
+				},
+				{
+					"x": 25,
 					"y": 100
+				},
+				{
+					"x": 25,
+					"y": 100
+				},
+				{
+					"x": 25,
+					"y": 100
+				},
+				{
+					"x": 0,
+					"y": 75
+				},
+				{
+					"x": 25,
+					"y": 100
+				},
+				{
+					"x": 50,
+					"y": 75
 				}
 			]
 		},
