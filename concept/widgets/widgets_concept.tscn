@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dojejdb0i214l"]
+[gd_scene load_steps=11 format=3 uid="uid://dojejdb0i214l"]
 
+[ext_resource type="Script" path="res://concept/widgets/widgets_concept.gd" id="1_lhdbk"]
 [ext_resource type="Script" path="res://core/resources/class/entities/audio_entity.gd" id="2_s2y32"]
 [ext_resource type="PackedScene" uid="uid://oaxxagjdj12p" path="res://core/widgets/image_widget.tscn" id="3_b0t06"]
 [ext_resource type="Script" path="res://core/resources/class/entities/image_entity.gd" id="4_88h83"]
@@ -20,6 +21,7 @@ script = ExtResource("6_8qqxi")
 points = PackedVector2Array(0, 100, 100, 0, 50, 0, 100, 0, 100, 50)
 
 [node name="WidgetsConcept" type="Node2D"]
+script = ExtResource("1_lhdbk")
 
 [node name="AudioWidget" parent="." instance=ExtResource("5_cm2m6")]
 entity = SubResource("Resource_gdhxc")

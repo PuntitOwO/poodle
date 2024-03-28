@@ -17,3 +17,6 @@ func play(_duration: float) -> void:
 
 func reset():
 	pass
+
+func get_duration() -> float:
+	return audio.stream.get_length()
