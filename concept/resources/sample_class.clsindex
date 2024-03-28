@@ -1,0 +1,145 @@
+{
+	"entities": [
+		{
+			"audio_path": "res://icon.svg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"entity_type": "ImageEntity",
+			"image_path": "res://icon.svg"
+		},
+		{
+			"entity_type": "LineEntity",
+			"points": [
+				{
+					"x": 0,
+					"y": 0
+				},
+				{
+					"x": 100,
+					"y": 100
+				}
+			]
+		},
+		{
+			"entity_type": "PausePlaybackControlEntity"
+		},
+		{
+			"entity_type": "ScriptEntity",
+			"script_entries": [
+				{
+					"content": "¿Qué es el relator?",
+					"entity_type": "TextEntry"
+				},
+				{
+					"content": "Mostrar captura de pantalla",
+					"entity_type": "CommentEntry"
+				},
+				{
+					"content": "Captura de pantalla del relator",
+					"entity_type": "AltTextEntry"
+				}
+			]
+		},
+		{
+			"content": "Pondría tus manos al fuego\n~ Lmateu",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "def henlo():\n    print(\"henlo worl\")",
+			"entity_type": "CodeTextEntity"
+		},
+		{
+			"content": "2 + 2 = sqrt(2)",
+			"entity_type": "MathTextEntity"
+		}
+	],
+	"metadata": {
+		"author_description": "The author of Poodle\nhttps://puntito.cl",
+		"author_name": "Christopher Marin",
+		"course": "CC0000 Sample course",
+		"date": 1711065600,
+		"description": "A sample class",
+		"editor_version": "v1.0.0",
+		"file_version": "v1.0.0",
+		"license": "res://concept/resources/LICENSE.md",
+		"name": "Sample class"
+	},
+	"sections": [
+		{
+			"name": "Main section",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							},
+							{
+								"entity_id": 1,
+								"entity_properties": [
+									{
+										"property_type": "SizeEntityProperty",
+										"size:x": 600,
+										"size:y": 400
+									}
+								]
+							},
+							{
+								"entity_id": 2,
+								"entity_properties": [
+									{
+										"position:x": 300,
+										"position:y": 100,
+										"property_type": "PositionEntityProperty"
+									}
+								]
+							},
+							{
+								"entity_id": 3,
+								"entity_properties": []
+							},
+							{
+								"entity_id": 4,
+								"entity_properties": []
+							},
+							{
+								"entity_id": 5,
+								"entity_properties": [
+									{
+										"position:x": 600,
+										"position:y": 0,
+										"property_type": "PositionEntityProperty"
+									}
+								]
+							},
+							{
+								"entity_id": 6,
+								"entity_properties": [
+									{
+										"property_type": "SizeEntityProperty",
+										"size:x": 300,
+										"size:y": 300
+									},
+									{
+										"position:x": 600,
+										"position:y": 100,
+										"property_type": "PositionEntityProperty"
+									}
+								]
+							},
+							{
+								"entity_id": 7,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassParallelGroup",
+						"groups": []
+					},
+					"name": "First slide"
+				}
+			]
+		}
+	]
+}
