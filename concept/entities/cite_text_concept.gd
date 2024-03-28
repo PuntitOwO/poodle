@@ -2,11 +2,19 @@ extends Node2D
 
 @export var resource: CiteTextEntity
 
+var widget: Label
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_play()
+	init()
 
-func _play():
-	var cite_block: Label = Label.new()
-	cite_block.text = resource.content
-	add_child(cite_block)
+func init():
+	widget = Label.new()
+	widget.hide()
+	widget.text = resource.content
+	add_child(widget)
+
+func play():
+	widget.show()
+
+func unplay():
+	widget.hide()

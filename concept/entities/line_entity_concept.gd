@@ -2,11 +2,19 @@ extends Node2D
 
 @export var resource: LineEntity
 
+var widget: Line2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_play()
+	init()
 
-func _play():
-	var line = Line2D.new()
-	add_child(line)
-	line.points = resource.points
+func init():
+	widget = Line2D.new()
+	widget.points = resource.points
+	widget.hide()
+	add_child(widget)
+
+func play():
+	widget.show()
+
+func unplay():
+	widget.hide()
