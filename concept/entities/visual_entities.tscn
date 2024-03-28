@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://cssoxtkjtgxy4"]
+[gd_scene load_steps=17 format=3 uid="uid://cssoxtkjtgxy4"]
 
 [ext_resource type="Script" path="res://concept/entities/cite_text_concept.gd" id="1_j48qi"]
+[ext_resource type="Script" path="res://concept/entities/visual_entities.gd" id="1_r1kod"]
 [ext_resource type="Script" path="res://core/resources/class/entities/cite_text_entity.gd" id="2_fnl7h"]
 [ext_resource type="Script" path="res://concept/entities/code_text_concept.gd" id="3_5jmn0"]
 [ext_resource type="Script" path="res://core/resources/class/entities/code_text_entity.gd" id="4_8yfiw"]
@@ -40,6 +41,7 @@ script = ExtResource("10_0j1kk")
 audio_path = "res://concept/entities/0.ogg"
 
 [node name="Entities" type="Node2D"]
+script = ExtResource("1_r1kod")
 
 [node name="TextEntities" type="Node2D" parent="."]
 
