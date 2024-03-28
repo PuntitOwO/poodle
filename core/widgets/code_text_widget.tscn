@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bllip7ogwi2g"]
+
+[ext_resource type="Script" path="res://core/widgets/code_text_widget.gd" id="1_nrbk7"]
+[ext_resource type="CodeHighlighter" uid="uid://lj0aiq6xxnec" path="res://concept/code_highlighter/godot_editor_gdscript.tres" id="2_w8rkl"]
+
+[node name="CodeTextWidget" type="Node2D"]
+script = ExtResource("1_nrbk7")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+auto_translate = false
+localize_numeral_system = false
+placeholder_text = "code"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+caret_move_on_right_click = false
+caret_multiple = false
+syntax_highlighter = ExtResource("2_w8rkl")

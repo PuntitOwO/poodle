@@ -1,0 +1,33 @@
+class_name Widget
+extends Node2D
+
+## A widget is a visual element that can be played and reset.
+## This class defines the main API for a widget.
+
+func _ready():
+	init()
+
+## Called when the node enters the scene tree for the first time.
+## It is a good place to initialize the node with the entity's properties.
+func init() -> void:
+	pass
+
+## Called when it's time to play the widget.
+## The animation should be played for the given [param duration].
+func play(_duration: float) -> void:
+	pass
+
+## Called when the player seeked to a point before the widget was played.
+## The widget should be reset to its initial state.
+func reset() -> void:
+	pass
+
+## Set the speed scale of the widget.
+## The [param speed] scale is a multiplier that affects the speed of the widget.
+## A speed scale of 1.0 means the widget will play at its normal speed.
+func set_speed_scale(_speed: float) -> void:
+	pass
+
+## Reset the speed scale of the widget to 1.0.
+func reset_speed_scale() -> void:
+	set_speed_scale(1.0)

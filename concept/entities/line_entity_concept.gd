@@ -16,5 +16,5 @@ func init():
 func play():
 	widget.show()
 
-func unplay():
+func reset():
 	widget.hide()

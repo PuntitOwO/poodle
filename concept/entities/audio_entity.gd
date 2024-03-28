@@ -16,5 +16,5 @@ func init():
 func play():
 	player.play()
 
-func unplay():
+func reset():
 	pass
