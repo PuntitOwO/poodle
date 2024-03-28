@@ -4,6 +4,8 @@ extends Node2D
 ## A widget is a visual element that can be played and reset.
 ## This class defines the main API for a widget.
 
+signal animation_finished
+
 ## Compute the duration of the widget animation.
 func compute_duration() -> float:
 	return 0.0
