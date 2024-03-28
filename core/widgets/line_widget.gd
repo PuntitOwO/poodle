@@ -18,10 +18,11 @@ func play(duration: float) -> void:
 	tween = create_tween()
 	tween.tween_method(_add_points, 0, len(entity.points) - 1, duration)
 
-func unplay():
+func reset():
 	if tween:
 		tween.kill()
 	line.hide()
+	line.clear_points()
 
 func _add_points(i: int) -> void:
 	line.add_point(entity.points[i])

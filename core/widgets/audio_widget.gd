@@ -15,5 +15,5 @@ func init() -> void:
 func play(_duration: float) -> void:
 	audio.play()
 
-func unplay():
+func reset():
 	pass
