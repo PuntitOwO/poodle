@@ -13,7 +13,7 @@ extends Resource
 # 5. constants: define constants here
 
 # 6. export variables: define all export variables in groups here
-@export var entities: Array[Entity] = []:
+@export var entities: Array[EntityWrapper] = []:
     set(value):
         entities = value
         _validate()
@@ -49,9 +49,9 @@ func serialize() -> Dictionary:
 static func deserialize(data: Dictionary) -> ClassGroup:
     var instance: ClassGroup = CustomClassDB.instantiate(data["group_type"])
     for entity in data["entities"]:
-        instance.entities.append(Entity.deserialize(entity))
+        instance.entities.append(EntityWrapper.deserialize(entity))
     for group in data["groups"]:
-        instance.groups.append(Entity.deserialize(group))
+        instance.groups.append(ClassGroup.deserialize(group))
     instance.load_data(data)
     return instance
 
