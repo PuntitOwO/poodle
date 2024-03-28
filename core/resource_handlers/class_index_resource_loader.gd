@@ -6,9 +6,9 @@ extends ResourceFormatLoader
 ## It loads a JSON file and deserializes it into a [ClassIndex] resource.
 
 ## Returns the list of extensions available for loading the resource.
-## In this case, only json.
+## In this case, only clsindex.
 func _get_recognized_extensions() -> PackedStringArray:
-	return PackedStringArray(["ito"])
+	return PackedStringArray(["clsindex"])
 
 ## Returns the resource type that this loader can handle.
 ## In this case, only custom resources that are a subclass of [Resource].
