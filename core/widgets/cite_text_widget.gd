@@ -14,7 +14,7 @@ func init(properties: Dictionary) -> void:
 		position = properties["position"]
 	if properties.has("size"):
 		label.size = properties["size"]
-	label.text = entity.text
+	label.text = entity.content
 
 func play(duration: float) -> void:
 	label.show()
