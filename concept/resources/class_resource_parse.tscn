@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bilqkhkilajb8"]
+[gd_scene load_steps=2 format=3 uid="uid://bilqkhkilajb8"]
 
 [ext_resource type="Script" path="res://concept/resources/class_resource_parse.gd" id="1_nrgyp"]
-[ext_resource type="Resource" uid="uid://cvcb4bqok6n0y" path="res://concept/resources/sample_class.tres" id="2_bxktr"]
 
 [node name="ClassResourceParse" type="Node"]
 script = ExtResource("1_nrgyp")
-file = "res://concept/resources/punt.ito"
-sample_class = ExtResource("2_bxktr")
+file = "res://concept/resources/sample_class.clsindex"

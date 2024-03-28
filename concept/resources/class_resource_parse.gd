@@ -1,7 +1,6 @@
 extends Node
 
 @export_file() var file: String
-@export var sample_class: ClassIndex
 @export var class_index: ClassIndex
 
 # Called when the node enters the scene tree for the first time.
