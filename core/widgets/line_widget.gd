@@ -1,11 +1,15 @@
 class_name LineWidget
 extends Widget
 
+const scene = preload("res://core/widgets/line_widget.tscn")
+
 @export var entity: LineEntity
-@onready var line: Line2D = $Line
+var line: Line2D
 var tween: Tween
 
 func init(properties: Dictionary) -> void:
+	line = scene.instantiate()
+	add_child(line)
 	if properties.has("position"):
 		position = properties["position"]
 	line.hide()

@@ -1,10 +1,14 @@
 class_name CodeTextWidget
 extends Widget
 
+const scene = preload("res://core/widgets/code_text_widget.tscn")
+
 @export var entity: CodeTextEntity
-@onready var text_edit: TextEdit = $TextEdit
+var text_edit: TextEdit
 
 func init(properties: Dictionary) -> void:
+	text_edit = scene.instantiate()
+	add_child(text_edit)
 	if properties.has("position"):
 		position = properties["position"]
 	if properties.has("size"):

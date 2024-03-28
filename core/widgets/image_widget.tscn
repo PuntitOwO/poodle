@@ -1,11 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://oaxxagjdj12p"]
+[gd_scene format=3 uid="uid://oaxxagjdj12p"]
 
-[ext_resource type="Script" path="res://core/widgets/image_widget.gd" id="1_jotjv"]
-
-[node name="ImageWidget" type="Node2D"]
-script = ExtResource("1_jotjv")
-
-[node name="Image" type="TextureRect" parent="."]
+[node name="Image" type="TextureRect"]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0

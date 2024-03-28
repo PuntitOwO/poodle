@@ -1,11 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://devf7w1mel07w"]
+[gd_scene format=3 uid="uid://devf7w1mel07w"]
 
-[ext_resource type="Script" path="res://core/widgets/cite_text_widget.gd" id="1_au584"]
-
-[node name="CiteTextWidget" type="Node2D"]
-script = ExtResource("1_au584")
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label"]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0

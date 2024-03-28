@@ -1,8 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyh75vkj58pw3"]
+[gd_scene format=3 uid="uid://dyh75vkj58pw3"]
 
-[ext_resource type="Script" path="res://core/widgets/line_widget.gd" id="1_1ypkp"]
-
-[node name="LineWidget" type="Node2D"]
-script = ExtResource("1_1ypkp")
-
-[node name="Line" type="Line2D" parent="."]
+[node name="Line" type="Line2D"]

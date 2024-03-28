@@ -1,11 +1,15 @@
 class_name CiteTextWidget
 extends Widget
 
+const scene = preload("res://core/widgets/cite_text_widget.tscn")
+
 @export var entity: CiteTextEntity
-@onready var label: Label = $Label
+var label: Label
 var tween: Tween
 
 func init(properties: Dictionary) -> void:
+	label = scene.instantiate()
+	add_child(label)
 	if properties.has("position"):
 		position = properties["position"]
 	if properties.has("size"):

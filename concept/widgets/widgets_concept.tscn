@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dojejdb0i214l"]
+[gd_scene load_steps=16 format=3 uid="uid://dojejdb0i214l"]
 
 [ext_resource type="Script" path="res://concept/widgets/widgets_concept.gd" id="1_lhdbk"]
 [ext_resource type="Script" path="res://core/resources/class/entities/audio_entity.gd" id="2_s2y32"]
-[ext_resource type="PackedScene" uid="uid://oaxxagjdj12p" path="res://core/widgets/image_widget.tscn" id="3_b0t06"]
 [ext_resource type="Script" path="res://core/resources/class/entities/image_entity.gd" id="4_88h83"]
-[ext_resource type="PackedScene" uid="uid://dyh75vkj58pw3" path="res://core/widgets/line_widget.tscn" id="5_02hra"]
-[ext_resource type="PackedScene" uid="uid://biha46ac5k722" path="res://core/widgets/audio_widget.tscn" id="5_cm2m6"]
+[ext_resource type="Script" path="res://core/resources/class/entities/entity_wrapper/entity_wrapper.gd" id="5_gu6sp"]
+[ext_resource type="Script" path="res://core/resources/class/entities/entity_wrapper/size_entity_property.gd" id="6_5un15"]
 [ext_resource type="Script" path="res://core/resources/class/entities/line_entity.gd" id="6_8qqxi"]
+[ext_resource type="Script" path="res://core/resources/class/entities/entity_wrapper/position_entity_property.gd" id="7_kkj25"]
 
 [sub_resource type="Resource" id="Resource_gdhxc"]
 script = ExtResource("2_s2y32")
@@ -20,14 +20,30 @@ image_path = "res://concept/entities/1.png"
 script = ExtResource("6_8qqxi")
 points = PackedVector2Array(0, 100, 100, 0, 50, 0, 100, 0, 100, 50)
 
+[sub_resource type="Resource" id="Resource_pigav"]
+script = ExtResource("5_gu6sp")
+entity_id = 0
+entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
+
+[sub_resource type="Resource" id="Resource_dfuwg"]
+script = ExtResource("6_5un15")
+size = Vector2(600, 400)
+
+[sub_resource type="Resource" id="Resource_g2dxn"]
+script = ExtResource("5_gu6sp")
+entity_id = 1
+entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([SubResource("Resource_dfuwg")])
+
+[sub_resource type="Resource" id="Resource_ncqbi"]
+script = ExtResource("7_kkj25")
+position = Vector2(300, 100)
+
+[sub_resource type="Resource" id="Resource_opfgg"]
+script = ExtResource("5_gu6sp")
+entity_id = 2
+entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([SubResource("Resource_ncqbi")])
+
 [node name="WidgetsConcept" type="Node2D"]
 script = ExtResource("1_lhdbk")
-
-[node name="AudioWidget" parent="." instance=ExtResource("5_cm2m6")]
-entity = SubResource("Resource_gdhxc")
-
-[node name="ImageWidget" parent="." instance=ExtResource("3_b0t06")]
-entity = SubResource("Resource_5gm74")
-
-[node name="LineWidget" parent="." instance=ExtResource("5_02hra")]
-entity = SubResource("Resource_kcdi7")
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_gdhxc"), SubResource("Resource_5gm74"), SubResource("Resource_kcdi7")])
+entity_wrappers = Array[ExtResource("5_gu6sp")]([SubResource("Resource_pigav"), SubResource("Resource_g2dxn"), SubResource("Resource_opfgg")])

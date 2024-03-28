@@ -2,11 +2,12 @@ class_name AudioWidget
 extends Widget
 
 @export var entity: AudioEntity
-@onready var audio: AudioStreamPlayer = $Audio
-var tween: Tween
+var audio: AudioStreamPlayer
 
 func init(_properties: Dictionary) -> void:
-	var packet_sequence := AudioStreamOggVorbis.load_from_file(entity.audio_path) 
+	var packet_sequence := AudioStreamOggVorbis.load_from_file(entity.audio_path)
+	audio = AudioStreamPlayer.new()
+	add_child(audio)
 	audio.stream = packet_sequence
 
 func play(_duration: float) -> void:
