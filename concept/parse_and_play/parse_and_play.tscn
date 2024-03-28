@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wb0c848uqu1l"]
+
+[ext_resource type="Script" path="res://concept/parse_and_play/parse_and_play.gd" id="1_owwge"]
+
+[node name="ParseAndPlay" type="Node2D"]
+script = ExtResource("1_owwge")
+file = "res://concept/resources/sample_class.clsindex"
