@@ -81,7 +81,7 @@
 	"metadata": {
 		"author_description": "The author of Poodle\nhttps://puntito.cl",
 		"author_name": "Christopher Marin",
-		"course": "",
+		"course": "CC0000 Sample course",
 		"date": 1711065600,
 		"description": "A sample class",
 		"editor_version": "v1.0.0",
@@ -95,71 +95,75 @@
 			"slides": [
 				{
 					"content_root": {
-						"entities": [
+						"entities": [],
+						"group_type": "ClassChainGroup",
+						"groups": [
 							{
-								"entity_id": 0,
-								"entity_properties": []
-							},
-							{
-								"entity_id": 1,
-								"entity_properties": [
+								"entities": [
 									{
-										"property_type": "SizeEntityProperty",
-										"size:x": 600,
-										"size:y": 400
-									}
-								]
-							},
-							{
-								"entity_id": 2,
-								"entity_properties": [
-									{
-										"position:x": 300,
-										"position:y": 100,
-										"property_type": "PositionEntityProperty"
-									}
-								]
-							},
-							{
-								"entity_id": 3,
-								"entity_properties": []
-							},
-							{
-								"entity_id": 4,
-								"entity_properties": []
-							},
-							{
-								"entity_id": 5,
-								"entity_properties": [
-									{
-										"position:x": 600,
-										"position:y": 0,
-										"property_type": "PositionEntityProperty"
-									}
-								]
-							},
-							{
-								"entity_id": 6,
-								"entity_properties": [
-									{
-										"property_type": "SizeEntityProperty",
-										"size:x": 300,
-										"size:y": 300
+										"entity_id": 0,
+										"entity_properties": []
 									},
 									{
-										"position:x": 600,
-										"position:y": 100,
-										"property_type": "PositionEntityProperty"
+										"entity_id": 1,
+										"entity_properties": [
+											{
+												"property_type": "SizeEntityProperty",
+												"size:x": 600,
+												"size:y": 400
+											}
+										]
 									}
-								]
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
 							},
 							{
-								"entity_id": 7,
-								"entity_properties": []
+								"entities": [
+									{
+										"entity_id": 0,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 2,
+										"entity_properties": [
+											{
+												"position:x": 300,
+												"position:y": 100,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									},
+									{
+										"entity_id": 5,
+										"entity_properties": [
+											{
+												"position:x": 600,
+												"position:y": 0,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									},
+									{
+										"entity_id": 6,
+										"entity_properties": [
+											{
+												"property_type": "SizeEntityProperty",
+												"size:x": 300,
+												"size:y": 300
+											},
+											{
+												"position:x": 600,
+												"position:y": 100,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
 							}
-						],
-						"group_type": "ClassParallelGroup",
-						"groups": []
+						]
 					},
 					"name": "First slide"
 				}

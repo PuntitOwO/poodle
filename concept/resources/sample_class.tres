@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://core/resources/class/entities/math_text_entity.gd" id="15_t7h8i"]
 [ext_resource type="Script" path="res://core/resources/class/entities/entity_wrapper/size_entity_property.gd" id="16_3tn48"]
 [ext_resource type="Script" path="res://core/resources/class/entities/entity_wrapper/position_entity_property.gd" id="17_iduu7"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_chain_group.gd" id="19_o65ol"]
 
 [sub_resource type="Resource" id="Resource_vawum"]
 script = ExtResource("5_aa68v")
@@ -79,6 +80,11 @@ script = ExtResource("15_nq5mc")
 entity_id = 1
 entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([SubResource("Resource_msjrh")])
 
+[sub_resource type="Resource" id="Resource_b6xcl"]
+script = ExtResource("5_csasb")
+entities = Array[ExtResource("15_nq5mc")]([SubResource("Resource_x2lig"), SubResource("Resource_2eowf")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
 [sub_resource type="Resource" id="Resource_g70k2"]
 script = ExtResource("17_iduu7")
 position = Vector2(300, 100)
@@ -87,16 +93,6 @@ position = Vector2(300, 100)
 script = ExtResource("15_nq5mc")
 entity_id = 2
 entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([SubResource("Resource_g70k2")])
-
-[sub_resource type="Resource" id="Resource_mpl58"]
-script = ExtResource("15_nq5mc")
-entity_id = 3
-entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
-
-[sub_resource type="Resource" id="Resource_5nxtw"]
-script = ExtResource("15_nq5mc")
-entity_id = 4
-entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
 
 [sub_resource type="Resource" id="Resource_sod5n"]
 script = ExtResource("17_iduu7")
@@ -120,20 +116,20 @@ script = ExtResource("15_nq5mc")
 entity_id = 6
 entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([SubResource("Resource_rwj31"), SubResource("Resource_psat2")])
 
-[sub_resource type="Resource" id="Resource_t4am7"]
-script = ExtResource("15_nq5mc")
-entity_id = 7
-entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
-
-[sub_resource type="Resource" id="Resource_tjvgb"]
+[sub_resource type="Resource" id="Resource_1syln"]
 script = ExtResource("5_csasb")
-entities = Array[ExtResource("15_nq5mc")]([SubResource("Resource_x2lig"), SubResource("Resource_2eowf"), SubResource("Resource_3seju"), SubResource("Resource_mpl58"), SubResource("Resource_5nxtw"), SubResource("Resource_ro5k7"), SubResource("Resource_v4tlt"), SubResource("Resource_t4am7")])
+entities = Array[ExtResource("15_nq5mc")]([SubResource("Resource_x2lig"), SubResource("Resource_3seju"), SubResource("Resource_ro5k7"), SubResource("Resource_v4tlt")])
 groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_e0ine"]
+script = ExtResource("19_o65ol")
+entities = Array[ExtResource("15_nq5mc")]([])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([SubResource("Resource_b6xcl"), SubResource("Resource_1syln")])
 
 [sub_resource type="Resource" id="Resource_4ahko"]
 script = ExtResource("6_4qxia")
 name = "First slide"
-content_root = SubResource("Resource_tjvgb")
+content_root = SubResource("Resource_e0ine")
 
 [sub_resource type="Resource" id="Resource_t18gp"]
 script = ExtResource("3_ydfld")
