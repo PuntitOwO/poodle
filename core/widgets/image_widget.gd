@@ -17,6 +17,7 @@ func init(properties: Dictionary) -> void:
 
 func play(_duration: float) -> void:
 	image.show()
+	animation_finished.emit()
 
 
 func reset():

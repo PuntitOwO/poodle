@@ -20,3 +20,4 @@ func play(duration: float) -> void:
     for child in get_children():
         if child.has_method("play"):
             child.play(duration)
+    get_tree().create_timer(duration).timeout.connect(emit_signal.bind("animation_finished"))

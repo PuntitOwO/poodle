@@ -21,6 +21,9 @@ func play(duration: float) -> void:
 	if !is_zero_approx(duration):
 		tween = create_tween()
 		tween.tween_method(_add_points, 0, len(entity.points) - 1, duration)
+		tween.tween_callback(emit_signal.bind("animation_finished"))
+	else:
+		animation_finished.emit()
 
 func reset():
 	if tween:

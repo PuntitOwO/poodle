@@ -1,6 +1,8 @@
 class_name GroupController
 extends Node2D
 
+signal animation_finished
+
 ## Called to compute the total duration of the animations in this group.
 func compute_duration() -> float:
     return 0.0

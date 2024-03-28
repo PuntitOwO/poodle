@@ -24,6 +24,9 @@ func play(duration: float) -> void:
 		label.visible_ratio = 0
 		tween = create_tween()
 		tween.tween_property(label, "visible_ratio", 1, duration)
+		tween.tween_callback(emit_signal.bind("animation_finished"))
+	else:
+		animation_finished.emit()
 
 func reset():
 	if tween:

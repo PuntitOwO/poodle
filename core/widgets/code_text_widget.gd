@@ -16,7 +16,8 @@ func init(properties: Dictionary) -> void:
 	text_edit.text = entity.content
 
 func play(_duration: float) -> void:
-	text_edit.show()	
+	text_edit.show()
+	animation_finished.emit()	
 
 func reset():
 	text_edit.hide()

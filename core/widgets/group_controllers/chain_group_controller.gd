@@ -23,3 +23,4 @@ func play(__duration: float) -> void:
         var child = get_child(child_idx)
         child.play(_durations[child_idx])
         await child.animation_finished
+    animation_finished.emit()

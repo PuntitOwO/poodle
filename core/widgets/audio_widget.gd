@@ -12,6 +12,7 @@ func init(_properties: Dictionary) -> void:
 
 func play(_duration: float) -> void:
 	audio.play()
+	audio.finished.connect(emit_signal.bind("animation_finished"))
 
 func reset():
 	pass
