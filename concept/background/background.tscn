@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://k6e56lrpnnla"]
+
+[ext_resource type="Script" path="res://concept/background/background.gd" id="1_iau34"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1160, 680)
+
+[node name="Background" type="Node2D" parent="ParallaxLayer"]
+texture_repeat = 2
+script = ExtResource("1_iau34")
+grid_size = 40

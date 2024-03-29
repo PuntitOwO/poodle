@@ -1,7 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://wb0c848uqu1l"]
+[gd_scene load_steps=4 format=3 uid="uid://wb0c848uqu1l"]
 
 [ext_resource type="Script" path="res://concept/parse_and_play/parse_and_play.gd" id="1_owwge"]
+[ext_resource type="PackedScene" uid="uid://k6e56lrpnnla" path="res://concept/background/background.tscn" id="2_thsiq"]
+
+[sub_resource type="GDScript" id="GDScript_e3u0i"]
+script/source = "extends Camera2D
+
+func _input(event):
+	if event.is_action_pressed(\"ui_left\", true):
+		position.x -= 5
+	if event.is_action_pressed(\"ui_right\", true):
+		position.x += 5
+	if event.is_action_pressed(\"ui_up\", true):
+		position.y -= 5
+	if event.is_action_pressed(\"ui_down\", true):
+		position.y += 5
+	
+"
 
 [node name="ParseAndPlay" type="Node2D"]
 script = ExtResource("1_owwge")
 file = "res://concept/resources/sample_class.clsindex"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_thsiq")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = SubResource("GDScript_e3u0i")
