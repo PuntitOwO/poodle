@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassSlide" inherits="Resource">
+	<brief_description>
+		A resource that represents a slide of a class
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="deserialize" qualifiers="static">
+			<return type="ClassSlide" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="content_root" type="ClassGroup" setter="" getter="">
+		</member>
+		<member name="name" type="String" setter="" getter="">
+		</member>
+	</members>
+</class>

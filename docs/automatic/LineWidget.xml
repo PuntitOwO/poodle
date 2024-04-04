@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="LineWidget" inherits="Widget">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_add_points">
+			<return type="void" />
+			<param index="0" name="i" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="properties" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="duration" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entity" type="LineEntity" setter="" getter="">
+		</member>
+		<member name="line" type="Line2D" setter="" getter="">
+		</member>
+		<member name="tween" type="Tween" setter="" getter="">
+		</member>
+	</members>
+	<constants>
+		<constant name="scene" value="&lt;Object&gt;">
+		</constant>
+	</constants>
+</class>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="CiteTextWidget" inherits="Widget">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="properties" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="duration" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entity" type="CiteTextEntity" setter="" getter="">
+		</member>
+		<member name="label" type="Label" setter="" getter="">
+		</member>
+		<member name="tween" type="Tween" setter="" getter="">
+		</member>
+	</members>
+	<constants>
+		<constant name="scene" value="&lt;Object&gt;">
+		</constant>
+	</constants>
+</class>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/background/background.gd&quot;" inherits="Node2D">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_draw">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_generate_lines">
+			<return type="PackedVector2Array" />
+			<description>
+			</description>
+		</method>
+		<method name="_normalize_viewport_size">
+			<return type="Vector2" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="grid_size" type="int" setter="@grid_size_setter" getter="" default="10">
+		</member>
+	</members>
+</class>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/audio_record/audio_record.gd&quot;" inherits="Node">
+	<brief_description>
+		Audio Record Proof of Concept
+	</brief_description>
+	<description>
+		A sample scene to test microphone audio recording. It has three toggle buttons: record, mute and playback.  It also has a list of all recordings in this session. All recordings can be played by selecting (double click or enter).  Note: for this scene to work, [member ProjectSettings.audio/driver/enable_input] must be [code]true[/code].
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_on_item_activated">
+			<return type="void" />
+			<param index="0" name="index" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_toggle_mute">
+			<return type="void" />
+			<param index="0" name="disabled" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="_toggle_playback">
+			<return type="void" />
+			<param index="0" name="active" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="_toggle_recording">
+			<return type="void" />
+			<param index="0" name="active" type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="save_recording">
+			<return type="void" />
+			<description>
+				Saves the current recording.
+			</description>
+		</method>
+		<method name="start_recording">
+			<return type="void" />
+			<description>
+				Starts a new recording. [br]When a new recording starts, mute toggle button is disabled and Status label text changed to "On".
+			</description>
+		</method>
+		<method name="stop_recording">
+			<return type="void" />
+			<description>
+				Stops the recording. [br]The recording is saved, mute button enabled again, and Status label text changed to "Off"
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="record" type="AudioEffectRecord" setter="" getter="" default="&lt;unknown&gt;">
+			[Class AudioEffectRecord] to control recording.
+		</member>
+		<member name="recordings" type="AudioStreamWAV[]" setter="" getter="" default="&lt;unknown&gt;">
+			Array of all recordings of this instance.
+		</member>
+	</members>
+</class>

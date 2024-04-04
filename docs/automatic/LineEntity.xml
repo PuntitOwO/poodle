@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="LineEntity" inherits="Entity">
+	<brief_description>
+		An [Entity] that represents a line
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="load_data">
+			<return type="void" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="points" type="PackedVector2Array" setter="" getter="">
+		</member>
+	</members>
+</class>

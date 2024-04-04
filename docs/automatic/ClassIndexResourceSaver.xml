@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassIndexResourceSaver" inherits="ResourceFormatSaver">
+	<brief_description>
+		ClassIndexResourceSaver is a custom resource saver for [ClassIndex] resources. It saves the resource to a JSON file.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_get_recognized_extensions">
+			<return type="PackedStringArray" />
+			<param index="0" name="_resource" type="Resource" />
+			<description>
+				Returns the list of extensions available for saving the resource, in this case, only clsindex.
+			</description>
+		</method>
+		<method name="_recognize">
+			<return type="bool" />
+			<param index="0" name="resource" type="Resource" />
+			<description>
+				Returns whether the resource can be saved by this saver. In this case, only [ClassIndex] resources can be saved.
+			</description>
+		</method>
+		<method name="_save">
+			<return type="Variant" />
+			<param index="0" name="resource" type="Resource" />
+			<param index="1" name="path" type="String" />
+			<param index="2" name="_flags" type="int" />
+			<description>
+				Saves the resource to a file at the given path. In this case, the resource is serialized to JSON and saved to the file. Returns @GlobalScope.OK on success, or an error code on failure. The flags are currently unused.
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="CustomClassDB" inherits="Object">
+	<brief_description>
+		This class is a helper class for custom classes.
+	</brief_description>
+	<description>
+		It is used to store the classes info to expose an API similar to the [ClassDB] API.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_static_init" qualifiers="static">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_update_classes" qualifiers="static">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="class_exists" qualifiers="static">
+			<return type="bool" />
+			<param index="0" name="_class" type="StringName" />
+			<description>
+				Returns whether the specified class is available or not.
+			</description>
+		</method>
+		<method name="get_class_list" qualifiers="static">
+			<return type="Array" />
+			<description>
+				Returns the names of all the custom classes available.
+			</description>
+		</method>
+		<method name="instantiate" qualifiers="static">
+			<return type="Variant" />
+			<param index="0" name="_class" type="StringName" />
+			<description>
+				Creates an instance of the class. This method is similar to [method ClassDB.instantiate]. This method does not check if the class exists or not, so it is recommended to use [method class_exists] before calling this method.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="classes" type="Dictionary" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

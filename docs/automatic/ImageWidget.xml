@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ImageWidget" inherits="Widget">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="properties" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="_duration" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entity" type="ImageEntity" setter="" getter="">
+		</member>
+		<member name="image" type="TextureRect" setter="" getter="">
+		</member>
+	</members>
+	<constants>
+		<constant name="scene" value="&lt;Object&gt;">
+		</constant>
+	</constants>
+</class>

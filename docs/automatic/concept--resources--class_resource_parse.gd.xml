@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/resources/class_resource_parse.gd&quot;" inherits="Node">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="class_index" type="ClassIndex" setter="" getter="">
+		</member>
+		<member name="file" type="String" setter="" getter="">
+		</member>
+	</members>
+</class>

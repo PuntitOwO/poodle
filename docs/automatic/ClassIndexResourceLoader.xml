@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassIndexResourceLoader" inherits="ResourceFormatLoader">
+	<brief_description>
+		ClassIndexResourceLoader is a custom resource loader for [ClassIndex] resources. It loads a JSON file and deserializes it into a [ClassIndex] resource.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_get_recognized_extensions">
+			<return type="PackedStringArray" />
+			<description>
+				Returns the list of extensions available for loading the resource. In this case, only clsindex.
+			</description>
+		</method>
+		<method name="_get_resource_script_class">
+			<return type="String" />
+			<param index="0" name="_path" type="String" />
+			<description>
+				Returns the class name of the script that will be created when loading the resource. In this case, [ClassIndex].
+			</description>
+		</method>
+		<method name="_get_resource_type">
+			<return type="String" />
+			<param index="0" name="_path" type="String" />
+			<description>
+				Returns the resource type that this loader can handle. In this case, only custom resources that are a subclass of [Resource].
+			</description>
+		</method>
+		<method name="_handles_type">
+			<return type="bool" />
+			<param index="0" name="type" type="StringName" />
+			<description>
+				Returns whether the resource type is handled by this loader. In this case, only custom resources that are a subclass of [Resource].
+			</description>
+		</method>
+		<method name="_load">
+			<return type="Variant" />
+			<param index="0" name="path" type="String" />
+			<param index="1" name="_original_path" type="String" />
+			<param index="2" name="_use_sub_threads" type="bool" />
+			<param index="3" name="_cache_mode" type="int" />
+			<description>
+				Loads the resource from the given file. In this case, it reads the JSON file and deserializes it into a [ClassIndex] resource. Returns an [ClassIndex] resource on success, or an error code on failure. Only path parameter is currently used, other parameters are not used.
+			</description>
+		</method>
+	</methods>
+</class>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="TextEntry" inherits="ScriptEntry">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+				A [ScriptEntry] that represents a text
+			</description>
+		</method>
+	</methods>
+</class>

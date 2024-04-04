@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/widgets/widgets_concept.gd&quot;" inherits="Node2D">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_get_widget">
+			<return type="Widget" />
+			<param index="0" name="entity" type="Entity" />
+			<description>
+			</description>
+		</method>
+		<method name="_play">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entities" type="Entity[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+		<member name="entity_wrappers" type="EntityWrapper[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

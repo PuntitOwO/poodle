@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="CiteTextEntity" inherits="TextEntity">
+	<brief_description>
+		A TextEntity that holds a citation
+	</brief_description>
+	<description>
+		This class is used to hold a citation in a TextEntity that can be used to generate a citation block
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

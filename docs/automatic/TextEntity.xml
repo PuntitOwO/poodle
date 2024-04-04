@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="TextEntity" inherits="Entity">
+	<brief_description>
+		An EntityResource that contains text
+	</brief_description>
+	<description>
+		The text can be used for a cite block, a math block, a code block, etc. See also: * [CiteTextEntity]: to render a cite block from this text * [MathTextEntity]: to render a math block from this text * [CodeTextEntity]: to render a code block from this text
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="load_data">
+			<return type="void" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="content" type="String" setter="" getter="">
+		</member>
+	</members>
+</class>

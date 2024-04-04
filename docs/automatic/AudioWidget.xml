@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="AudioWidget" inherits="Widget">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="compute_duration">
+			<return type="float" />
+			<description>
+				Returns the duration of the audio in seconds.
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="_properties" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="_duration" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="audio" type="AudioStreamPlayer" setter="" getter="">
+		</member>
+		<member name="entity" type="AudioEntity" setter="" getter="">
+		</member>
+	</members>
+</class>

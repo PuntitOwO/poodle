@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="GroupController" inherits="Node2D">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_get_widget">
+			<return type="Widget" />
+			<param index="0" name="entity" type="Entity" />
+			<description>
+			</description>
+		</method>
+		<method name="_has_widget">
+			<return type="bool" />
+			<param index="0" name="entity" type="Entity" />
+			<description>
+			</description>
+		</method>
+		<method name="_instantiate_entity">
+			<return type="Widget" />
+			<param index="0" name="wrapper" type="EntityWrapper" />
+			<param index="1" name="entities" type="Entity[]" />
+			<description>
+			</description>
+		</method>
+		<method name="compute_duration">
+			<return type="float" />
+			<description>
+				Called to compute the total duration of the animations in this group.
+			</description>
+		</method>
+		<method name="instantiate" qualifiers="static">
+			<return type="GroupController" />
+			<param index="0" name="group" type="ClassGroup" />
+			<param index="1" name="entities" type="Entity[]" />
+			<description>
+			</description>
+		</method>
+		<method name="load_data">
+			<return type="void" />
+			<param index="0" name="group" type="ClassGroup" />
+			<param index="1" name="entities" type="Entity[]" />
+			<description>
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="_duration" type="float" />
+			<description>
+				Called when it's time to play the widgets in this group. The animation should be played for the given [param duration].
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+				Called when the player seeked to a point before this group was played. The widgets should be reset to its initial state.
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="animation_finished">
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

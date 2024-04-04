@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ChainGroupController" inherits="GroupController">
+	<brief_description>
+		A [GroupController] that runs its children in sequence.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="compute_duration">
+			<return type="float" />
+			<description>
+				Computes the duration of this group. It is the sum of the duration of all the children.
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="__duration" type="float" />
+			<description>
+				Runs the children in sequence. It waits for each children to finish before starting the next.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="_duration" type="float" setter="" getter="" default="0.0">
+		</member>
+		<member name="_durations" type="float[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

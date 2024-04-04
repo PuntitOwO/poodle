@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/entities/cite_text_concept.gd&quot;" inherits="Node2D">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="resource" type="CiteTextEntity" setter="" getter="">
+		</member>
+		<member name="widget" type="Label" setter="" getter="">
+		</member>
+	</members>
+</class>

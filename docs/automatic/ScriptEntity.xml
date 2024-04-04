@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ScriptEntity" inherits="Entity">
+	<brief_description>
+		An Entity to hold the class script
+	</brief_description>
+	<description>
+		It contains a list of all the [ScriptEntry]es that are part of the class
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="load_data">
+			<return type="void" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="script_entries" type="ScriptEntry[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

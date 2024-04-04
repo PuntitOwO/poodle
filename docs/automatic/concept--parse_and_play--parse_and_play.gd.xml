@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/parse_and_play/parse_and_play.gd&quot;" inherits="Node2D">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_instantiate">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="_instantiate_section">
+			<return type="Node2D" />
+			<param index="0" name="section" type="ClassSection" />
+			<description>
+			</description>
+		</method>
+		<method name="_instantiate_slide">
+			<return type="Node2D" />
+			<param index="0" name="slide" type="ClassSlide" />
+			<description>
+			</description>
+		</method>
+		<method name="_parse">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="_play">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="class_index" type="ClassIndex" setter="" getter="">
+		</member>
+		<member name="content_root" type="GroupController" setter="" getter="">
+		</member>
+		<member name="entities" type="Array" setter="" getter="">
+		</member>
+		<member name="file" type="String" setter="" getter="">
+		</member>
+	</members>
+</class>

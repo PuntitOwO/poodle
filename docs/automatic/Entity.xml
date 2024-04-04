@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Entity" inherits="Resource">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="deserialize" qualifiers="static">
+			<return type="Entity" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+				Base class for EntityResource types
+			</description>
+		</method>
+		<method name="load_data">
+			<return type="void" />
+			<param index="0" name="_data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

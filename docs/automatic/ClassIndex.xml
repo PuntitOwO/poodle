@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassIndex" inherits="Resource">
+	<brief_description>
+		The main file of a class index
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="deserialize" qualifiers="static">
+			<return type="ClassIndex" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entities" type="Entity[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+		<member name="metadata" type="ClassMetadata" setter="" getter="">
+		</member>
+		<member name="sections" type="ClassSection[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

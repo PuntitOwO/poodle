@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="EntityWrapper" inherits="Resource">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="deserialize" qualifiers="static">
+			<return type="EntityWrapper" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="get_properties">
+			<return type="Dictionary" />
+			<description>
+				Return a dictionary with all the properties of the entity. Keys with the same name will be overwritten.
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entity" type="Entity" setter="" getter="" default="null">
+		</member>
+		<member name="entity_id" type="int" setter="" getter="" default="0">
+		</member>
+		<member name="entity_properties" type="EntityProperty[]" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

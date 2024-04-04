@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassGroup" inherits="Resource">
+	<brief_description>
+		A resource that represents a group of [Entity]s
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_validate">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="deserialize" qualifiers="static">
+			<return type="ClassGroup" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="get_class_name">
+			<return type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="entities" type="EntityWrapper[]" setter="@entities_setter" getter="" default="&lt;unknown&gt;">
+		</member>
+		<member name="groups" type="ClassGroup[]" setter="@groups_setter" getter="" default="&lt;unknown&gt;">
+		</member>
+	</members>
+</class>

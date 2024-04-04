@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Widget" inherits="Node2D">
+	<brief_description>
+		A widget is a visual element that can be played and reset. This class defines the main API for a widget.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="compute_duration">
+			<return type="float" />
+			<description>
+				Compute the duration of the widget animation.
+			</description>
+		</method>
+		<method name="init">
+			<return type="void" />
+			<param index="0" name="_properties" type="Dictionary" />
+			<description>
+				Called when the node enters the scene tree for the first time. It is a good place to initialize the node with the entity's properties and instantiate any children.  Custom [param properties] are passed as a dictionary.
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="_duration" type="float" />
+			<description>
+				Called when it's time to play the widget. The animation should be played for the given [param duration].
+			</description>
+		</method>
+		<method name="reset">
+			<return type="void" />
+			<description>
+				Called when the player seeked to a point before the widget was played. The widget should be reset to its initial state.
+			</description>
+		</method>
+		<method name="reset_speed_scale">
+			<return type="void" />
+			<description>
+				Reset the speed scale of the widget to 1.0.
+			</description>
+		</method>
+		<method name="set_speed_scale">
+			<return type="void" />
+			<param index="0" name="_speed" type="float" />
+			<description>
+				Set the speed scale of the widget. The [param speed] scale is a multiplier that affects the speed of the widget. A speed scale of 1.0 means the widget will play at its normal speed.
+			</description>
+		</method>
+	</methods>
+	<signals>
+		<signal name="animation_finished">
+			<description>
+			</description>
+		</signal>
+	</signals>
+</class>

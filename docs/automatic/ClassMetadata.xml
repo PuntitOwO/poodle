@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ClassMetadata" inherits="Resource">
+	<brief_description>
+		Metadata of a class
+	</brief_description>
+	<description>
+		It contains data of the class, like name, description and course. It also contains the name and description of the author. Lastly, it contains data of the class file, like version, date and license.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="deserialize" qualifiers="static">
+			<return type="ClassMetadata" />
+			<param index="0" name="data" type="Dictionary" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="Dictionary" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="author_description" type="String" setter="" getter="">
+			Author(s) description, here you can put a contact link and a profile page
+		</member>
+		<member name="author_name" type="String" setter="" getter="">
+			Author(s) name(s)
+		</member>
+		<member name="course" type="String" setter="" getter="">
+			Course name and code
+		</member>
+		<member name="date" type="Date" setter="" getter="">
+			Date of the last file modification
+		</member>
+		<member name="description" type="String" setter="" getter="">
+			A brief description of the class
+		</member>
+		<member name="editor_version" type="String" setter="" getter="">
+			Version of the editor used to create or modify the file
+		</member>
+		<member name="file_version" type="String" setter="" getter="">
+			The file version, it should increase with every new release
+		</member>
+		<member name="license" type="String" setter="" getter="">
+			Relative path to license file
+		</member>
+		<member name="name" type="String" setter="" getter="">
+			Class name
+		</member>
+	</members>
+</class>

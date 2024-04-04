@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ParallelGroupController" inherits="GroupController">
+	<brief_description>
+		A [GroupController] that runs its children in parallel.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="compute_duration">
+			<return type="float" />
+			<description>
+				Computes the duration of this group. The duration of a parallel group is the maximum duration of all its children.
+			</description>
+		</method>
+		<method name="play">
+			<return type="void" />
+			<param index="0" name="duration" type="float" />
+			<description>
+				Runs all children in parallel. This means that all children will be played at the same time.
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="_duration" type="float" setter="" getter="" default="0.0">
+		</member>
+	</members>
+</class>

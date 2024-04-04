@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="&quot;concept/entities/visual_entities.gd&quot;" inherits="Node2D">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_on_timeout">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_unhandled_key_input">
+			<return type="void" />
+			<param index="0" name="event" type="Variant" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

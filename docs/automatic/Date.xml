@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Date" inherits="Resource">
+	<brief_description>
+		A date resource
+	</brief_description>
+	<description>
+		It stores a date as an integer and wraps the [Time] methods for using it
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_init">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_reverse_date_format">
+			<return type="String" />
+			<param index="0" name="input" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="deserialize" qualifiers="static">
+			<return type="Date" />
+			<param index="0" name="data" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="serialize">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="_date" type="int" setter="" getter="">
+		</member>
+		<member name="date" type="String" setter="@date_setter" getter="@date_getter">
+			The string of date value, in DD-MM-YYYY format
+		</member>
+	</members>
+</class>
