@@ -1,0 +1,251 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Index",
+    "definitions": {
+        "Index": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "entities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IndexEntity"
+                    }
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "sections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Section"
+                    }
+                }
+            },
+            "required": [
+                "entities",
+                "metadata",
+                "sections"
+            ],
+            "title": "Index"
+        },
+        "IndexEntity": {
+            "type": "object",
+            "properties": {
+                "audio_path": {
+                    "type": "string"
+                },
+                "entity_type": {
+                    "type": "string"
+                },
+                "image_path": {
+                    "type": "string"
+                },
+                "points": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Point"
+                    }
+                },
+                "script_entries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScriptEntry"
+                    }
+                },
+                "content": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "entity_type"
+            ],
+            "title": "IndexEntity"
+        },
+        "Point": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "x": {
+                    "type": "integer"
+                },
+                "y": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "x",
+                "y"
+            ],
+            "title": "Point"
+        },
+        "ScriptEntry": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "entity_type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "entity_type"
+            ],
+            "title": "ScriptEntry"
+        },
+        "Metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "author_description": {
+                    "type": "string"
+                },
+                "author_name": {
+                    "type": "string"
+                },
+                "course": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "integer"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "editor_version": {
+                    "type": "string"
+                },
+                "file_version": {
+                    "type": "string"
+                },
+                "license": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "author_description",
+                "author_name",
+                "course",
+                "date",
+                "description",
+                "editor_version",
+                "file_version",
+                "license",
+                "name"
+            ],
+            "title": "Metadata"
+        },
+        "Section": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "slides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Slide"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "slides"
+            ],
+            "title": "Section"
+        },
+        "Slide": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "content_root": {
+                    "$ref": "#/definitions/ContentRoot"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content_root",
+                "name"
+            ],
+            "title": "Slide"
+        },
+        "ContentRootEntity": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "entity_id": {
+                    "type": "integer"
+                },
+                "entity_properties": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EntityProperty"
+                    }
+                }
+            },
+            "required": [
+                "entity_id",
+                "entity_properties"
+            ],
+            "title": "ContentRootEntity"
+        },
+        "EntityProperty": {
+            "type": "object",
+            "properties": {
+                "property_type": {
+                    "type": "string"
+                },
+                "size:x": {
+                    "type": "integer"
+                },
+                "size:y": {
+                    "type": "integer"
+                },
+                "position:x": {
+                    "type": "integer"
+                },
+                "position:y": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "property_type"
+            ],
+            "title": "EntityProperty"
+        },
+        "ContentRoot": {
+            "type": "object",
+            "properties": {
+                "entities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContentRootEntity"
+                    }
+                },
+                "group_type": {
+                    "type": "string"
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContentRoot"
+                    }
+                }
+            },
+            "required": [
+                "entities",
+                "group_type",
+                "groups"
+            ],
+            "title": "ContentRoot"
+        }
+    }
+}
