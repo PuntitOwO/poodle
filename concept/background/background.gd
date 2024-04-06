@@ -29,3 +29,11 @@ func _normalize_viewport_size() -> Vector2:
     if !Engine.is_editor_hint():
         get_parent().motion_mirroring = new_size
     return new_size
+
+## Set the background color of the scene.
+func set_background_color(color: Color) -> void:
+    RenderingServer.set_default_clear_color(color)
+
+## Set the background variants color of the scene.
+func set_background_variant_color(color: Color) -> void:
+    modulate = color
