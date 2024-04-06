@@ -6,6 +6,10 @@ extends Node2D
         grid_size = value
         queue_redraw()
 
+func _ready():
+    set_background_color(Color(0.1, 0.1, 0.1))
+    set_background_variant_color(Color(0.5, 0.5, 0.5))
+
 func _draw():
     draw_multiline(_generate_lines(), Color.WHITE)
 
