@@ -29,3 +29,20 @@ func _get_time_string(time: int) -> String:
     var seconds := time % 60
     return str(minutes).lpad(2, "0") + ":" + str(seconds).lpad(2, "0")
 #endregion
+
+#region Playback Controls
+@onready var play_button: Button = %PlayPauseButton
+@onready var prev_button: Button = %PreviousButton
+@onready var next_button: Button = %NextButton
+const PLAY_ICON: Vector2 = Vector2(350, 350)
+const PAUSE_ICON: Vector2 = Vector2(200, 350)
+
+func _toggle_playback() -> void:
+    get_tree().paused = !get_tree().paused
+    var texture: AtlasTexture = play_button.icon
+    texture.region.position = PLAY_ICON if get_tree().paused else PAUSE_ICON
+
+#endregion
+
+func _ready():
+    play_button.pressed.connect(_toggle_playback)

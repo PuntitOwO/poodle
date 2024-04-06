@@ -81,15 +81,18 @@ size_flags_horizontal = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+[node name="PreviousButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 icon = SubResource("AtlasTexture_mw2kf")
 
-[node name="Button2" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+[node name="PlayPauseButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 icon = SubResource("AtlasTexture_ar7p2")
 
-[node name="Button3" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+[node name="NextButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 icon = SubResource("AtlasTexture_o2vqn")
 
