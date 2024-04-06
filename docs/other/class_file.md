@@ -1,6 +1,6 @@
 # Class Files
 
-This document describes the class files used by the POODLE Player. A class file is a file with `.poodle` extension that contains all the files for a class to be read by the POODLE Player. It is internally a `.pck` file that contains the class files and the resources.
+This document describes the class files used by the POODLE Player. A class file is a file with `.poodle` extension that contains all the files for a class to be read by the POODLE Player. It is internally a `zip` file that contains the class files and the resources.
 
 ## File structure
 
@@ -15,7 +15,7 @@ class.poodle:
     └─ custom/
 ```
 
-The `.poodle` file is a `.pck` file that contains an `index.clsindex` file and a `resources` directory. The `resources` directory contains folders for the audio, video, and custom resources used by the class.
+The `.poodle` file is a `zip` file that contains an `index.clsindex` file and a `resources` directory. The `resources` directory contains folders for the audio, video, and custom resources used by the class.
 
 ## Index file
 
