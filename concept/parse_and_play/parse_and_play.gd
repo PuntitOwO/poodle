@@ -1,3 +1,4 @@
+class_name ConceptClassScene
 extends Node2D
 
 @export_file() var file: String
@@ -13,7 +14,6 @@ func _ready():
 	if !_instantiate():
 		push_error("Error instantiating class: " + class_index.name)
 		return
-	_play()
 
 func _parse() -> bool:
 	if file == null:
@@ -45,7 +45,7 @@ func _instantiate_slide(slide: ClassSlide) -> Node2D:
 	node.add_child(group)
 	return node
 
-func _play():
+func play():
 	if !is_instance_valid(content_root):
 		push_error("Error playing content: content_root is not valid")
 		return

@@ -1,24 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdf57hapkw603"]
 
 [ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
+[ext_resource type="Script" path="res://concept/class_window/class_window.gd" id="1_s0jgr"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
-
-[sub_resource type="GDScript" id="GDScript_lnfh3"]
-resource_name = "test_tree"
-script/source = "@tool
-extends Tree
-
-func _ready():
-	var root = create_item()
-	root.set_text(0, \"Clase 2: Ejemplo\")
-	root.set_text_alignment(0, HORIZONTAL_ALIGNMENT_CENTER)
-	for i in 10:
-		var section = create_item(root)
-		section.set_text(0, \"Sección {}\".format([i+1], \"{}\"))
-		for j in 3:
-			var subsection = create_item(section)
-			subsection.set_text(0, \"Subsección {0}.{1}\".format([i+1, j+1]))
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw2kf"]
 atlas = ExtResource("2_caqkq")
@@ -39,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s0jgr")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
@@ -53,8 +38,8 @@ split_offset = 200
 layout_mode = 2
 
 [node name="Tree" type="Tree" parent="HSplitContainer/Sections"]
+unique_name_in_owner = true
 layout_mode = 2
-script = SubResource("GDScript_lnfh3")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
 layout_mode = 2
@@ -78,9 +63,10 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/SubViewportContainer"]
+unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(940, 551)
+size = Vector2i(400, 400)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
