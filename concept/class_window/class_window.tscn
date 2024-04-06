@@ -35,9 +35,6 @@ grow_vertical = 2
 split_offset = 200
 
 [node name="Sections" type="PanelContainer" parent="HSplitContainer"]
-layout_mode = 2
-
-[node name="Tree" type="Tree" parent="HSplitContainer/Sections"]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -66,7 +63,7 @@ stretch = true
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(400, 400)
+size = Vector2i(868, 623)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
@@ -100,17 +97,20 @@ icon = SubResource("AtlasTexture_o2vqn")
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+[node name="CurrentTimeLabel" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 
-[node name="HSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+[node name="TimeSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 value = 20.0
 scrollable = false
 
-[node name="Label2" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+[node name="TotalTimeLabel" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 

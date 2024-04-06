@@ -24,8 +24,10 @@ func _input(event):
 script = ExtResource("1_cke5t")
 
 [node name="ClassWindow" parent="." instance=ExtResource("3_56bfy")]
+process_mode = 3
 
 [node name="ParseAndPlay" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("1_owwge")
 file = "res://concept/resources/sample_class.clsindex"
 

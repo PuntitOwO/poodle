@@ -6,6 +6,9 @@ extends Node2D
 var entities: Array
 
 var content_root: GroupController
+var total_duration: float
+
+var section_manager: SectionManager
 
 func _ready():
 	if !_parse():
@@ -22,6 +25,7 @@ func _parse() -> bool:
 	return class_index != null
 
 func _instantiate() -> bool:
+	section_manager = SectionManager.new()
 	entities = class_index.entities
 	for section in class_index.sections:
 		var node: Node2D = _instantiate_section(section)
@@ -30,9 +34,10 @@ func _instantiate() -> bool:
 
 func _instantiate_section(section: ClassSection) -> Node2D:
 	var node: Node2D = Node2D.new()
-	node.name = section.name
+	var section_tree_item := section_manager.register_section(section.name)
 	for slide in section.slides:
 		var slide_node: Node2D = _instantiate_slide(slide)
+		section_manager.register_slide(section_tree_item, slide_node.name)
 		node.add_child(slide_node)
 	return node
 
@@ -45,9 +50,11 @@ func _instantiate_slide(slide: ClassSlide) -> Node2D:
 	node.add_child(group)
 	return node
 
+func compute_duration() -> void:
+	total_duration = content_root.compute_duration()
+
 func play():
 	if !is_instance_valid(content_root):
 		push_error("Error playing content: content_root is not valid")
 		return
-	var duration: float = content_root.compute_duration()
-	content_root.play(duration)
+	content_root.play(total_duration)
