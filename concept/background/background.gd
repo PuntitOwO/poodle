@@ -7,6 +7,8 @@ extends Node2D
         queue_redraw()
 
 func _ready():
+    if Engine.is_editor_hint():
+        return
     set_background_color(Color(0.1, 0.1, 0.1))
     set_background_variant_color(Color(0.5, 0.5, 0.5))
 
