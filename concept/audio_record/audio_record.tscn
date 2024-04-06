@@ -1,6 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf4kmscugqmwy"]
+[gd_scene load_steps=5 format=3 uid="uid://bf4kmscugqmwy"]
 
 [ext_resource type="Script" path="res://concept/audio_record/audio_record.gd" id="1_gjq70"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hlpas"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_4uh78"]
+events = [SubResource("InputEventKey_hlpas")]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_0j0ic"]
 
@@ -32,6 +39,7 @@ layout_mode = 2
 
 [node name="Record" type="VBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer/Record"]
 layout_mode = 2
@@ -62,6 +70,7 @@ button_pressed = true
 text = "Playback"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -75,8 +84,31 @@ text = "Current Recordings:"
 [node name="ItemList" type="ItemList" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer/Play"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 allow_search = false
-auto_height = true
+
+[node name="FileName" type="LineEdit" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer/Play"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "filename.wav"
+expand_to_text_length = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer/Play"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="OpenFolder" type="Button" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer/Play/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Open folder"
+expand_icon = true
+
+[node name="Save" type="Button" parent="MarginContainer/PanelContainer/CenterContainer/HBoxContainer/Play/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = SubResource("Shortcut_4uh78")
+text = "Save file"
 
 [node name="RecordAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_0j0ic")

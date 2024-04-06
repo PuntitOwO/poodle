@@ -7,6 +7,7 @@ extends Node
 ## 
 ## It also has a list of all recordings in this session.
 ## All recordings can be played by selecting (double click or enter).
+## Recordings can also be saved to disk.
 ##
 ## Note: for this scene to work,
 ## [member ProjectSettings.audio/driver/enable_input]
@@ -24,6 +25,9 @@ func _ready():
 	%Playback.toggled.connect(_toggle_playback)
 	%ItemList.item_activated.connect(_on_item_activated)
 	$RecordReplay.finished.connect(_toggle_mute.bind(false))
+	%FileName.text_changed.connect(update_save_button)
+	%Save.pressed.connect(save_recording_to_file)
+	%OpenFolder.pressed.connect(open_recording_folder)
 
 # When microphone is muted, recording toggle button is disabled.
 func _toggle_mute(disabled: bool):
@@ -69,3 +73,22 @@ func stop_recording():
 func save_recording():
 	recordings.append(record.get_recording())
 	%ItemList.add_item(Time.get_time_string_from_system())
+
+## Enables or disables the save button.
+func update_save_button(text: String):
+	%Save.disabled = text.is_empty()
+
+## Saves the recording to a file.
+func save_recording_to_file():
+	var path := OS.get_user_data_dir() + "/recorded_audio/"
+	var selected_recording = %ItemList.get_selected_items()
+	if selected_recording.size() == 0:
+		return
+	var recording := recordings[selected_recording[0]]
+	var file_name := (%FileName as LineEdit).text
+	recording.save_to_wav(path + file_name)
+
+## Opens the folder where all recordings are saved.
+func open_recording_folder():
+	var path := OS.get_user_data_dir() + "/recorded_audio/"
+	OS.shell_open(path)
