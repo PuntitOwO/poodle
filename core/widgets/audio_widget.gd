@@ -12,6 +12,8 @@ func init(_properties: Dictionary) -> void:
 
 func play(_duration: float) -> void:
 	audio.play()
+	if audio.finished.is_connected(_emit_animation_finished):
+		return
 	audio.finished.connect(_emit_animation_finished, CONNECT_ONE_SHOT)
 
 func reset():
