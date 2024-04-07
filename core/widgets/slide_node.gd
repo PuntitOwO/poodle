@@ -33,5 +33,6 @@ func stop() -> void:
     if root.animation_finished.is_connected(on_slide_finished):
         root.animation_finished.disconnect(on_slide_finished)
     remove_from_group("current_slide")
+    current = false
     root.reset()
     hide()
