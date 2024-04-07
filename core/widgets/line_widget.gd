@@ -31,5 +31,11 @@ func reset():
 	line.hide()
 	line.clear_points()
 
+func skip_to_end() -> void:
+	if tween:
+		tween.kill()
+	line.points = entity.points
+	line.show()
+
 func _add_points(i: int) -> void:
 	line.add_point(entity.points[i])

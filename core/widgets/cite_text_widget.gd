@@ -32,3 +32,9 @@ func reset():
 	if tween:
 		tween.kill()
 	label.hide()
+
+func skip_to_end():
+	if tween:
+		tween.kill()
+	label.visible_ratio = 1
+	label.show()

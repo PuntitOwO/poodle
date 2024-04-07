@@ -21,3 +21,6 @@ func play(_duration: float) -> void:
 
 func reset():
 	image.hide()
+
+func skip_to_end():
+	image.show()

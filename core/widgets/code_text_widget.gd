@@ -21,3 +21,6 @@ func play(_duration: float) -> void:
 
 func reset():
 	text_edit.hide()
+
+func skip_to_end():
+	text_edit.show()

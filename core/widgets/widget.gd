@@ -28,6 +28,11 @@ func play(_duration: float) -> void:
 func reset() -> void:
 	pass
 
+## Called when the player seeked to a point after the widget was played.
+## The widget should be set to its final state.
+func skip_to_end() -> void:
+	pass
+
 ## Set the speed scale of the widget.
 ## The [param speed] scale is a multiplier that affects the speed of the widget.
 ## A speed scale of 1.0 means the widget will play at its normal speed.

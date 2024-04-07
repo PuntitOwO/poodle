@@ -63,4 +63,6 @@ func stop() -> void:
 
 ## Returns whether this slide is outside the range of the previous slide and the new slide.
 func _outside_slide_range(prev_slide_id: int, new_slide_id: int) -> bool:
+    if absolute_slide_id == prev_slide_id or absolute_slide_id == new_slide_id:
+        return true
     return absolute_slide_id < mini(prev_slide_id, new_slide_id) or absolute_slide_id > max(prev_slide_id, new_slide_id)
