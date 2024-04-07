@@ -46,13 +46,14 @@ func _get_time_string(time: int) -> String:
 @onready var play_button: Button = %PlayPauseButton
 @onready var prev_button: Button = %PreviousButton
 @onready var next_button: Button = %NextButton
-const PLAY_ICON: Vector2 = Vector2(350, 350)
-const PAUSE_ICON: Vector2 = Vector2(200, 350)
+@onready var play_icon: Texture2D = get_theme_icon("play", play_button.theme_type_variation)
+@onready var pause_icon: Texture2D = get_theme_icon("pause", play_button.theme_type_variation)
+@onready var prev_icon: Texture2D = get_theme_icon("prev", prev_button.theme_type_variation)
+@onready var next_icon: Texture2D = get_theme_icon("next", next_button.theme_type_variation)
 
 func _toggle_playback() -> void:
     get_tree().paused = !get_tree().paused
-    var texture: AtlasTexture = play_button.icon
-    texture.region.position = PLAY_ICON if get_tree().paused else PAUSE_ICON
+    play_button.icon = play_icon if get_tree().paused else pause_icon
 
 #endregion
 

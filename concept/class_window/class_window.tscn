@@ -84,16 +84,19 @@ alignment = 1
 [node name="PreviousButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_mw2kf")
 
 [node name="PlayPauseButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_ar7p2")
 
 [node name="NextButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_o2vqn")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer"]
