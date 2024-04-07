@@ -26,6 +26,13 @@ func reset() -> void:
         if child.has_method("reset"):
             child.reset()
 
+## Called when the player seeked to a point after this group was played.
+## The widgets should be set to its final state.
+func skip_to_end() -> void:
+    for child in get_children():
+        if child.has_method("skip_to_end"):
+            child.skip_to_end()
+
 static func instantiate(group: ClassGroup, entities: Array[Entity]) -> GroupController:
     var _class: String = group.get_class_name().replace("Class", "") + "Controller"
     assert(CustomClassDB.class_exists(_class), "Class " + _class + " does not exist.")

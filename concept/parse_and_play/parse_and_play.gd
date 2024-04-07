@@ -11,6 +11,7 @@ var entry_point: SlideNode
 var total_duration: float
 
 var section_manager: SectionManager
+var slide_count: int = 0
 
 func _ready():
 	if !_parse():
@@ -41,6 +42,8 @@ func _instantiate_section(section: ClassSection) -> Node2D:
 		var slide_node: SlideNode = _instantiate_slide(slide)
 		var slide_tree_item := section_manager.register_slide(section_tree_item, slide_node.name)
 		slide_node.tree_item = slide_tree_item
+		slide_node.absolute_slide_id = slide_count
+		slide_count += 1
 		node.add_child(slide_node)
 	section_tree_item.set_metadata(0, node.get_child(0))
 	return node
