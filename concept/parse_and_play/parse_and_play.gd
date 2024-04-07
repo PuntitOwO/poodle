@@ -7,7 +7,7 @@ var entities: Array
 
 @onready var root: Node2D = $Class
 
-var content_root: GroupController
+var entry_point: SlideNode
 var total_duration: float
 
 var section_manager: SectionManager
@@ -38,19 +38,19 @@ func _instantiate_section(section: ClassSection) -> Node2D:
 	var node: Node2D = Node2D.new()
 	var section_tree_item := section_manager.register_section(section.name)
 	for slide in section.slides:
-		var slide_node: Node2D = _instantiate_slide(slide)
+		var slide_node: SlideNode = _instantiate_slide(slide)
 		var slide_tree_item := section_manager.register_slide(section_tree_item, slide_node.name)
-		slide_tree_item.set_metadata(0, slide_node)
+		slide_node.tree_item = slide_tree_item
 		node.add_child(slide_node)
 	section_tree_item.set_metadata(0, node.get_child(0))
 	return node
 
-func _instantiate_slide(slide: ClassSlide) -> Node2D:
-	var node: Node2D = Node2D.new()
+func _instantiate_slide(slide: ClassSlide) -> SlideNode:
+	var node: SlideNode = SlideNode.new()
 	node.name = slide.name
 	var group: GroupController = GroupController.instantiate(slide.content_root, entities)
-	if !is_instance_valid(content_root):
-		content_root = group
+	if !is_instance_valid(entry_point):
+		entry_point = node
 	node.add_child(group)
 	return node
 
@@ -61,7 +61,7 @@ func compute_duration() -> void:
 			total_duration += (slide.get_child(0) as GroupController).compute_duration()
 
 func play():
-	if !is_instance_valid(content_root):
-		push_error("Error playing content: content_root is not valid")
+	if !is_instance_valid(entry_point):
+		push_error("Error playing content: entry_point is not valid")
 		return
-	content_root.play(total_duration)
+	entry_point.play()
