@@ -12,12 +12,16 @@ func _on_tree_section_clicked(tree: Tree) -> void:
     var selected: TreeItem = tree.get_selected()
     if selected == null:
         return
-    var section: Node2D = selected.get_metadata(0)
-    if !is_instance_valid(section):
+    var slide: SlideNode = selected.get_metadata(0)
+    if !is_instance_valid(slide):
         return
-    print("Section clicked: ", section)
+    _stop_current_slide()
+    slide.play()
     
-
+func _stop_current_slide() -> void:
+    var slide: SlideNode = get_tree().get_first_node_in_group("current_slide")
+    if is_instance_valid(slide):
+        slide.stop()
 #endregion
 
 #region Whiteboard
