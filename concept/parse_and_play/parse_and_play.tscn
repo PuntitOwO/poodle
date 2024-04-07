@@ -9,13 +9,13 @@
 script/source = "extends Camera2D
 
 func _input(event):
-	if event.is_action_pressed(\"ui_left\", true):
+	if event.is_action_pressed(\"camera_left\", true):
 		position.x -= 5
-	if event.is_action_pressed(\"ui_right\", true):
+	if event.is_action_pressed(\"camera_right\", true):
 		position.x += 5
-	if event.is_action_pressed(\"ui_up\", true):
+	if event.is_action_pressed(\"camera_up\", true):
 		position.y -= 5
-	if event.is_action_pressed(\"ui_down\", true):
+	if event.is_action_pressed(\"camera_down\", true):
 		position.y += 5
 	
 "
