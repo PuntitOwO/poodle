@@ -3,13 +3,20 @@ extends Node2D
 
 signal animation_finished
 
+var _duration: float = 0.0
+
 ## Called to compute the total duration of the animations in this group.
 func compute_duration() -> float:
+    if is_zero_approx(_duration):
+        _duration = _compute_duration()
+    return _duration
+
+func _compute_duration() -> float:
     return 0.0
 
 ## Called when it's time to play the widgets in this group.
 ## The animation should be played for the given [param duration].
-func play(_duration: float) -> void:
+func play(__duration: float = _duration) -> void:
     pass
 
 ## Called when the player seeked to a point before this group was played.
