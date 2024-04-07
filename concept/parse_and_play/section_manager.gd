@@ -42,10 +42,10 @@ func register_widget(slide: TreeItem, widget_name: String) -> TreeItem:
     return widget
 
 func _get_numbering(level: int) -> String:
-    print("Get numbering for level: " + str(level))
+    # print("Get numbering for level: " + str(level))
     if counter[level] == null:
         counter[level] = 0
     counter[level] = counter[level] + 1
     depth = level
-    print(counter)
+    # print(counter)
     return '.'.join(PackedStringArray(counter.map(func(x): return str(x))))
