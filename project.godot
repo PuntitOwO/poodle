@@ -22,7 +22,6 @@ driver/enable_input=true
 
 window/size/viewport_width=1080
 window/size/viewport_height=720
-window/stretch/mode="canvas_items"
 
 [editor]
 
