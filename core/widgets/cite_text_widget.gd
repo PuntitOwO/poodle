@@ -21,12 +21,12 @@ func play(duration: float) -> void:
 	if tween:
 		tween.kill()
 	if !is_zero_approx(duration):
-		label.visible_ratio = 0
 		tween = create_tween()
-		tween.tween_property(label, "visible_ratio", 1, duration)
-		tween.tween_callback(emit_signal.bind("animation_finished"))
+		tween.tween_property(label, "visible_ratio", 1, duration).from(0)
+		tween.tween_callback(_emit_animation_finished)
 	else:
-		animation_finished.emit()
+		label.visible_ratio = 1
+		_emit_animation_finished()
 
 func reset():
 	if tween:

@@ -37,3 +37,6 @@ func set_speed_scale(_speed: float) -> void:
 ## Reset the speed scale of the widget to 1.0.
 func reset_speed_scale() -> void:
 	set_speed_scale(1.0)
+
+func _emit_animation_finished() -> void:
+	animation_finished.emit()

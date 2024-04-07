@@ -12,10 +12,12 @@ func init(_properties: Dictionary) -> void:
 
 func play(_duration: float) -> void:
 	audio.play()
-	audio.finished.connect(emit_signal.bind("animation_finished"))
+	audio.finished.connect(_emit_animation_finished, CONNECT_ONE_SHOT)
 
 func reset():
-	pass
+	if audio.finished.is_connected(_emit_animation_finished):
+		audio.finished.disconnect(_emit_animation_finished)
+	audio.stop()
 
 ## Returns the duration of the audio in seconds.
 func compute_duration() -> float:
