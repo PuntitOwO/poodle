@@ -36,3 +36,5 @@ file = "res://concept/resources/introduction.clsindex"
 [node name="Camera2D" type="Camera2D" parent="ParseAndPlay"]
 anchor_mode = 0
 script = SubResource("GDScript_e3u0i")
+
+[node name="Class" type="Node2D" parent="ParseAndPlay"]

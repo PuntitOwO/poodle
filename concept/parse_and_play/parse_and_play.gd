@@ -5,6 +5,8 @@ extends Node2D
 @export var class_index: ClassIndex
 var entities: Array
 
+@onready var root: Node2D = $Class
+
 var content_root: GroupController
 var total_duration: float
 
@@ -29,7 +31,7 @@ func _instantiate() -> bool:
 	entities = class_index.entities
 	for section in class_index.sections:
 		var node: Node2D = _instantiate_section(section)
-		add_child(node)
+		root.add_child(node)
 	return true
 
 func _instantiate_section(section: ClassSection) -> Node2D:
@@ -37,8 +39,10 @@ func _instantiate_section(section: ClassSection) -> Node2D:
 	var section_tree_item := section_manager.register_section(section.name)
 	for slide in section.slides:
 		var slide_node: Node2D = _instantiate_slide(slide)
-		section_manager.register_slide(section_tree_item, slide_node.name)
+		var slide_tree_item := section_manager.register_slide(section_tree_item, slide_node.name)
+		slide_tree_item.set_metadata(0, slide_node)
 		node.add_child(slide_node)
+	section_tree_item.set_metadata(0, node.get_child(0))
 	return node
 
 func _instantiate_slide(slide: ClassSlide) -> Node2D:
@@ -51,7 +55,10 @@ func _instantiate_slide(slide: ClassSlide) -> Node2D:
 	return node
 
 func compute_duration() -> void:
-	total_duration = content_root.compute_duration()
+	total_duration = 0.0
+	for section in root.get_children():
+		for slide in section.get_children():
+			total_duration += (slide.get_child(0) as GroupController).compute_duration()
 
 func play():
 	if !is_instance_valid(content_root):
