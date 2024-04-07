@@ -1,0 +1,327 @@
+{
+	"entities": [
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/1.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/2.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/3.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/4.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/5.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/6.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/7.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/8.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/9.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"audio_path": "user://clase_ejemplo/resources/audio/10.ogg",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"content": "¿Qué es POODLE? En esta clase introductoria aprenderá lo esencial.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "POODLE es una herramienta experimental para envasar clases.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "El resultado se parece a un video de una clase, en que se ve solo la pizarra, no el profesor.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Es más rápido que un video de una clase, porque se sincroniza la escritura con la frase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "También es más ordenado e interactivo, porque se puede navegar por las secciones de la clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "La interfaz contiene tres partes principales:",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- La pizarra, donde se muestra el contenido de la clase",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- El menú de secciones, donde se puede navegar por las secciones de la clase",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- La barra de reproducción, donde se puede controlar la reproducción de la clase",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "El tamaño de cada sección se puede ajustar con el ratón.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"entity_type": "ImageEntity",
+			"image_path": "user://clase_ejemplo/resources/video/logo.png"
+		}
+	],
+	"metadata": {
+		"author_description": "POODLE Dev",
+		"author_name": "Christopher Marín",
+		"course": "",
+		"date": 1712445285,
+		"description": "Una clase introductoria de POODLE, para aprender a utilizar el reproductor",
+		"editor_version": "1.0.0",
+		"file_version": "1.0.0",
+		"license": "",
+		"name": "Introducción"
+	},
+	"sections": [
+		{
+			"name": "Introducción",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [],
+						"group_type": "ClassChainGroup",
+						"groups": [
+							{
+								"entities": [
+									{
+										"entity_id": 0,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 10,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 20,
+										"entity_properties": [
+											{
+												"property_type": "SizeEntityProperty",
+												"size:x": 300,
+												"size:y": 300
+											},
+											{
+												"position:x": 800,
+												"position:y": 0,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 1,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 11,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 50,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 2,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 12,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 100,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 3,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 13,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 150,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 4,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 14,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 200,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							}
+						]
+					},
+					"name": "Presentación"
+				},
+				{
+					"content_root": {
+						"entities": [],
+						"group_type": "ClassChainGroup",
+						"groups": [
+							{
+								"entities": [
+									{
+										"entity_id": 5,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 15,
+										"entity_properties": []
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 6,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 16,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 50,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 7,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 17,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 100,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 8,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 18,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 150,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 9,
+										"entity_properties": []
+									},
+									{
+										"entity_id": 19,
+										"entity_properties": [
+											{
+												"position:x": 0,
+												"position:y": 200,
+												"property_type": "PositionEntityProperty"
+											}
+										]
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							}
+						]
+					},
+					"name": "Interfaz"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="ClassIndex" load_steps=17 format=3 uid="uid://cd6ipotf0cspi"]
+
+[ext_resource type="Script" path="res://core/resources/class/class_index.gd" id="1_a15sm"]
+[ext_resource type="Script" path="res://core/resources/date.gd" id="1_e4n3n"]
+[ext_resource type="Script" path="res://core/resources/class/entities/audio_entity.gd" id="1_fivv1"]
+[ext_resource type="Script" path="res://core/resources/class/class_metadata.gd" id="2_4q0dn"]
+[ext_resource type="Script" path="res://core/resources/class/entities/image_entity.gd" id="2_vxyk5"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_section.gd" id="6_tamur"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_chain_group.gd" id="7_ivvjp"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_slide.gd" id="8_tryp6"]
+
+[sub_resource type="Resource" id="Resource_2icud"]
+script = ExtResource("1_fivv1")
+audio_path = "user://clase_ejemplo/resources/audio/1.ogg"
+
+[sub_resource type="Resource" id="Resource_dpetl"]
+script = ExtResource("2_vxyk5")
+image_path = "user://clase_ejemplo/resources/video/logo.png"
+
+[sub_resource type="Resource" id="Resource_le44o"]
+script = ExtResource("1_e4n3n")
+date = "06-04-2024"
+
+[sub_resource type="Resource" id="Resource_420eq"]
+script = ExtResource("2_4q0dn")
+name = "Introducción"
+description = "Una clase introductoria de POODLE, para aprender a utilizar el reproductor"
+course = "POODLE101"
+author_name = "Christopher Marín"
+author_description = "POODLE Dev"
+file_version = "1.0.0"
+date = SubResource("Resource_le44o")
+license = ""
+editor_version = "1.0.0"
+
+[sub_resource type="Resource" id="Resource_40w8u"]
+script = ExtResource("7_ivvjp")
+entities = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_wrapper.gd")]([])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_72exg"]
+script = ExtResource("8_tryp6")
+name = "Presentación"
+content_root = SubResource("Resource_40w8u")
+
+[sub_resource type="Resource" id="Resource_3ao1f"]
+script = ExtResource("8_tryp6")
+name = "Interfaz"
+
+[sub_resource type="Resource" id="Resource_d07js"]
+script = ExtResource("6_tamur")
+name = "Introducción"
+slides = Array[ExtResource("8_tryp6")]([SubResource("Resource_72exg"), SubResource("Resource_3ao1f")])
+
+[resource]
+script = ExtResource("1_a15sm")
+metadata = SubResource("Resource_420eq")
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_2icud"), SubResource("Resource_dpetl")])
+sections = Array[ExtResource("6_tamur")]([SubResource("Resource_d07js")])
