@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://bxs21eiqu4tcc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pvdp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bjw7"]
 draw_center = false
 border_width_left = 4
 border_width_top = 4
@@ -18,6 +18,9 @@ border_width_bottom = 2
 border_color = Color(0.121569, 0.2, 0.109804, 1)
 
 [resource]
-Panel/styles/panel = SubResource("StyleBoxFlat_6pvdp")
+PlayerScreenIndicator/base_type = &"Panel"
+PlayerScreenIndicator/colors/paused = Color(0.815686, 0.356863, 0.211765, 1)
+PlayerScreenIndicator/colors/playing = Color(0.196078, 0.803922, 0.196078, 1)
+PlayerScreenIndicator/styles/panel = SubResource("StyleBoxFlat_6bjw7")
 TabBar/styles/button_highlight = SubResource("StyleBoxFlat_c821a")
 TabBar/styles/tab_selected = SubResource("StyleBoxFlat_0hpmv")

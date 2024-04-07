@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl6gcu3ckai1r"]
+[gd_scene load_steps=3 format=3 uid="uid://cl6gcu3ckai1r"]
 
 [ext_resource type="Theme" uid="uid://bxs21eiqu4tcc" path="res://concept/test_theme.tres" id="1_cn0ul"]
+[ext_resource type="Script" path="res://concept/class_window/player_screen_indicator.gd" id="2_dbwbj"]
 
 [node name="PlayerScreenIndicator" type="Panel"]
 anchors_preset = 15
@@ -9,3 +10,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_cn0ul")
+theme_type_variation = &"PlayerScreenIndicator"
+script = ExtResource("2_dbwbj")
