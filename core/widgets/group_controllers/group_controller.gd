@@ -22,7 +22,9 @@ func play(__duration: float = _duration) -> void:
 ## Called when the player seeked to a point before this group was played.
 ## The widgets should be reset to its initial state.
 func reset() -> void:
-    pass
+    for child in get_children():
+        if child.has_method("reset"):
+            child.reset()
 
 static func instantiate(group: ClassGroup, entities: Array[Entity]) -> GroupController:
     var _class: String = group.get_class_name().replace("Class", "") + "Controller"

@@ -5,6 +5,8 @@ extends IndexedNode2D
 
 ## Passes the play call to the first child node.
 func play() -> void:
+    show()
+    add_to_group("current_slide")
     var root: GroupController = get_child(0) as GroupController
     root.animation_finished.connect(on_slide_finished)
     current = true
@@ -14,6 +16,7 @@ func play() -> void:
 ## If the next slide is valid, it will be played.
 func on_slide_finished() -> void:
     current = false
+    remove_from_group("current_slide")
     if !is_instance_valid(tree_item):
         return
     var next_item: TreeItem = tree_item.get_next_in_tree()
@@ -23,3 +26,12 @@ func on_slide_finished() -> void:
     if !is_instance_valid(next):
         return
     next.play()
+    hide()
+
+func stop() -> void:
+    var root: GroupController = get_child(0) as GroupController
+    if root.animation_finished.is_connected(on_slide_finished):
+        root.animation_finished.disconnect(on_slide_finished)
+    remove_from_group("current_slide")
+    root.reset()
+    hide()
