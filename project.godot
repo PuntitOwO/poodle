@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="poodle"
+run/main_scene="res://concept/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,10 +19,15 @@ config/icon="res://icon.svg"
 
 driver/enable_input=true
 
+[autoload]
+
+Persistence="*res://concept/main_menu/persistence.gd"
+
 [display]
 
 window/size/viewport_width=1080
 window/size/viewport_height=720
+window/subwindows/embed_subwindows=false
 
 [editor]
 

@@ -5,6 +5,7 @@ extends Node
 
 func _ready():
     DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+    print("ClassScene._ready")
     _setup_scene()
 
 func _setup_scene():

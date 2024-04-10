@@ -1,7 +1,7 @@
 class_name ConceptClassScene
 extends Node2D
 
-@export_global_file() var file: String
+var file: String
 @export var class_index: ClassIndex
 var entities: Array
 
@@ -23,11 +23,16 @@ func _ready():
 		push_error("Error instantiating class: " + class_index.name)
 		return
 	zip_file.close()
+	print("parse_and_play._ready")
 
 func _parse() -> bool:
-	if file == null:
-		return false
 	zip_file = ZIPReader.new()
+	if file == null or file.is_empty():
+		file = Persistence.class_path
+	print("File: " + file)
+	if file == null or file.is_empty():
+		push_error("Error: file not set")
+		return false
 	var err := zip_file.open(file)
 	if err != OK:
 		push_error("Error %d opening file: " % err)
