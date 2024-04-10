@@ -35,18 +35,17 @@ flowchart TD
         -. Sections<br>and Slides .-> w(Widgets)
     end
     file["`class.poodle file`"]
-    index["`index.clsindex file`"]
-    files[resource folders]
+    zip["`ZIPReader instance`"]
     
-    file --> |ZIPReader.open|index & files
-    index --> |ClassIndexResourceLoader._load|ci
+    file --> |ZIPReader.open|zip
+    zip --> |ZIPReader.read_file|ci
     --> |ClassScene._instantiate|scene
 
 ```
 
 This way, the flow of the system is as follows:
-* The `class.poodle` file is read by the `ZIPReader` to get the `index.clsindex` file and the resource folders.
-* The `index.clsindex` file is loaded by the `ClassIndexResourceLoader` to create a `ClassIndex` Resource object.
+* The `class.poodle` file is read by the `ZIPReader` to get the `index.json` file and the resource folders.
+* The `index.json` file is loaded by the `ZIPReader` and parsed by the `JSON` class to create a `ClassIndex` Resource object.
 * The `ClassScene` is instantiated and receives the `ClassIndex` Resource, then uses it to instantiate the needed `Widgets` that are used to play the class.
 
 ### Detailed Flow
@@ -56,11 +55,11 @@ To explain a bit more the flow of the system, the following sections shows the d
 #### Class File Loading
 
 The `class.poodle` file is a zip file that contains all the resources and files needed to play a class. The file is read by the [`ZIPReader` class](https://docs.godotengine.org/en/stable/classes/class_zipreader.html) that exposes functions that can extract individual files inside the zip archive.
-The `ZIPReader` is used to extract the `index.clsindex` file first and it is sent to the [resource loader step](#class-index-resource-loading). The `ZipReader` instance is stored as it is used in a further step.
+The `ZIPReader` is used to extract the `index.json` file first and it is sent to the [resource loader step](#class-index-resource-loading). The `ZipReader` instance is stored as it is used in a further step.
 
 #### Class Index Resource Loading
 
-The `index.clsindex` file is a JSON file that contains the data, metadata and structure of the class. It is loaded by the `ClassIndexResourceLoader` class that reads the file and creates a `ClassIndex` Resource object that contains all the data of the file in a structured way. This step relies in the ``CustomClassDB`` singleton to instantiate custom classes and resources. See PENDING REFERENCE for more information on custom classes and resources.
+The `index.json` file is a JSON file that contains the data, metadata and structure of the class. It is loaded by the `ZIPReader` class and parsed by the `JSON` class to create a `ClassIndex` Resource object that contains all the data of the file in a structured way. This step relies in the ``CustomClassDB`` singleton to instantiate custom classes and resources. See PENDING REFERENCE for more information on custom classes and resources.
 
 #### Class Scene Instantiation
 
@@ -85,3 +84,4 @@ Custom `GroupController` nodes can be created to implement custom playback behav
 
 The `Widget` nodes are the nodes that represent the entities in the class. They can be of different types, such as `TextWidget`, `ImageWidget`, `AudioWidget`, `LineWidget` etc. Each `Widget` node is responsible for displaying the entity it represents and handling user interactions with it.
 
+As some `Widget` nodes may require custom resources, they receive a reference to the `ZIPReader` instance to load the resources from the `class.poodle` file.

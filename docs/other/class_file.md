@@ -8,18 +8,18 @@ A class file has the following structure:
 
 ```
 class.poodle:
-├── index.clsindex
+├── index.json
 └── resources/
     ├─ audio/
     ├─ video/
     └─ custom/
 ```
 
-The `.poodle` file is a `zip` file that contains an `index.clsindex` file and a `resources` directory. The `resources` directory contains folders for the audio, video, and custom resources used by the class.
+The `.poodle` file is a `zip` file that contains an `index.json` file and a `resources` directory. The `resources` directory contains folders for the audio, video, and custom resources used by the class.
 
 ## Index file
 
-The `index.clsindex` file is a JSON file that contains the metadata of the class. The schema of the `index.clsindex` file is available in the [Class Index Schema](index_schema.json) file. A summary of the schema is as follows:
+The `index.json` file is a JSON file that contains the metadata of the class. The schema of the `index.json` file is available in the [Class Index Schema](index_schema.json) file. A summary of the schema is as follows:
 
 ```json
 
