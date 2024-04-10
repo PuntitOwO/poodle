@@ -5,7 +5,11 @@ extends Widget
 var audio: AudioStreamPlayer
 
 func init(_properties: Dictionary) -> void:
-	var packet_sequence := AudioStreamOggVorbis.load_from_file(entity.audio_path)
+	if !zip_file.file_exists(entity.audio_path):
+		push_error("Audio file not found: " + entity.audio_path)
+		return
+	var data := zip_file.read_file(entity.audio_path)
+	var packet_sequence := AudioStreamOggVorbis.load_from_buffer(data)
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
 	audio.stream = packet_sequence

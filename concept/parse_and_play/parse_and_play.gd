@@ -1,11 +1,13 @@
 class_name ConceptClassScene
 extends Node2D
 
-@export_file() var file: String
+@export_global_file() var file: String
 @export var class_index: ClassIndex
 var entities: Array
 
 @onready var root: Node2D = $Class
+
+var zip_file: ZIPReader
 
 var entry_point: SlideNode
 var total_duration: float
@@ -20,11 +22,25 @@ func _ready():
 	if !_instantiate():
 		push_error("Error instantiating class: " + class_index.name)
 		return
+	zip_file.close()
 
 func _parse() -> bool:
 	if file == null:
 		return false
-	class_index = load(file)
+	zip_file = ZIPReader.new()
+	var err := zip_file.open(file)
+	if err != OK:
+		push_error("Error %d opening file: " % err)
+		return false
+	if !zip_file.file_exists("index.json"):
+		push_error("Error: index.json not found in zip file")
+		return false
+	var index_string := zip_file.read_file("index.json").get_string_from_utf8()
+	var index = JSON.parse_string(index_string)
+	if index == null or typeof(index) != TYPE_DICTIONARY:
+		return false
+	Widget.zip_file = zip_file
+	class_index = ClassIndex.deserialize(index)
 	return class_index != null
 
 func _instantiate() -> bool:

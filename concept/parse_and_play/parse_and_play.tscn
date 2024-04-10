@@ -29,7 +29,7 @@ process_mode = 3
 [node name="ParseAndPlay" type="Node2D" parent="."]
 process_mode = 1
 script = ExtResource("1_owwge")
-file = "user://clase_ejemplo/introduction.clsindex"
+file = "C:/Users/chris/AppData/Roaming/Godot/app_userdata/poodle/clase_ejemplo.zip"
 
 [node name="ParallaxBackground" parent="ParseAndPlay" instance=ExtResource("2_thsiq")]
 

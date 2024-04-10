@@ -6,6 +6,11 @@ extends Node2D
 
 signal animation_finished
 
+## The ZIP file containing the widget assets.
+## Use [method ZIPReader.file_exists] to check if a file exists in the ZIP file.
+## Use [method ZIPReader.read_file] to get a file from the ZIP file.
+static var zip_file: ZIPReader
+
 ## Compute the duration of the widget animation.
 func compute_duration() -> float:
 	return 0.0
