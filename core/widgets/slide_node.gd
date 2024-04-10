@@ -13,7 +13,8 @@ func play() -> void:
     show()
     add_to_group("current_slide")
     var root: GroupController = get_child(0) as GroupController
-    root.animation_finished.connect(on_slide_finished)
+    if !root.animation_finished.is_connected(on_slide_finished):
+        root.animation_finished.connect(on_slide_finished)
     current = true
     root.play()
 
