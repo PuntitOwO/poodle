@@ -28,10 +28,8 @@ func _play_section(selected: TreeItem) -> void:
 #endregion
 
 #region Whiteboard
-@onready var whiteboard: SubViewport = %SubViewport
-
 func set_class_node(node: Node) -> void:
-    node.reparent(whiteboard)
+    node.reparent(%SubViewport)
 #endregion
 
 #region Playback
