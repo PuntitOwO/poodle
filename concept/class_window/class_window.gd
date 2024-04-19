@@ -10,8 +10,11 @@ func set_section_tree(tree: Tree) -> void:
 
 func _on_tree_section_clicked(tree: Tree) -> void:
     var selected: TreeItem = tree.get_selected()
-    if selected == null:
+    if !is_instance_valid(selected):
         return
+    _play_section(selected)
+
+func _play_section(selected: TreeItem) -> void:
     var slide: SlideNode = selected.get_metadata(0)
     if !is_instance_valid(slide):
         return
@@ -59,7 +62,38 @@ func _toggle_playback() -> void:
     get_tree().paused = !get_tree().paused
     play_button.icon = play_icon if get_tree().paused else pause_icon
 
+func _get_current_section() -> TreeItem:
+    var current_slide: SlideNode = (get_tree().get_first_node_in_group("current_slide") as SlideNode)
+    if !is_instance_valid(current_slide):
+        return null
+    return current_slide.tree_item
+
+func _get_next_section() -> TreeItem:
+    var current_item: TreeItem = _get_current_section()
+    if !is_instance_valid(current_item):
+        return null
+    return current_item.get_next_in_tree()
+
+func _get_prev_section() -> TreeItem:
+    var current_item: TreeItem = _get_current_section()
+    if !is_instance_valid(current_item):
+        return null
+    return current_item.get_prev_in_tree()
+
+func _play_next_section() -> void:
+    var next_section: TreeItem = _get_next_section()
+    if !is_instance_valid(next_section):
+        return
+    _play_section(next_section)
+
+func _play_prev_section() -> void:
+    var prev_section: TreeItem = _get_prev_section()
+    if !is_instance_valid(prev_section):
+        return
+    _play_section(prev_section)
 #endregion
 
 func _ready():
     play_button.pressed.connect(_toggle_playback)
+    prev_button.pressed.connect(_play_prev_section)
+    next_button.pressed.connect(_play_next_section)

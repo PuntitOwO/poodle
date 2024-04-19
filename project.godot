@@ -33,6 +33,10 @@ window/subwindows/embed_subwindows=false
 
 movie_writer/movie_file="C:/Users/chris/Documents/poodle/.recordings/recording.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_file_picker/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
@@ -73,3 +77,4 @@ camera_down={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

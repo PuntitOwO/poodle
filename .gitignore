@@ -14,3 +14,7 @@ export_presets.cfg
 
 # Exported
 .export/
+
+# Android build ignore
+android/build/*
+# !android/build/AndroidManifest.xml

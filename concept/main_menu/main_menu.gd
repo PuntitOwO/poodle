@@ -7,10 +7,26 @@ func _ready():
     get_tree().root.files_dropped.connect(_on_files_dropped)
 
 func _select_file():
+    if OS.has_feature("android"):
+        print("Android detected. Using Android file picker.")
+        _android_dialog()
+        return
     if !DisplayServer.has_feature(DisplayServer.FEATURE_NATIVE_DIALOG):
         _built_in_dialog()
+        return
+    _native_dialog()
+
+func _android_dialog():
+    if Engine.has_singleton("GodotFilePicker"):
+        var picker = Engine.get_singleton("GodotFilePicker")
+        picker.file_picked.connect(_on_android_file_selected)
+        picker.openFilePicker("*/*")
     else:
-        _native_dialog()
+        printerr("GodotFilePicker singleton not found")
+        return
+
+func _on_android_file_selected(path: String, _mime_type: String) -> void:
+    _on_file_selected(path)
 
 func _native_dialog():
     DisplayServer.file_dialog_show("Open File", "", "", false, DisplayServer.FILE_DIALOG_MODE_OPEN_FILE, ["*.poodle", "*.zip"], _on_native_dialog_file_selected)
