@@ -11,3 +11,6 @@ export_presets.cfg
 
 # Godot recordings
 .recordings/
+
+# Exported
+.export/
