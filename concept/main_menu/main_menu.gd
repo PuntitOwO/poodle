@@ -1,9 +1,11 @@
 extends Control
 
 @onready var open_button: Button = %Open
+@onready var open_tutorial_button: Button = %OpenTutorial
 
 func _ready():
     open_button.pressed.connect(_select_file)
+    open_tutorial_button.pressed.connect(_on_file_selected.bind("res://concept/example_class/clase_ejemplo.poodle"))
     get_tree().root.files_dropped.connect(_on_files_dropped)
 
 func _select_file():
@@ -11,10 +13,12 @@ func _select_file():
         print("Android detected. Using Android file picker.")
         _android_dialog()
         return
-    if !DisplayServer.has_feature(DisplayServer.FEATURE_NATIVE_DIALOG):
-        _built_in_dialog()
+    if DisplayServer.has_feature(DisplayServer.FEATURE_NATIVE_DIALOG):
+        _native_dialog()
+        print("Native dialog support detected. Using native file picker.")
         return
-    _native_dialog()
+    print("No custom dialog support detected. Using built-in file picker.")
+    _built_in_dialog()
 
 func _android_dialog():
     if Engine.has_singleton("GodotFilePicker"):
@@ -37,6 +41,7 @@ func _built_in_dialog():
     dialog.use_native_dialog = true
     dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
     dialog.add_filter("*.poodle, *.zip", "Poodle Class Files")
+    dialog.files_selected.connect(_on_files_dropped)
     dialog.file_selected.connect(_on_file_selected)
     dialog.popup_centered()
 
