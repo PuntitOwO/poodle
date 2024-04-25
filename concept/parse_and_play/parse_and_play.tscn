@@ -37,3 +37,5 @@ anchor_mode = 0
 script = SubResource("GDScript_e3u0i")
 
 [node name="Class" type="Node2D" parent="ParseAndPlay"]
+
+[node name="Timer" type="Timer" parent="."]

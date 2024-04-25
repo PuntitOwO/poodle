@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdf57hapkw603"]
+[gd_scene load_steps=8 format=3 uid="uid://cdf57hapkw603"]
 
 [ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
 [ext_resource type="Script" path="res://concept/class_window/class_window.gd" id="1_s0jgr"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
+[ext_resource type="Script" path="res://utils/stopwatch.gd" id="4_ufhj5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw2kf"]
 atlas = ExtResource("2_caqkq")
@@ -63,7 +64,7 @@ stretch = true
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(400, 400)
+size = Vector2i(868, 623)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
@@ -131,3 +132,8 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/Transcription/VBoxContainer"]
 layout_mode = 2
 text = "lol"
+
+[node name="Stopwatch" type="Node" parent="."]
+unique_name_in_owner = true
+process_mode = 1
+script = ExtResource("4_ufhj5")

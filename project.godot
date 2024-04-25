@@ -23,6 +23,11 @@ driver/enable_input=true
 
 Persistence="*res://concept/main_menu/persistence.gd"
 
+[debug]
+
+gdscript/warnings/shadowed_global_identifier=0
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1080
