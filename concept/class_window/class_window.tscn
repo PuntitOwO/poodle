@@ -113,7 +113,7 @@ text = "00:00"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-value = 20.0
+step = 0.25
 scrollable = false
 
 [node name="TotalTimeLabel" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
