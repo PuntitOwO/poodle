@@ -34,7 +34,7 @@ func set_class_node(node: Node) -> void:
 
 #region Playback
 @onready var current_time_label: Label = %CurrentTimeLabel
-@onready var time_slider: HSlider = %TimeSlider
+@onready var time_slider: PlayerSlider = %TimeSlider
 @onready var total_time_label: Label = %TotalTimeLabel
 @onready var stopwatch: Stopwatch = %Stopwatch
 
@@ -42,7 +42,6 @@ func set_total_time(total_time: int) -> void:
     var total_time_string := _get_time_string(total_time)
     total_time_label.text = total_time_string
     time_slider.max_value = floorf(total_time)
-    time_slider.value = 0
 
 func _get_time_string(time: int) -> String:
     var minutes := time / 60
@@ -101,8 +100,8 @@ func _ready():
     play_button.pressed.connect(_toggle_playback)
     prev_button.pressed.connect(_play_prev_section)
     next_button.pressed.connect(_play_next_section)
-    time_slider.value_changed.connect(_slider_value_selected)
+    time_slider.value_selected.connect(_slider_value_selected)
 
 func _process(_delta: float):
-    time_slider.set_value_no_signal(stopwatch.running_time)
+    time_slider.change_value(stopwatch.running_time)
     current_time_label.text = _get_time_string(floori(stopwatch.running_time))

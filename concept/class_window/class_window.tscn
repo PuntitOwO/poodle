@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdf57hapkw603"]
+[gd_scene load_steps=9 format=3 uid="uid://cdf57hapkw603"]
 
 [ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
 [ext_resource type="Script" path="res://concept/class_window/class_window.gd" id="1_s0jgr"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
+[ext_resource type="Script" path="res://concept/class_window/player_slider.gd" id="4_733sw"]
 [ext_resource type="Script" path="res://utils/stopwatch.gd" id="4_ufhj5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw2kf"]
@@ -115,6 +116,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 step = 0.25
 scrollable = false
+script = ExtResource("4_733sw")
 
 [node name="TotalTimeLabel" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/Playback/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
