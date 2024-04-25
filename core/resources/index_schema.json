@@ -20,12 +20,19 @@
                     "items": {
                         "$ref": "#/definitions/Section"
                     }
+                },
+                "script": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScriptEntry"
+                    }
                 }
             },
             "required": [
                 "entities",
                 "metadata",
-                "sections"
+                "sections",
+                "script"
             ],
             "title": "Index"
         },
@@ -45,12 +52,6 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Point"
-                    }
-                },
-                "script_entries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ScriptEntry"
                     }
                 },
                 "content": {
