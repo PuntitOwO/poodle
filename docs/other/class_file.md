@@ -27,6 +27,7 @@ The `index.json` file is a JSON file that contains the metadata of the class. Th
   "entities": [...],
   "metadata": {...},
   "sections": [...],
+  "script": [...],
 }
 
 ```
@@ -79,6 +80,21 @@ Where `metadata` is the metadata of the class. A sample `metadata` object is as 
 
 This sample `entities` object has an audio entity, an image entity, a line entity, and a  playback control entity.
 Entities in `entities` object SHOULD be unique, as they can be pointed to by many `EntityPointers` (`ContentRootEntity` in the schema).
+
+`script` is a list of the script of the class. The script is the transcription of the class. A sample `script` object is as follows:
+
+```json
+[
+  {
+    "content": "This is the first thing that is said in the class",
+    "entry_type": "TextEntry"
+  },
+  {
+    "content": "This is the alternative text for a thing that is shown in the class, for accessibility purposes",
+    "entry_type": "AltTextEntry"
+  }
+]
+```
 
 `sections` is a list of the sections in the class. A section is a part of the class that contains slides. A sample `sections` object is as follows:
 

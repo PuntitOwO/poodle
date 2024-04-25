@@ -86,13 +86,13 @@
                 "content": {
                     "type": "string"
                 },
-                "entity_type": {
+                "entry_type": {
                     "type": "string"
                 }
             },
             "required": [
                 "content",
-                "entity_type"
+                "entry_type"
             ],
             "title": "ScriptEntry"
         },

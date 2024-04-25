@@ -36,12 +36,12 @@ func get_class_name() -> String:
 
 func serialize() -> Dictionary:
     return {
-        "entity_type": get_class_name(),
+        "entry_type": get_class_name(),
         "content": content,
     }
 
 static func deserialize(data: Dictionary) -> ScriptEntry:
-    var instance: ScriptEntry = CustomClassDB.instantiate(data["entity_type"])
+    var instance: ScriptEntry = CustomClassDB.instantiate(data["entry_type"])
     instance.content = data["content"]
     instance.load_data(data)
     return instance
