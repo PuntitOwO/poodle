@@ -92,13 +92,17 @@ func _play_prev_section() -> void:
     if !is_instance_valid(prev_section):
         return
     _play_section(prev_section)
+
+func _slider_value_selected(seconds: float) -> void:
+    print("Seeking to " + str(seconds))
 #endregion
 
 func _ready():
     play_button.pressed.connect(_toggle_playback)
     prev_button.pressed.connect(_play_prev_section)
     next_button.pressed.connect(_play_next_section)
+    time_slider.value_changed.connect(_slider_value_selected)
 
 func _process(_delta: float):
-    time_slider.value = stopwatch.running_time
+    time_slider.set_value_no_signal(stopwatch.running_time)
     current_time_label.text = _get_time_string(floori(stopwatch.running_time))
