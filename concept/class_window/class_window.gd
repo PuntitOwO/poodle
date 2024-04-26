@@ -4,7 +4,7 @@ extends Control
 var find_group_by_timestamp: Callable
 
 #region Section Tree
-@onready var section_tree_parent: Control = %Sections
+@onready var section_tree_parent: Control = %LeftPanel
 
 func set_section_tree(tree: Tree) -> void:
     section_tree_parent.add_child(tree)
@@ -107,7 +107,23 @@ func _slider_value_selected(seconds: float) -> void:
 
 #endregion
 
+#region UI
+
+@onready var fullscreen_button: Button = %FullscreenButton
+@onready var enter_fullscreen_icon: Texture2D = get_theme_icon("enter", fullscreen_button.theme_type_variation)
+@onready var exit_fullscreen_icon: Texture2D = get_theme_icon("exit", fullscreen_button.theme_type_variation)
+@onready var panels: Array[Control] = [%LeftPanel, %BottomPanel, %RightPanel]
+@onready var panel_visible: Array[bool] = [panels[0].visible, panels[1].visible, panels[2].visible]
+
+func _toggle_fullscreen(toggled_on: bool) -> void:
+    for i in panels.size():
+        panels[i].visible = not toggled_on and panel_visible[i]
+    fullscreen_button.icon = exit_fullscreen_icon if toggled_on else enter_fullscreen_icon
+
+#endregion
+
 func _ready():
+    fullscreen_button.toggled.connect(_toggle_fullscreen)
     play_button.pressed.connect(_toggle_playback)
     prev_button.pressed.connect(_play_prev_section)
     next_button.pressed.connect(_play_next_section)

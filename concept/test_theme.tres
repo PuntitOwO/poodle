@@ -1,6 +1,14 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bxs21eiqu4tcc"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bxs21eiqu4tcc"]
 
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="1_vg84w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai0gx"]
+atlas = ExtResource("1_vg84w")
+region = Rect2(300, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmpqr"]
+atlas = ExtResource("1_vg84w")
+region = Rect2(150, 0, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jrdl"]
 atlas = ExtResource("1_vg84w")
@@ -36,6 +44,8 @@ border_width_bottom = 2
 border_color = Color(0.121569, 0.2, 0.109804, 1)
 
 [resource]
+FullscreenIconButton/icons/enter = SubResource("AtlasTexture_ai0gx")
+FullscreenIconButton/icons/exit = SubResource("AtlasTexture_rmpqr")
 PlayerIconButton/base_type = &"Button"
 PlayerIconButton/icons/next = SubResource("AtlasTexture_5jrdl")
 PlayerIconButton/icons/pause = SubResource("AtlasTexture_ar7p2")
