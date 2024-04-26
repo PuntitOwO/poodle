@@ -32,6 +32,7 @@ const MAX_TIME = 1000000000
 @onready var timer: Timer = Timer.new()
 
 var _time: float = 0
+var _stopped_time: float = 0
 
 func _ready():
     timer.autostart = autostart
@@ -45,11 +46,16 @@ func _ready():
 func is_stopped() -> bool:
     return timer.is_stopped()
 
-## Starts the stopwatch. Sets the stopwatch's time to `time_seek` if `time_seek > 0`.
-func start(time_seek: float = -1) -> void:
-    _time = time_seek if time_seek > 0.0 else 0.0
+## Starts the stopwatch. Sets the stopwatch's time to `initial_time`.
+func start(initial_time: float = 0.0) -> void:
+    _time = initial_time
     timer.start()
 
 ## Stops the stopwatch.
 func stop() -> void:
+    _stopped_time = running_time
     timer.stop()
+
+## Starts the stopwatch with the time it was stopped at.
+func resume() -> void:
+    start(_stopped_time)

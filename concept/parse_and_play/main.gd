@@ -6,6 +6,7 @@ extends Node
 func _ready():
     DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
     print("ClassScene._ready")
+    window.find_group_by_timestamp = class_scene.find_group_by_timestamp
     _setup_scene()
 
 func _setup_scene():

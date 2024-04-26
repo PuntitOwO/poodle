@@ -1,6 +1,8 @@
 class_name ConceptClassWindow
 extends Control
 
+var find_group_by_timestamp: Callable
+
 #region Section Tree
 @onready var section_tree_parent: Control = %Sections
 
@@ -94,6 +96,15 @@ func _play_prev_section() -> void:
 
 func _slider_value_selected(seconds: float) -> void:
     print("Seeking to " + str(seconds))
+    stopwatch.stop()
+    var group: GroupController = find_group_by_timestamp.call(seconds)
+    if !is_instance_valid(group):
+        stopwatch.resume()
+        return
+    var slide: SlideNode = group.get_parent() as SlideNode
+    _play_section(slide.tree_item)
+    stopwatch.start(group.timestamp)
+
 #endregion
 
 func _ready():

@@ -15,6 +15,8 @@ var total_duration: float
 var section_manager: SectionManager
 var slide_count: int = 0
 
+var timestamps: Array[GroupController] = []
+
 func _ready():
 	if !_parse():
 		push_error("Error parsing file: " + file)
@@ -82,10 +84,21 @@ func compute_duration() -> void:
 	total_duration = 0.0
 	for section in root.get_children():
 		for slide in section.get_children():
-			total_duration += (slide.get_child(0) as GroupController).compute_duration()
+			var group = slide.get_child(0) as GroupController
+			group.timestamp = total_duration
+			timestamps.append(group)
+			total_duration += group.compute_duration()
 
 func play():
 	if !is_instance_valid(entry_point):
 		push_error("Error playing content: entry_point is not valid")
 		return
 	entry_point.play()
+
+## Returns the group that contains the given timestamp.
+## If the timestamp is not within any group, returns null.
+func find_group_by_timestamp(timestamp: float) -> GroupController:
+	for group in timestamps:
+		if group.timestamp <= timestamp and timestamp < group.timestamp + group.compute_duration():
+			return group
+	return null

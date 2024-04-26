@@ -3,6 +3,7 @@ extends Node2D
 
 signal animation_finished
 
+var timestamp: float = 0.0
 var _duration: float = 0.0
 
 ## Called to compute the total duration of the animations in this group.
