@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bolnciogh5ays"]
+[gd_scene load_steps=7 format=3 uid="uid://bolnciogh5ays"]
 
 [ext_resource type="Script" path="res://concept/line_record/line_record.gd" id="1_qfnn3"]
+[ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_r6xfk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xim8"]
+atlas = ExtResource("2_r6xfk")
+region = Rect2(100, 250, 50, 50)
 
 [sub_resource type="InputEventKey" id="InputEventKey_hlpas"]
 device = -1
@@ -8,6 +13,10 @@ keycode = 4194309
 
 [sub_resource type="Shortcut" id="Shortcut_qgty8"]
 events = [SubResource("InputEventKey_hlpas")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv6py"]
+atlas = ExtResource("2_r6xfk")
+region = Rect2(150, 450, 50, 50)
 
 [node name="LineRecordConcept" type="Control"]
 layout_mode = 3
@@ -45,30 +54,29 @@ layout_mode = 2
 size_flags_vertical = 3
 select_mode = 1
 allow_search = false
-max_columns = 2
+max_columns = 3
 same_column_width = true
 icon_mode = 0
-fixed_icon_size = Vector2i(100, 100)
-
-[node name="FileName" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-placeholder_text = "filename.wav"
-expand_to_text_length = true
+fixed_icon_size = Vector2i(75, 75)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 alignment = 1
 
-[node name="OpenFolder" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Remove" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Open folder"
-expand_icon = true
+text = "Remove"
+icon = SubResource("AtlasTexture_1xim8")
+icon_alignment = 1
+vertical_icon_alignment = 0
 
 [node name="Save" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 shortcut = SubResource("Shortcut_qgty8")
-text = "Save file"
+text = "Save All"
+icon = SubResource("AtlasTexture_kv6py")
+icon_alignment = 1
+vertical_icon_alignment = 0

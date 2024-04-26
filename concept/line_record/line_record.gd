@@ -8,9 +8,14 @@ var pressed = false:
         Input.use_accumulated_input = not value
 var line: Line2D
 var last_point := Vector2.INF
-var entities: Array[LineEntity] = []
+var items: Array[LineItem] = []
+var idx: int = 0
 
-func _input(event):
+func _ready():
+    %Remove.pressed.connect(_remove_items)
+    %Save.pressed.connect(_save_items)
+
+func _gui_input(event):
     if event is InputEventMouseMotion:
         _handle_mouse(event)
 
@@ -31,8 +36,10 @@ func _handle_mouse(event: InputEventMouseMotion):
         pressed = false
         last_point = Vector2.INF
         var thumbnail := _post_process_line(line)
-        entities.append(_generate_entity(line))
-        %ItemList.add_item("Line " + str(entities.size()), thumbnail)
+        var item: LineItem = LineItem.new("Line " + str(idx), thumbnail, line)
+        items.append(item)
+        idx += 1
+        %ItemList.add_item(item.name, item.thumbnail)
         line = null
 
 func _new_line() -> Line2D:
@@ -60,7 +67,7 @@ func _post_process_line(node: Line2D) -> Texture2D:
     var viewport_size := Vector2i(get_viewport().get_visible_rect().size)
     var screenshot_size := screenshot.get_size()
     var ratio := viewport_size / screenshot_size
-    var screenshot_rect := Rect2i(Vector2i(Vector2(l, t)) * ratio, Vector2i(Vector2(r, b)) * ratio)
+    var screenshot_rect := Rect2i(Vector2i(Vector2(l, t)) * ratio, Vector2i(Vector2(r - l, b - t)) * ratio)
     # Crop the screenshot
     screenshot = screenshot.get_region(screenshot_rect)
 
@@ -74,8 +81,35 @@ func _post_process_line(node: Line2D) -> Texture2D:
     # Create a new texture with the cropped screenshot
     return ImageTexture.create_from_image(screenshot)
 
+func _remove_items() -> void:
+    if not %ItemList.is_anything_selected():
+        return
+    var selected_items: PackedInt32Array = %ItemList.get_selected_items()
+    selected_items.reverse()
+    for i in selected_items:
+        var item: LineItem = items[i]
+        item.node.get_parent().remove_child(item.node)
+        item.node.queue_free()
+        items.remove_at(i)
+        %ItemList.remove_item(i)
+        item.call_deferred("free")
 
-func _generate_entity(node: Line2D) -> LineEntity:
-    var entity = LineEntity.new()
-    entity.points = node.points
-    return entity
+func _save_items() -> void:
+    var entities := items.map(func (i): return i._generate_entity().serialize())
+    var json = JSON.stringify(entities, "\t")
+    DisplayServer.clipboard_set(json)
+
+class LineItem:
+    var thumbnail: Texture2D
+    var node: Line2D
+    var name: String
+
+    func _init(_name: String, _thumbnail: Texture2D, _node: Line2D):
+        thumbnail = _thumbnail
+        node = _node
+        name = _name
+
+    func _generate_entity() -> LineEntity:
+        var entity = LineEntity.new()
+        entity.points = node.points
+        return entity
