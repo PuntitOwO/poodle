@@ -1,10 +1,49 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdf57hapkw603"]
+[gd_scene load_steps=11 format=3 uid="uid://cdf57hapkw603"]
 
 [ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
 [ext_resource type="Script" path="res://concept/class_window/class_window.gd" id="1_s0jgr"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
 [ext_resource type="Script" path="res://concept/class_window/player_slider.gd" id="4_733sw"]
 [ext_resource type="Script" path="res://utils/stopwatch.gd" id="4_ufhj5"]
+
+[sub_resource type="GDScript" id="GDScript_b0r1l"]
+resource_name = "camera_control"
+script/source = "extends Control
+
+const WARP_OFFSET = -10
+var dragging := false
+var warped := false
+var camera : Camera2D
+
+func _gui_input(event):
+    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+        get_viewport().set_input_as_handled()
+        dragging = event.is_pressed()
+    elif event is InputEventMouseMotion and dragging:
+        get_viewport().set_input_as_handled()
+        if warped:
+            warped = false
+            return
+        if not is_instance_valid(camera):
+            camera = %SubViewport.get_camera_2d()
+            if not is_instance_valid(camera):
+                printerr(\"Trying to move but no camera available\")
+                return
+        camera.position -= event.relative
+        var mouse_pos: Vector2 = event.global_position
+        var view := get_global_rect().grow(WARP_OFFSET)
+        warped = not view.has_point(mouse_pos)
+        if mouse_pos.x < view.position.x:
+            mouse_pos.x = view.end.x
+        elif mouse_pos.x > view.end.x:
+            mouse_pos.x = view.position.x
+        if mouse_pos.y < view.position.y:
+            mouse_pos.y = view.end.y
+        elif mouse_pos.y > view.end.y:
+            mouse_pos.y = view.position.y
+        if warped:
+            Input.warp_mouse(mouse_pos)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ai0gx"]
 atlas = ExtResource("2_caqkq")
@@ -29,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_s0jgr")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
@@ -38,6 +78,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 split_offset = 200
 
 [node name="LeftPanel" type="PanelContainer" parent="HSplitContainer"]
@@ -46,15 +87,18 @@ layout_mode = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Viewport" type="VSplitContainer" parent="HSplitContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="Whiteboard" type="Control" parent="HSplitContainer/HSplitContainer/Viewport"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_vertical = 3
+script = SubResource("GDScript_b0r1l")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
 layout_mode = 1
@@ -63,17 +107,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/SubViewportContainer"]
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(400, 400)
+size = Vector2i(868, 623)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
 layout_mode = 1
+mouse_filter = 2
 
 [node name="FullscreenButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
 unique_name_in_owner = true
