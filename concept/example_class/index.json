@@ -1,0 +1,606 @@
+{
+	"entities": [
+		{
+			"audio_path": "a",
+			"entity_type": "AudioEntity"
+		},
+		{
+			"content": "¿Qué es POODLE? En esta clase introductoria aprenderá lo esencial.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "POODLE es una herramienta experimental para envasar clases.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "El resultado se parece a un video de una clase, en que se ve solo la pizarra, no el profesor.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Es más rápido que un video de una clase, porque se sincroniza la escritura con la frase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "También es más ordenado e interactivo, porque se puede navegar por las secciones de la clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Comenzaré explicando la interfaz de POODLE",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "luego mostraré las características de las clases",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "y finalmente explicaré cómo se puede navegar por una clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "La interfaz contiene tres partes principales:",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- La pizarra, donde se muestra el contenido de la clase",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- El menú de secciones, donde se puede navegar por las secciones de la clase",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- La barra de reproducción, donde se puede controlar la reproducción de la clase",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "El tamaño de cada sección se puede ajustar con el ratón.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Basta con hacer clic en la división entre dos secciones y arrastrarla para cambiar el tamaño.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "La pizarra es la parte principal de la interfaz.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Aquí se muestra el contenido de la clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Tiene un borde que indica el estado de la reproducción:",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- Verde: la clase se está reproduciendo",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "- Rojo: la clase está pausada",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "El menú de secciones es una lista de las secciones y diapositivas de la clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "La sección y diapositiva actual se resaltan en verde.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Se puede hacer clic en una sección o diapositiva para reproducir desde allí.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "La barra de reproducción es una barra de progreso que muestra el tiempo transcurrido y el tiempo total de la clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Se puede usar para controlar la reproducción de la clase, arrastrando el cursor para adelantar o retroceder.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "También se pueden usar los botones de reproducción para reproducir, pausar, adelantar o retroceder la clase.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Si se desea, se pueden ocultar las partes de la interfaz para mostrar solo la pizarra.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Para ello, basta con hacer clic en el botón de ocultar partes de la interfaz en la esquina superior derecha.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Si se desea mostrar las partes de la interfaz de nuevo, basta con volver a hacer clic en el botón.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Las clases se dividen en secciones y diapositivas.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Cada sección contiene una serie de diapositivas.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Se puede navegar por las secciones y diapositivas con el menú de secciones.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "El contenido de una diapositiva puede ser un grupo de textos, imágenes, trazos, etc.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "POODLE permite añadir extensiones para mostrar contenido adicional, como código, gráficos, videos, y más.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "La cámara se puede mover por la pizarra para explorar el contenido.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Para esto, se puede hacer clic y arrastrar con el ratón.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "También se puede utilizar las teclas WASD para mover la cámara hacia arriba, izquierda, abajo y derecha respectivamente.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Además, se puede hacer zoom con la rueda del ratón o las teclas Q y E.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Cuando la cámara no esté en la vista por defecto, se puede hacer clic en el botón de centrar cámara para volver a la vista por defecto.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Por último, se puede hacer clic en un objeto para devolver la reproducción a esa diapositiva.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Para navegar por las secciones de una clase, se puede hacer clic en una sección en el menú de secciones.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "También se puede usar los botones de adelantar y retroceder para ir a la siguiente o anterior sección.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Además, se puede usar la barra de reproducción para adelantar o retroceder a una sección específica.",
+			"entity_type": "CiteTextEntity"
+		},
+		{
+			"content": "Finalmente, se puede hacer clic en un objeto para devolver la reproducción a esa diapositiva.",
+			"entity_type": "CiteTextEntity"
+		}
+	],
+	"metadata": {
+		"author_description": "POODLE Dev",
+		"author_name": "Christopher Marín",
+		"course": "",
+		"date": 1715041423,
+		"description": "Una clase introductoria de POODLE, para aprender a utilizar el reproductor",
+		"editor_version": "1.0.0",
+		"file_version": "1.1.0",
+		"license": "",
+		"name": "Introducción"
+	},
+	"script": [
+		{
+			"content": "Sección 1: Introducción",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Slide 1: Introducción a POODLE",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "¿Qué es POODLE? En esta clase introductoria aprenderá lo esencial.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "POODLE es una herramienta experimental para envasar clases.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "El resultado se parece a un video de una clase, en que se ve solo la pizarra, no el profesor.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Es más rápido que un video de una clase, porque se sincroniza la escritura con la frase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "También es más ordenado e interactivo, porque se puede navegar por las secciones de la clase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 2: Índice",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Comenzaré explicando la interfaz de POODLE",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "luego mostraré las características de las clases",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "y finalmente explicaré cómo se puede navegar por una clase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Sección 2: Interfaz",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Slide 1: Partes de la Interfaz",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "La interfaz contiene tres partes principales:",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "- La pizarra, donde se muestra el contenido de la clase",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "- El menú de secciones, donde se puede navegar por las secciones de la clase",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "- La barra de reproducción, donde se puede controlar la reproducción de la clase",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "El tamaño de cada sección se puede ajustar con el ratón.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Basta con hacer clic en la división entre dos secciones y arrastrarla para cambiar el tamaño.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 2: Pizarra",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "La pizarra es la parte principal de la interfaz.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Aquí se muestra el contenido de la clase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Tiene un borde que indica el estado de la reproducción:",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "- Verde: la clase se está reproduciendo",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "- Rojo: la clase está pausada",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 3: Menú de secciones",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "El menú de secciones es una lista de las secciones y diapositivas de la clase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "La sección y diapositiva actual se resaltan en verde.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Se puede hacer clic en una sección o diapositiva para reproducir desde allí.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 4: Barra de reproducción",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "La barra de reproducción es una barra de progreso que muestra el tiempo transcurrido y el tiempo total de la clase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Se puede usar para controlar la reproducción de la clase, arrastrando el cursor para adelantar o retroceder.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "También se pueden usar los botones de reproducción para reproducir, pausar, adelantar o retroceder la clase.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 5: Ocultar partes de la interfaz",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Si se desea, se pueden ocultar las partes de la interfaz para mostrar solo la pizarra.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Para ello, basta con hacer clic en el botón de ocultar partes de la interfaz en la esquina superior derecha.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Si se desea mostrar las partes de la interfaz de nuevo, basta con volver a hacer clic en el botón.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Sección 3: Clases",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Slide 1: Secciones y diapositivas",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Las clases se dividen en secciones y diapositivas.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Cada sección contiene una serie de diapositivas.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Se puede navegar por las secciones y diapositivas con el menú de secciones.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 2: Contenido",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "El contenido de una diapositiva puede ser un grupo de textos, imágenes, trazos, etc.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "POODLE permite añadir extensiones para mostrar contenido adicional, como código, gráficos, videos, y más.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Slide 3: Interactividad",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "La cámara se puede mover por la pizarra para explorar el contenido.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Para esto, se puede hacer clic y arrastrar con el ratón.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "También se puede utilizar las teclas WASD para mover la cámara hacia arriba, izquierda, abajo y derecha respectivamente.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Además, se puede hacer zoom con la rueda del ratón o las teclas Q y E.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Cuando la cámara no esté en la vista por defecto, se puede hacer clic en el botón de centrar cámara para volver a la vista por defecto.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Por último, se puede hacer clic en un objeto para devolver la reproducción a esa diapositiva.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Sección 4: Navegación",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Slide 1: Navegación por secciones",
+			"entry_type": "CommentEntry"
+		},
+		{
+			"content": "Para navegar por las secciones de una clase, se puede hacer clic en una sección en el menú de secciones.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "También se puede usar los botones de adelantar y retroceder para ir a la siguiente o anterior sección.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Además, se puede usar la barra de reproducción para adelantar o retroceder a una sección específica.",
+			"entry_type": "TextEntry"
+		},
+		{
+			"content": "Finalmente, se puede hacer clic en un objeto para devolver la reproducción a esa diapositiva.",
+			"entry_type": "TextEntry"
+		}
+	],
+	"sections": [
+		{
+			"name": "Introducción",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [],
+						"group_type": "ClassChainGroup",
+						"groups": [
+							{
+								"entities": [
+									{
+										"entity_id": 0,
+										"entity_properties": []
+									}
+								],
+								"group_type": "ClassParallelGroup",
+								"groups": []
+							},
+							{
+								"entities": [
+									{
+										"entity_id": 0,
+										"entity_properties": []
+									}
+								],
+								"group_type": "ClassChainGroup",
+								"groups": []
+							}
+						]
+					},
+					"name": "Introducción a POODLE"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Índice"
+				}
+			]
+		},
+		{
+			"name": "Interfaz",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Componentes de la interfaz"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Pizarra"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Menú de secciones"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Barra de reproducción"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Ocultar partes de la interfaz"
+				}
+			]
+		},
+		{
+			"name": "Clases",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Secciones y diapositivas"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Contenido"
+				},
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Interactividad"
+				}
+			]
+		},
+		{
+			"name": "Navegación",
+			"slides": [
+				{
+					"content_root": {
+						"entities": [
+							{
+								"entity_id": 0,
+								"entity_properties": []
+							}
+						],
+						"group_type": "ClassChainGroup",
+						"groups": []
+					},
+					"name": "Navegación por secciones"
+				}
+			]
+		}
+	]
+}

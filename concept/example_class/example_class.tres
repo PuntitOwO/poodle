@@ -1,0 +1,198 @@
+[gd_resource type="Resource" script_class="ClassIndex" load_steps=46 format=3 uid="uid://c3uqrp1lq0vnb"]
+
+[ext_resource type="Script" path="res://core/resources/class/class_index.gd" id="1_6i6dx"]
+[ext_resource type="Script" path="res://core/resources/date.gd" id="1_32c4v"]
+[ext_resource type="Script" path="res://core/resources/class/script_entries/text_entry.gd" id="1_h1tne"]
+[ext_resource type="Script" path="res://core/resources/class/entities/audio_entity.gd" id="2_0vf73"]
+[ext_resource type="Script" path="res://core/resources/class/class_metadata.gd" id="2_ptu1i"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_section.gd" id="6_jvnb7"]
+[ext_resource type="Script" path="res://core/resources/class/entities/entity_wrapper/entity_wrapper.gd" id="7_n1mnr"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_slide.gd" id="7_ojuwb"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_parallel_group.gd" id="8_a7wsp"]
+[ext_resource type="Script" path="res://core/resources/class/class_organization/class_chain_group.gd" id="9_c2hvh"]
+
+[sub_resource type="Resource" id="Resource_fqtfa"]
+script = ExtResource("1_h1tne")
+content = "a"
+
+[sub_resource type="Resource" id="Resource_y4ot8"]
+script = ExtResource("2_0vf73")
+audio_path = "a"
+
+[sub_resource type="Resource" id="Resource_y28mu"]
+script = ExtResource("1_32c4v")
+date = "07-05-2024"
+
+[sub_resource type="Resource" id="Resource_u545a"]
+script = ExtResource("2_ptu1i")
+name = "a"
+description = "a"
+course = "a"
+author_name = "a"
+author_description = "a"
+file_version = "a"
+date = SubResource("Resource_y28mu")
+license = "a"
+editor_version = "1"
+
+[sub_resource type="Resource" id="Resource_2geob"]
+script = ExtResource("7_n1mnr")
+entity_id = 0
+entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
+
+[sub_resource type="Resource" id="Resource_au8yo"]
+script = ExtResource("8_a7wsp")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_2geob")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_6ycjc"]
+script = ExtResource("7_n1mnr")
+entity_id = 0
+entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
+
+[sub_resource type="Resource" id="Resource_1ad4a"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_6ycjc")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_wic53"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([SubResource("Resource_au8yo"), SubResource("Resource_1ad4a")])
+
+[sub_resource type="Resource" id="Resource_j1cpt"]
+script = ExtResource("7_ojuwb")
+name = "Introducción a POODLE"
+content_root = SubResource("Resource_wic53")
+
+[sub_resource type="Resource" id="Resource_x1ssr"]
+script = ExtResource("7_n1mnr")
+entity_id = 0
+entity_properties = Array[Resource("res://core/resources/class/entities/entity_wrapper/entity_property.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ys6d6"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_ehtk0"]
+script = ExtResource("7_ojuwb")
+name = "Índice"
+content_root = SubResource("Resource_ys6d6")
+
+[sub_resource type="Resource" id="Resource_kgf6p"]
+script = ExtResource("6_jvnb7")
+name = "Introducción"
+slides = Array[ExtResource("7_ojuwb")]([SubResource("Resource_j1cpt"), SubResource("Resource_ehtk0")])
+
+[sub_resource type="Resource" id="Resource_6g36j"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_vitxg"]
+script = ExtResource("7_ojuwb")
+name = "Componentes de la interfaz"
+content_root = SubResource("Resource_6g36j")
+
+[sub_resource type="Resource" id="Resource_khqru"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_up81p"]
+script = ExtResource("7_ojuwb")
+name = "Pizarra"
+content_root = SubResource("Resource_khqru")
+
+[sub_resource type="Resource" id="Resource_sok64"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_llu0g"]
+script = ExtResource("7_ojuwb")
+name = "Menú de secciones"
+content_root = SubResource("Resource_sok64")
+
+[sub_resource type="Resource" id="Resource_tai5i"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_sskr1"]
+script = ExtResource("7_ojuwb")
+name = "Barra de reproducción"
+content_root = SubResource("Resource_tai5i")
+
+[sub_resource type="Resource" id="Resource_d8umy"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_wb1cc"]
+script = ExtResource("7_ojuwb")
+name = "Ocultar partes de la interfaz"
+content_root = SubResource("Resource_d8umy")
+
+[sub_resource type="Resource" id="Resource_w40ka"]
+script = ExtResource("6_jvnb7")
+name = "Interfaz"
+slides = Array[ExtResource("7_ojuwb")]([SubResource("Resource_vitxg"), SubResource("Resource_up81p"), SubResource("Resource_llu0g"), SubResource("Resource_sskr1"), SubResource("Resource_wb1cc")])
+
+[sub_resource type="Resource" id="Resource_selq1"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_kw741"]
+script = ExtResource("7_ojuwb")
+name = "Secciones y diapositivas"
+content_root = SubResource("Resource_selq1")
+
+[sub_resource type="Resource" id="Resource_rk472"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_o7y8u"]
+script = ExtResource("7_ojuwb")
+name = "Contenido"
+content_root = SubResource("Resource_rk472")
+
+[sub_resource type="Resource" id="Resource_83dmp"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_wvjom"]
+script = ExtResource("7_ojuwb")
+name = "Interactividad"
+content_root = SubResource("Resource_83dmp")
+
+[sub_resource type="Resource" id="Resource_iljpb"]
+script = ExtResource("6_jvnb7")
+name = "Clases"
+slides = Array[ExtResource("7_ojuwb")]([SubResource("Resource_kw741"), SubResource("Resource_o7y8u"), SubResource("Resource_wvjom")])
+
+[sub_resource type="Resource" id="Resource_81gkm"]
+script = ExtResource("9_c2hvh")
+entities = Array[ExtResource("7_n1mnr")]([SubResource("Resource_x1ssr")])
+groups = Array[Resource("res://core/resources/class/class_organization/class_group.gd")]([])
+
+[sub_resource type="Resource" id="Resource_78dre"]
+script = ExtResource("7_ojuwb")
+name = "Navegación por secciones"
+content_root = SubResource("Resource_81gkm")
+
+[sub_resource type="Resource" id="Resource_c05pe"]
+script = ExtResource("6_jvnb7")
+name = "Navegación"
+slides = Array[ExtResource("7_ojuwb")]([SubResource("Resource_78dre")])
+
+[resource]
+script = ExtResource("1_6i6dx")
+metadata = SubResource("Resource_u545a")
+entities = Array[Resource("res://core/resources/class/entities/entity.gd")]([SubResource("Resource_y4ot8")])
+sections = Array[ExtResource("6_jvnb7")]([SubResource("Resource_kgf6p"), SubResource("Resource_w40ka"), SubResource("Resource_iljpb"), SubResource("Resource_c05pe")])
+class_script = Array[Resource("res://core/resources/class/script_entries/script_entry.gd")]([SubResource("Resource_fqtfa")])
