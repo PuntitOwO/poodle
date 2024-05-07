@@ -29,7 +29,7 @@ func _gui_input(event):
             if not is_instance_valid(camera):
                 printerr(\"Trying to move but no camera available\")
                 return
-        camera.position -= event.relative
+        camera.position -= event.relative #* camera.zoom
         var mouse_pos: Vector2 = event.global_position
         var view := get_global_rect().grow(WARP_OFFSET)
         warped = not view.has_point(mouse_pos)
