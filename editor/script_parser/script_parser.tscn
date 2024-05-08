@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://c46bslpmokm55"]
+
+[ext_resource type="Script" path="res://editor/script_parser/script_parser.gd" id="1_7t8hl"]
+[ext_resource type="Script" path="res://editor/script_parser/script_text_editor.gd" id="1_samjk"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_rsrqa"]
+
+[node name="ScriptParser" type="PanelContainer" node_paths=PackedStringArray("edit")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7t8hl")
+edit = NodePath("ClassScriptCodeEdit")
+
+[node name="ClassScriptCodeEdit" type="CodeEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+text = "= section
+== Slide
+# Comment
+## Alt text
+text"
+placeholder_text = "= Section
+== Slide
+# Comment
+## Alt text
+
+Script lines"
+minimap_draw = true
+syntax_highlighter = SubResource("CodeHighlighter_rsrqa")
+gutters_draw_line_numbers = true
+script = ExtResource("1_samjk")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Parse"

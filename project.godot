@@ -48,6 +48,7 @@ folder_colors={
 "res://assets/": "teal",
 "res://concept/": "gray",
 "res://core/": "green",
+"res://editor/": "purple",
 "res://script_templates/": "gray"
 }
 
