@@ -14,7 +14,7 @@ func _ready():
 
 func on_class_index_changed(index: ClassIndex):
     script_entries = index.class_script
-    _load()
+    _load.call_deferred()
 
 func _load():
     var text := ""

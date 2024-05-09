@@ -15,7 +15,7 @@ func _ready():
 
 func on_class_index_changed(index: ClassIndex):
     metadata = index.metadata
-    update()
+    update.call_deferred()
 
 ## Update the editor to reflect the current metadata.
 func update():

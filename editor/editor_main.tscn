@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2uarei8kd036"]
+[gd_scene load_steps=6 format=3 uid="uid://c2uarei8kd036"]
 
 [ext_resource type="PackedScene" uid="uid://t2glt66qlxoo" path="res://editor/metadata/metadata.tscn" id="1_57epf"]
 [ext_resource type="Script" path="res://editor/editor_main.gd" id="1_djenl"]
 [ext_resource type="PackedScene" uid="uid://c46bslpmokm55" path="res://editor/script_parser/script_parser.tscn" id="2_mm28e"]
 [ext_resource type="PackedScene" uid="uid://6cm0u5eqk1pl" path="res://editor/lines/line_editor.tscn" id="4_7kgbb"]
+[ext_resource type="PackedScene" uid="uid://boddxdrkli1e5" path="res://editor/entities/entities_editor.tscn" id="5_sp0yw"]
 
 [node name="EditorMain" type="PanelContainer"]
 anchors_preset = 15
@@ -24,8 +25,10 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 tab_alignment = 1
+current_tab = 5
 
 [node name="File" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -97,11 +100,6 @@ theme_override_constants/margin_bottom = 20
 visible = false
 layout_mode = 2
 
-[node name="Entities" type="MarginContainer" parent="MarginContainer/TabContainer"]
+[node name="Entities" parent="MarginContainer/TabContainer" instance=ExtResource("5_sp0yw")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
