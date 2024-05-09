@@ -27,6 +27,9 @@ extends PlaybackControlEntity
 func get_class_name() -> String:
     return "PausePlaybackControlEntity"
 
+func get_editor_name() -> String:
+    return "Pause"
+
 # 12. public methods: define all public methods here
 
 # 13. private methods: define all private methods here, use _ as preffix

@@ -29,6 +29,9 @@ extends Entity
 func get_class_name() -> String:
     return "AudioEntity"
 
+func get_editor_name() -> String:
+    return "Audio: " + audio_path
+
 func serialize() -> Dictionary:
     return {
         "entity_type": get_class_name(),

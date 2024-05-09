@@ -49,7 +49,7 @@ func _update_entities_tree():
             continue
         var type_item := root.get_child(type_index)
         var entity_item := type_item.create_child()
-        entity_item.set_text(0, entity_type)
+        entity_item.set_text(0, entity.get_editor_name())
         entity_item.set_metadata(0, entity)
 
 func _get_type_list() -> PackedStringArray:

@@ -29,6 +29,9 @@ extends Entity
 func get_class_name() -> String:
     return "ImageEntity"
 
+func get_editor_name() -> String:
+    return "Image: " + image_path
+
 func serialize() -> Dictionary:
     return {
         "entity_type": get_class_name(),

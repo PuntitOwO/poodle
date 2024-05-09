@@ -30,6 +30,9 @@ extends Entity
 func get_class_name() -> String:
     return "LineEntity"
 
+func get_editor_name() -> String:
+    return "Line: " + str(len(points)) + " points"
+
 func serialize() -> Dictionary:
     var points_array: Array = Array(points)
     return {

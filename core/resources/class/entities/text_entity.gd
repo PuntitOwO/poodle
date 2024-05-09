@@ -36,6 +36,9 @@ extends Entity
 func get_class_name() -> String:
     return "TextEntity"
 
+func get_editor_name() -> String:
+    return content
+
 func serialize() -> Dictionary:
     return {
         "entity_type": get_class_name(),
