@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://6cm0u5eqk1pl"]
+
+[ext_resource type="Script" path="res://concept/line_record/line_record.gd" id="1_tfg83"]
+[ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_pcot2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xim8"]
+atlas = ExtResource("2_pcot2")
+region = Rect2(100, 250, 50, 50)
+
+[sub_resource type="InputEventKey" id="InputEventKey_hlpas"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_qgty8"]
+events = [SubResource("InputEventKey_hlpas")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv6py"]
+atlas = ExtResource("2_pcot2")
+region = Rect2(150, 450, 50, 50)
+
+[node name="LineRecord" type="HSplitContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tfg83")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Recorded lines:"
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+select_mode = 1
+allow_search = false
+max_columns = 0
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2i(75, 75)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Remove" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Remove"
+icon = SubResource("AtlasTexture_1xim8")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Save" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+shortcut = SubResource("Shortcut_qgty8")
+text = "Save All"
+icon = SubResource("AtlasTexture_kv6py")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Canvas" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+mouse_filter = 2
