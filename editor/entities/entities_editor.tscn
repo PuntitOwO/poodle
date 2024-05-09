@@ -14,26 +14,38 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 script = ExtResource("1_u6ssc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 2
 
-[node name="SectionTree" type="Tree" parent="HBoxContainer"]
+[node name="SectionTree" type="Tree" parent="HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 hide_root = true
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="Separator" type="Control" parent="HBoxContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 
-[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+[node name="Separator" type="TabContainer" parent="HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tabs_visible = false
+
+[node name="Unselected" type="CenterContainer" parent="HSplitContainer/HSplitContainer/Separator"]
 layout_mode = 2
 
-[node name="EntityTree" type="Tree" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/Separator/Unselected"]
+layout_mode = 2
+text = "Select a slide in the left panel"
+
+[node name="SlideContent" type="Tree" parent="HSplitContainer/HSplitContainer/Separator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="EntityTree" type="Tree" parent="HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
