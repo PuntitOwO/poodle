@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2uarei8kd036"]
+
+[ext_resource type="PackedScene" uid="uid://t2glt66qlxoo" path="res://editor/metadata/metadata.tscn" id="1_57epf"]
+
+[node name="EditorMain" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+current_tab = 1
+
+[node name="Metadata" parent="MarginContainer/TabContainer" instance=ExtResource("1_57epf")]
+visible = false
+layout_mode = 2
+
+[node name="Script" type="MarginContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Lines" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Entities" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
