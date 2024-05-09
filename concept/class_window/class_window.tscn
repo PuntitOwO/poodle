@@ -114,7 +114,7 @@ stretch = true
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(868, 623)
+size = Vector2i(400, 400)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
