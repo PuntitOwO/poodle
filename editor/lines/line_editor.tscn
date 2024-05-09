@@ -18,7 +18,7 @@ events = [SubResource("InputEventKey_hlpas")]
 atlas = ExtResource("2_pcot2")
 region = Rect2(150, 450, 50, 50)
 
-[node name="LineRecord" type="HSplitContainer"]
+[node name="LineEditor" type="HSplitContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

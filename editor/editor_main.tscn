@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://t2glt66qlxoo" path="res://editor/metadata/metadata.tscn" id="1_57epf"]
 [ext_resource type="Script" path="res://editor/editor_main.gd" id="1_djenl"]
 [ext_resource type="PackedScene" uid="uid://c46bslpmokm55" path="res://editor/script_parser/script_parser.tscn" id="2_mm28e"]
-[ext_resource type="PackedScene" uid="uid://6cm0u5eqk1pl" path="res://editor/lines/line_record.tscn" id="4_7kgbb"]
+[ext_resource type="PackedScene" uid="uid://6cm0u5eqk1pl" path="res://editor/lines/line_editor.tscn" id="4_7kgbb"]
 
 [node name="EditorMain" type="PanelContainer"]
 anchors_preset = 15

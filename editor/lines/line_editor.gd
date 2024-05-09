@@ -1,6 +1,9 @@
+class_name LineEditor
 extends Control
 
 const SQUARED_THRESHOLD = 25.0
+
+@export var entities: Array[LineEntity] = []
 
 var pressed = false:
     set(value):
@@ -15,24 +18,27 @@ func _ready():
     %Remove.pressed.connect(_remove_items)
     %Save.pressed.connect(_save_items)
 
+#region Drawing
+
 func _gui_input(event):
     if event is InputEventMouseMotion:
         _handle_mouse(event)
 
 func _handle_mouse(event: InputEventMouseMotion):
+    var _position: Vector2 = event.global_position - %Canvas.global_position
     if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
         if not pressed:
             pressed = true
             line = _new_line()
-            add_child(line)
-            line.add_point(event.global_position)
-            last_point = event.global_position
-        line.set_point_position(line.get_point_count() - 1, event.global_position)
-        if last_point.distance_squared_to(event.global_position) > SQUARED_THRESHOLD:
-            line.add_point(event.global_position)
-            last_point = event.global_position
+            %Canvas.add_child(line)
+            line.add_point(_position)
+            last_point = _position
+        line.set_point_position(line.get_point_count() - 1, _position)
+        if last_point.distance_squared_to(_position) > SQUARED_THRESHOLD:
+            line.add_point(_position)
+            last_point = _position
     if not event.button_mask & MOUSE_BUTTON_MASK_LEFT and pressed:
-        line.add_point(event.global_position)
+        line.add_point(_position)
         pressed = false
         last_point = Vector2.INF
         var thumbnail := _post_process_line(line)
@@ -48,6 +54,10 @@ func _new_line() -> Line2D:
     _line.end_cap_mode = Line2D.LINE_CAP_ROUND
     _line.joint_mode = Line2D.LINE_JOINT_ROUND
     return _line
+
+#endregion
+
+#region Item handling
 
 func _post_process_line(node: Line2D) -> Texture2D:
     # Get the bounding box of the line
@@ -67,7 +77,10 @@ func _post_process_line(node: Line2D) -> Texture2D:
     var viewport_size := Vector2i(get_viewport().get_visible_rect().size)
     var screenshot_size := screenshot.get_size()
     var ratio := viewport_size / screenshot_size
-    var screenshot_rect := Rect2i(Vector2i(Vector2(l, t)) * ratio, Vector2i(Vector2(r - l, b - t)) * ratio)
+    var screenshot_rect := Rect2i(
+        Vector2i(Vector2(l, t) + node.global_position) * ratio,
+        Vector2i(Vector2(r - l, b - t)) * ratio
+    )
     # Crop the screenshot
     screenshot = screenshot.get_region(screenshot_rect)
 
@@ -95,9 +108,7 @@ func _remove_items() -> void:
         item.call_deferred("free")
 
 func _save_items() -> void:
-    var entities := items.map(func (i): return i._generate_entity().serialize())
-    var json = JSON.stringify(entities, "\t")
-    DisplayServer.clipboard_set(json)
+    entities = items.map(func (i): return i._generate_entity())
 
 class LineItem:
     var thumbnail: Texture2D
@@ -113,3 +124,5 @@ class LineItem:
         var entity = LineEntity.new()
         entity.points = node.points
         return entity
+
+#endregion
