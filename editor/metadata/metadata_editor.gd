@@ -6,13 +6,16 @@ signal metadata_changed(metadata: ClassMetadata)
 @export var metadata: ClassMetadata:
     set(value):
         metadata = value
-        emit_signal("metadata_changed", value)
         update()
 
 func _ready():
     if is_instance_valid(metadata):
         update()
     %SaveButton.pressed.connect(save)
+
+func on_class_index_changed(index: ClassIndex):
+    metadata = index.metadata
+    update()
 
 ## Update the editor to reflect the current metadata.
 func update():
@@ -48,4 +51,4 @@ func save():
     new_metadata.editor_version = %Editor.text
     # Save
     metadata = new_metadata
-    emit_signal("metadata_changed", new_metadata)
+    metadata_changed.emit(metadata)

@@ -1,19 +1,46 @@
 extends Control
 
+signal script_entries_changed(entries: Array[ScriptEntry])
+
+@export var script_entries: Array[ScriptEntry]
 @export var edit: ClassScriptCodeEdit
 
 var section_counter := 1
 var slide_counter := 1
 
-@onready var test_button: Button = $Button
-
-var test_parse: Array[ScriptEntry]
 
 func _ready():
-    test_button.pressed.connect(_test_parse)
+    %SaveButton.pressed.connect(parse)
 
-func _test_parse():
-    test_parse = parse_text()
+func on_class_index_changed(index: ClassIndex):
+    script_entries = index.class_script
+    _load()
+
+func _load():
+    var text := ""
+    for entry in script_entries:
+        var line := entry.content
+        if entry is CommentEntry:
+            if line.begins_with("Slide"):
+                line = "==" + remove_until(line, ": ")
+            elif line.begins_with("Sec"):
+                line = "=" + remove_until(line, ": ")
+            else:
+                line = "#" + line
+        elif entry is AltTextEntry:
+            line = "##" + line
+        text += line + "\n"
+    edit.text = text
+
+func remove_until(line: String, until: String) -> String:
+    var index = line.find(until)
+    if index == -1:
+        return line
+    return line.substr(index + until.length())
+
+func parse():
+    script_entries = parse_text()
+    script_entries_changed.emit(script_entries)
 
 func parse_text() -> Array[ScriptEntry]:
     var entries: Array[ScriptEntry] = []

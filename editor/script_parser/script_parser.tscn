@@ -5,18 +5,26 @@
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_rsrqa"]
 
-[node name="ScriptParser" type="PanelContainer" node_paths=PackedStringArray("edit")]
+[node name="ScriptParser" type="MarginContainer" node_paths=PackedStringArray("edit")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 script = ExtResource("1_7t8hl")
-edit = NodePath("ClassScriptCodeEdit")
+edit = NodePath("VBoxContainer/ClassScriptCodeEdit")
 
-[node name="ClassScriptCodeEdit" type="CodeEdit" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ClassScriptCodeEdit" type="CodeEdit" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 text = "= section
 == Slide
@@ -34,8 +42,9 @@ syntax_highlighter = SubResource("CodeHighlighter_rsrqa")
 gutters_draw_line_numbers = true
 script = ExtResource("1_samjk")
 
-[node name="Button" type="Button" parent="."]
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "Parse"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Save"
