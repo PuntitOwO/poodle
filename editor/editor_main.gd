@@ -1,5 +1,7 @@
 extends Control
 
+const DEFAULT_EXPORT_PATH = "user://tmp/index.json"
+
 @export var class_index: ClassIndex
 
 func _ready():
@@ -7,6 +9,7 @@ func _ready():
     %NewFileButton.pressed.connect(_new_class)
     %LoadFileButton.pressed.connect(_open_class)
     get_tree().root.files_dropped.connect(_on_files_selected)
+    %ExportButton.pressed.connect(_export_class)
     # Metadata Tab
     %Metadata.metadata_changed.connect(func (m): class_index.metadata = m)
     # Script Tab
@@ -69,3 +72,17 @@ func _on_file_selected(path: String) -> void:
     _update_tabs()
 
 #endregion
+
+func _export_class():
+    var path: String = %ExportPath.text
+    if path.is_empty():
+        path = DEFAULT_EXPORT_PATH
+    var relative_dir := path.replace("user://", "").replace("index.json", "")
+    var dir := DirAccess.open("user://")
+    if not dir.dir_exists(relative_dir):
+        dir.make_dir_recursive(relative_dir)
+    var final_path := "user://" + relative_dir + "index.json"
+    var file := FileAccess.open(final_path, FileAccess.WRITE)
+    file.store_string(JSON.stringify(class_index.serialize(), "\t"))
+    file.close()
+    OS.shell_open(OS.get_user_data_dir() + "/" + relative_dir + "/")
