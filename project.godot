@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="poodle"
+config/name="POODLE"
 run/main_scene="res://concept/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+run/main_scene.poodle-editor="res://editor/editor_main.tscn"
+config/name.poodle-editor="POODLE Editor"
 
 [audio]
 
