@@ -8,6 +8,9 @@ var selected_section: TreeItem
 
 func _ready():
     (%SectionTree as Tree).item_selected.connect(on_section_selected)
+    (%SlideTreeWrapper as TabContainer).current_tab = 0
+    _configure_groups_dropdown()
+    (%AddButton as Button).pressed.connect(_add_new_item_to_group)
 
 func on_class_index_changed(index: ClassIndex):
     sections = index.sections
@@ -48,6 +51,7 @@ func _update_slide_tree():
     var content_root := selected_section.get_metadata(0) as ClassGroup
     var root := tree.create_item()
     root.set_text(0, content_root.get_editor_name())
+    root.set_metadata(0, content_root)
     _add_groups(root, content_root.groups)
     _add_entities(root, content_root.entities)
 
@@ -64,6 +68,42 @@ func _add_entities(parent: TreeItem, _entities: Array[EntityWrapper]):
         var entity_item = parent.create_child()
         entity_item.set_text(0, "EntityWrapper")
         entity_item.set_metadata(0, entity)
+
+func _configure_groups_dropdown():
+    var dropdown := %GroupDropdown as OptionButton
+    for type in CustomClassDB.groups:
+        if type == "ClassGroup":
+            continue
+        dropdown.add_item(type)
+
+func _add_new_item_to_group():
+    var dropdown := %GroupDropdown as OptionButton
+    var item_type := dropdown.selected
+    if item_type == -1:
+        printerr("No item type selected")
+        return
+    var parent := (%SlideTree as Tree).get_selected()
+    if not is_instance_valid(parent):
+        printerr("No parent selected")
+        return
+    if item_type == 0:
+        _add_new_entity(parent)
+    else:
+        _add_new_group(parent, dropdown.get_item_text(item_type))
+
+func _add_new_group(parent: TreeItem, group_type: String):
+    var group: ClassGroup = CustomClassDB.instantiate(group_type)
+    var group_item := parent.create_child()
+    group_item.set_text(0, group.get_editor_name())
+    group_item.set_metadata(0, group)
+    parent.get_metadata(0).groups.push_back(group)
+
+func _add_new_entity(parent: TreeItem):
+    var entity: EntityWrapper = EntityWrapper.new()
+    var entity_item := parent.create_child()
+    entity_item.set_text(0, "EntityWrapper")
+    entity_item.set_metadata(0, entity)
+    parent.get_metadata(0).entities.push_back(entity)
 
 #endregion
 

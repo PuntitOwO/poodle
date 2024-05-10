@@ -32,19 +32,51 @@ size_flags_stretch_ratio = 2.0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+current_tab = 1
 tabs_visible = false
 
 [node name="Unselected" type="CenterContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/Unselected"]
 layout_mode = 2
 text = "Select a slide in the left panel"
 
-[node name="SlideTree" type="Tree" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper"]
-unique_name_in_owner = true
-visible = false
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add: "
+
+[node name="Spacer" type="Control" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GroupDropdown" type="OptionButton" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "EntityWrapper"
+popup/item_0/id = 0
+
+[node name="AddButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " + "
+
+[node name="SlideTree" type="Tree" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
 
 [node name="EntityTree" type="Tree" parent="HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true

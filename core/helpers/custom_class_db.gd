@@ -6,6 +6,7 @@ extends Object
 ## It is used to store the classes info to expose an API similar to the [ClassDB] API.
 
 static var classes: Dictionary = {}
+static var groups: PackedStringArray = PackedStringArray()
 
 static func _static_init():
     _update_classes()
@@ -32,3 +33,5 @@ static func _update_classes():
     var class_list: Array[Dictionary] = ProjectSettings.get_global_class_list()
     for class_info in class_list:
         classes[class_info["class"]] = class_info
+        if "Class" in class_info["class"] and "Group" in class_info["class"]:
+            groups.push_back(class_info["class"])

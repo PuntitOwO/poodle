@@ -12,7 +12,11 @@ extends Resource
 # 3. signals: define signals here
 
 # 4. enums: define enums here
-
+enum GROUP_STATE { 
+    EMPTY, 
+    ENTITY, 
+    GROUP, 
+}
 # 5. constants: define constants here
 
 # 6. export variables: define all export variables in groups here
@@ -27,7 +31,13 @@ extends Resource
         _validate()
 
 # 7. public variables: define all public variables here
-
+var state: GROUP_STATE = GROUP_STATE.EMPTY:
+    get:
+        if not entities.is_empty():
+            return GROUP_STATE.ENTITY
+        if not groups.is_empty():
+            return GROUP_STATE.GROUP
+        return GROUP_STATE.EMPTY
 # 8. private variables: define all private variables here, use _ as preffix
 
 # 9. onready variables: define all onready variables here
