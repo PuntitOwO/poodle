@@ -4,7 +4,10 @@ class_name ClassGroup
 extends Resource
 
 # 2. docs: use docstring (##) to generate docs for this file
-## A resource that represents a group of [Entity]s
+## Base class for a resource that represents a group of [Entity]s or [ClassGroup]s.
+## See also:
+##   * [ClassChainGroup], a group that is executed in sequence.
+##   * [ClassParallelGroup], a group that is executed in parallel.
 
 # 3. signals: define signals here
 
@@ -37,6 +40,13 @@ extends Resource
 # 12. public methods: define all public methods here
 func get_class_name() -> String:
     return "ClassGroup"
+
+func get_editor_name() -> String:
+    if not entities.is_empty():
+        return "group: %d entities" % len(entities)
+    if not groups.is_empty():
+        return "group: %d groups" % len(groups)
+    return "group: Empty"
 
 func serialize() -> Dictionary:
     var serialized: Dictionary = {

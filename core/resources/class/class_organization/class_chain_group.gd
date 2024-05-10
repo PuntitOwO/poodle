@@ -29,6 +29,9 @@ extends ClassGroup
 func get_class_name() -> String:
     return "ClassChainGroup"
 
+func get_editor_name() -> String:
+    return "Chain " + super.get_editor_name()
+
 func load_data(_data: Dictionary) -> void:
     pass
 

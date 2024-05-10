@@ -29,6 +29,9 @@ extends ClassGroup
 func get_class_name() -> String:
     return "ClassParallelGroup"
 
+func get_editor_name() -> String:
+    return "Parallel " + super.get_editor_name()
+
 func load_data(_data: Dictionary) -> void:
     pass
 
