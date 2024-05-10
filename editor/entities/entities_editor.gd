@@ -5,13 +5,20 @@ extends Control
 @export var entities: Array[Entity] = []
 
 var selected_slide: TreeItem
+var selected_entity_wrapper: EntityWrapper
 
 func _ready():
     (%SectionTree as Tree).item_selected.connect(on_section_selected)
+    (%SlideTree as Tree).item_selected.connect(on_group_selected)
+    (%SlideTree as Tree).nothing_selected.connect(on_group_deselected)
+    (%EntityTree as Tree).item_selected.connect(func (): (%SetEntityButton as Button).disabled = false)
+    (%EntityTree as Tree).nothing_selected.connect(func (): (%SetEntityButton as Button).disabled = true)
+    (%EntityWrapperPanel as Control).visible = false
     (%SlideTreeSwitcher as SwitcherContainer).show_second = false
     _configure_groups_dropdown()
     (%AddGroupButton as Button).pressed.connect(_add_new_item_to_group)
     (%RemoveGroupButton as Button).pressed.connect(_remove_item_from_group)
+    (%SetEntityButton as Button).pressed.connect(_set_entity)
 
 func on_class_index_changed(index: ClassIndex):
     sections = index.sections
@@ -45,6 +52,35 @@ func on_section_selected():
     selected_slide = (%SectionTree as Tree).get_selected()
     (%SlideTreeSwitcher as SwitcherContainer).show_second = true
     _update_slide_tree.call_deferred()
+
+func on_group_selected():
+    var selected := (%SlideTree as Tree).get_selected()
+    if not is_instance_valid(selected):
+        on_group_deselected()
+        return
+    selected_entity_wrapper = selected.get_metadata(0) as EntityWrapper
+    _update_entity_editor()
+
+func on_group_deselected():
+    selected_entity_wrapper = null
+    _update_entity_editor()
+
+func _update_entity_editor():
+    var _visible := is_instance_valid(selected_entity_wrapper)
+    (%EntityWrapperPanel as Control).visible = _visible
+    if not _visible:
+        return
+    if not is_instance_valid(selected_entity_wrapper.entity):
+        selected_entity_wrapper.entity = entities[selected_entity_wrapper.entity_id]
+    (%EntityName as LineEdit).text = selected_entity_wrapper.entity.get_editor_name()
+
+func _set_entity():
+    var selected := (%EntityTree as Tree).get_selected()
+    if not is_instance_valid(selected):
+        printerr("No entity selected")
+        return
+    selected_entity_wrapper.entity = selected.get_metadata(0)
+    _update_entity_editor()
 
 func _update_slide_tree():
     var tree := %SlideTree as Tree

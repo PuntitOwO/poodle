@@ -103,11 +103,46 @@ layout_mode = 2
 layout_mode = 2
 text = "Add a group using the top bar"
 
-[node name="SlideTree" type="Tree" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher"]
+layout_mode = 2
+
+[node name="SlideTree" type="Tree" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
+
+[node name="EntityWrapperPanel" type="PanelContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer"]
+layout_mode = 2
+text = "EntityWrapper"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Entity: "
+
+[node name="EntityName" type="LineEdit" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "No entity"
+editable = false
+
+[node name="SetEntityButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Set"
 
 [node name="EntityTree" type="Tree" parent="HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true

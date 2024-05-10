@@ -25,10 +25,8 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 tab_alignment = 1
-current_tab = 5
 
 [node name="File" type="MarginContainer" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -102,4 +100,5 @@ layout_mode = 2
 
 [node name="Entities" parent="MarginContainer/TabContainer" instance=ExtResource("5_sp0yw")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
