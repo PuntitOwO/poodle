@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://boddxdrkli1e5"]
+[gd_scene load_steps=5 format=3 uid="uid://boddxdrkli1e5"]
 
 [ext_resource type="Script" path="res://editor/entities/entities_editor.gd" id="1_u6ssc"]
+[ext_resource type="Script" path="res://utils/custom_control/switcher_container.gd" id="2_aoubr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ifu4v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cf2pr"]
 
 [node name="Entities" type="MarginContainer"]
 anchors_preset = 15
@@ -28,51 +33,77 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="SlideTreeWrapper" type="TabContainer" parent="HSplitContainer/HSplitContainer"]
+[node name="SlideTreeSwitcher" type="TabContainer" parent="HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ifu4v")
 current_tab = 1
 tabs_visible = false
+script = ExtResource("2_aoubr")
+show_second = true
 
-[node name="Unselected" type="CenterContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper"]
+[node name="Unselected" type="CenterContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher"]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/Unselected"]
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/Unselected"]
 layout_mode = 2
 text = "Select a slide in the left panel"
 
-[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper"]
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer"]
+[node name="SlideTreeContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Add: "
-
-[node name="Spacer" type="Control" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
+[node name="GroupDropdown" type="OptionButton" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="GroupDropdown" type="OptionButton" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-item_count = 1
-popup/item_0/text = "EntityWrapper"
+item_count = 2
+selected = 0
+popup/item_0/text = "Select Type"
 popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "EntityWrapper"
+popup/item_1/id = 1
 
-[node name="AddButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer/HBoxContainer"]
+[node name="AddGroupButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = " + "
+text = "Add"
 
-[node name="SlideTree" type="Tree" parent="HSplitContainer/HSplitContainer/SlideTreeWrapper/VSplitContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RemoveGroupButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Remove"
+
+[node name="EmptyTreeSwitcher" type="TabContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cf2pr")
+current_tab = 1
+tabs_visible = false
+script = ExtResource("2_aoubr")
+show_second = true
+
+[node name="Unselected" type="CenterContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/Unselected"]
+layout_mode = 2
+text = "Add a group using the top bar"
+
+[node name="SlideTree" type="Tree" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

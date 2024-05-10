@@ -4,13 +4,14 @@ extends Control
 @export var sections: Array[ClassSection] = []
 @export var entities: Array[Entity] = []
 
-var selected_section: TreeItem
+var selected_slide: TreeItem
 
 func _ready():
     (%SectionTree as Tree).item_selected.connect(on_section_selected)
-    (%SlideTreeWrapper as TabContainer).current_tab = 0
+    (%SlideTreeSwitcher as SwitcherContainer).show_second = false
     _configure_groups_dropdown()
-    (%AddButton as Button).pressed.connect(_add_new_item_to_group)
+    (%AddGroupButton as Button).pressed.connect(_add_new_item_to_group)
+    (%RemoveGroupButton as Button).pressed.connect(_remove_item_from_group)
 
 func on_class_index_changed(index: ClassIndex):
     sections = index.sections
@@ -34,26 +35,36 @@ func _add_slides(section: TreeItem, slides: Array[ClassSlide]):
     for slide in slides:
         var slide_item = section.create_child()
         slide_item.set_text(0, slide.name)
-        slide_item.set_metadata(0, slide.content_root)
+        slide_item.set_metadata(0, slide)
 
 #endregion
 
 #region Slide content Tree
 
 func on_section_selected():
-    selected_section = (%SectionTree as Tree).get_selected()
-    (%SlideTreeWrapper as TabContainer).current_tab = 1
+    selected_slide = (%SectionTree as Tree).get_selected()
+    (%SlideTreeSwitcher as SwitcherContainer).show_second = true
     _update_slide_tree.call_deferred()
 
 func _update_slide_tree():
     var tree := %SlideTree as Tree
     tree.clear()
-    var content_root := selected_section.get_metadata(0) as ClassGroup
+    var content_root := (selected_slide.get_metadata(0) as ClassSlide).content_root
+    if not is_instance_valid(content_root):
+        _show_no_content()
+        return
+    _show_content()
     var root := tree.create_item()
     root.set_text(0, content_root.get_editor_name())
     root.set_metadata(0, content_root)
     _add_groups(root, content_root.groups)
     _add_entities(root, content_root.entities)
+
+func _show_no_content():
+    (%EmptyTreeSwitcher as SwitcherContainer).show_second = false
+
+func _show_content():
+    (%EmptyTreeSwitcher as SwitcherContainer).show_second = true
 
 func _add_groups(parent: TreeItem, groups: Array[ClassGroup]):
     for group in groups:
@@ -79,17 +90,28 @@ func _configure_groups_dropdown():
 func _add_new_item_to_group():
     var dropdown := %GroupDropdown as OptionButton
     var item_type := dropdown.selected
-    if item_type == -1:
+    if item_type <= 0:
         printerr("No item type selected")
         return
     var parent := (%SlideTree as Tree).get_selected()
     if not is_instance_valid(parent):
-        printerr("No parent selected")
+        if is_instance_valid((%SlideTree as Tree).get_root()):
+            printerr("No group selected")
+        elif item_type == 1:
+            printerr("Cannot add entity as root")
+        else:
+            _add_root_group(dropdown.get_item_text(item_type))            
         return
-    if item_type == 0:
+    if item_type == 1:
         _add_new_entity(parent)
     else:
         _add_new_group(parent, dropdown.get_item_text(item_type))
+
+func _add_root_group(group_type: String):
+    var group: ClassGroup = CustomClassDB.instantiate(group_type)
+    var slide := selected_slide.get_metadata(0) as ClassSlide
+    slide.content_root = group
+    _update_slide_tree.call_deferred()
 
 func _add_new_group(parent: TreeItem, group_type: String):
     var group: ClassGroup = CustomClassDB.instantiate(group_type)
@@ -104,6 +126,22 @@ func _add_new_entity(parent: TreeItem):
     entity_item.set_text(0, "EntityWrapper")
     entity_item.set_metadata(0, entity)
     parent.get_metadata(0).entities.push_back(entity)
+
+func _remove_item_from_group():
+    var selected := (%SlideTree as Tree).get_selected()
+    if not is_instance_valid(selected):
+        printerr("No group selected")
+        return
+    var parent := selected.get_parent()
+    if not is_instance_valid(parent):
+        (selected_slide.get_metadata(0) as ClassSlide).content_root = null
+        _update_slide_tree.call_deferred()
+        return
+    if selected.get_metadata(0) is EntityWrapper:
+        parent.get_metadata(0).entities.erase(selected.get_metadata(0))
+    else:
+        parent.get_metadata(0).groups.erase(selected.get_metadata(0))
+    _update_slide_tree.call_deferred()
 
 #endregion
 
