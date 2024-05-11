@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://editor/entities/entities_editor.gd" id="1_u6ssc"]
 [ext_resource type="Script" path="res://utils/custom_control/switcher_container.gd" id="2_aoubr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ifu4v"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xa50m"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cf2pr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnrfw"]
 
 [node name="Entities" type="MarginContainer"]
 anchors_preset = 15
@@ -37,7 +37,7 @@ size_flags_stretch_ratio = 2.0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ifu4v")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xa50m")
 current_tab = 1
 tabs_visible = false
 script = ExtResource("2_aoubr")
@@ -89,7 +89,7 @@ text = "Remove"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_cf2pr")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wnrfw")
 current_tab = 1
 tabs_visible = false
 script = ExtResource("2_aoubr")

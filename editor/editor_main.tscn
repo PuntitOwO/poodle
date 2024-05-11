@@ -25,8 +25,10 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 tab_alignment = 1
+current_tab = 3
 
 [node name="File" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -76,29 +78,32 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Metadata" parent="MarginContainer/TabContainer" instance=ExtResource("1_57epf")]
-unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="Script" parent="MarginContainer/TabContainer" instance=ExtResource("2_mm28e")]
-unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="Audio" type="MarginContainer" parent="MarginContainer/TabContainer"]
+[node name="Entities" type="MarginContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="EntityEditors" type="TabContainer" parent="MarginContainer/TabContainer/Entities"]
 unique_name_in_owner = true
+layout_mode = 2
+tab_alignment = 1
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/TabContainer/Entities/EntityEditors"]
+layout_mode = 2
+
+[node name="Lines" parent="MarginContainer/TabContainer/Entities/EntityEditors" instance=ExtResource("4_7kgbb")]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 
-[node name="Lines" parent="MarginContainer/TabContainer" instance=ExtResource("4_7kgbb")]
-visible = false
-layout_mode = 2
-
-[node name="Entities" parent="MarginContainer/TabContainer" instance=ExtResource("5_sp0yw")]
-unique_name_in_owner = true
+[node name="Sections" parent="MarginContainer/TabContainer" instance=ExtResource("5_sp0yw")]
 visible = false
 layout_mode = 2

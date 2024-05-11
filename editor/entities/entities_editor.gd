@@ -3,11 +3,16 @@ extends Control
 
 @export var sections: Array[ClassSection] = []
 @export var entities: Array[Entity] = []
+var editor_signals: EditorEventBus
 
 var selected_slide: TreeItem
 var selected_entity_wrapper: EntityWrapper
 
 func _ready():
+    editor_signals = Engine.get_singleton(&"EditorSignals") as EditorEventBus
+    editor_signals.class_index_changed.connect(_on_class_index_changed)
+    editor_signals.class_sections_changed.connect(_on_sections_changed)
+    editor_signals.class_entities_changed.connect(_on_entities_changed)
     (%SectionTree as Tree).item_selected.connect(on_section_selected)
     (%SlideTree as Tree).item_selected.connect(on_group_selected)
     (%SlideTree as Tree).nothing_selected.connect(on_group_deselected)
@@ -20,10 +25,20 @@ func _ready():
     (%RemoveGroupButton as Button).pressed.connect(_remove_item_from_group)
     (%SetEntityButton as Button).pressed.connect(_set_entity)
 
-func on_class_index_changed(index: ClassIndex):
-    sections = index.sections
-    entities = index.entities
+func _on_class_index_changed(index: ClassIndex):
+    _on_sections_changed(index.sections)
+    _on_entities_changed(index.entities)
+
+func _on_sections_changed(new_sections: Array[ClassSection]):
+    if new_sections == sections:
+        return
+    sections = new_sections
     _update_section_tree.call_deferred()
+
+func _on_entities_changed(new_entities: Array[Entity]):
+    if new_entities == entities:
+        return
+    entities = new_entities
     _update_entities_tree.call_deferred()
 
 #region Section Tree

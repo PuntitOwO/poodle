@@ -1,24 +1,29 @@
 class_name MetadataEditor
 extends Control
 
-signal metadata_changed(metadata: ClassMetadata)
+@export var metadata: ClassMetadata
+var editor_signals: EditorEventBus
 
-@export var metadata: ClassMetadata:
-    set(value):
-        metadata = value
-        update()
 
 func _ready():
+    editor_signals = Engine.get_singleton(&"EditorSignals") as EditorEventBus
     if is_instance_valid(metadata):
-        update()
+        _update()
     %SaveButton.pressed.connect(save)
+    editor_signals.class_index_changed.connect(_on_class_index_changed)
+    editor_signals.class_metadata_changed.connect(_update_metadata)
 
-func on_class_index_changed(index: ClassIndex):
-    metadata = index.metadata
-    update.call_deferred()
+func _on_class_index_changed(index: ClassIndex):
+    _update_metadata(index.metadata)
+
+func _update_metadata(new_metadata: ClassMetadata):
+    if new_metadata == metadata:
+        return
+    metadata = new_metadata
+    _update()
 
 ## Update the editor to reflect the current metadata.
-func update():
+func _update():
     # Class Info
     %Name.text = metadata.name
     %Description.text = metadata.description
@@ -51,4 +56,4 @@ func save():
     new_metadata.editor_version = %Editor.text
     # Save
     metadata = new_metadata
-    metadata_changed.emit(metadata)
+    editor_signals.class_metadata_change_requested.emit(metadata)

@@ -3,6 +3,12 @@ extends Control
 const DEFAULT_EXPORT_PATH = "user://tmp/index.json"
 
 @export var class_index: ClassIndex
+var editor_signals: EditorEventBus
+
+func _enter_tree():
+    # Register singleton
+    Engine.register_singleton(&"EditorSignals", EditorEventBus.new())
+    editor_signals = Engine.get_singleton(&"EditorSignals") as EditorEventBus
 
 func _ready():
     # File Tab
@@ -10,12 +16,39 @@ func _ready():
     %LoadFileButton.pressed.connect(_open_class)
     get_tree().root.files_dropped.connect(_on_files_selected)
     %ExportButton.pressed.connect(_export_class)
-    # Metadata Tab
-    %Metadata.metadata_changed.connect(func (m): class_index.metadata = m)
-    # Script Tab
-    %Script.script_entries_changed.connect(func (s): class_index.class_script = s)
+    # Handle update requests
+    editor_signals.class_index_change_requested.connect(_change_index)
+    editor_signals.class_metadata_change_requested.connect(_change_metadata)
+    editor_signals.class_script_change_requested.connect(_change_script)
+    editor_signals.class_entities_add_requested.connect(_append_entities)
+    editor_signals.class_sections_change_requested.connect(_change_sections)
     # Update UI
     _update_tabs()
+
+#region Update handlers
+
+func _change_index(index: ClassIndex):
+    class_index = index
+    editor_signals.class_index_changed.emit(index)
+    _update_tabs()
+
+func _change_metadata(metadata: ClassMetadata):
+    class_index.metadata = metadata
+    editor_signals.class_metadata_changed.emit(metadata)
+
+func _change_script(new_script: Array[ScriptEntry]):
+    class_index.class_script = new_script
+    editor_signals.class_script_changed.emit(new_script)
+
+func _append_entities(entities: Array[Entity]):
+    class_index.entities.append_array(entities)
+    editor_signals.class_entities_changed.emit(class_index.entities)
+
+func _change_sections(sections: Array[ClassSection]):
+    class_index.sections = sections
+    editor_signals.class_sections_changed.emit(sections)    
+
+#endregion
 
 func _update_tabs():
     var valid_file = is_instance_valid(class_index)
@@ -26,8 +59,7 @@ func _update_tabs():
 #region Create/Load File
 
 func _new_class():
-    class_index = ClassIndex.new()
-    _update_tabs()
+    _change_index(ClassIndex.new())
 
 func _open_class():
     if DisplayServer.has_feature(DisplayServer.FEATURE_NATIVE_DIALOG):
@@ -67,9 +99,7 @@ func _on_file_selected(path: String) -> void:
     var index = JSON.parse_string(content)
     if index == null or typeof(index) != TYPE_DICTIONARY:
         return
-    class_index = ClassIndex.deserialize(index)
-    %TabContainer.propagate_call("on_class_index_changed", [class_index])
-    _update_tabs()
+    _change_index(ClassIndex.deserialize(index))
 
 #endregion
 

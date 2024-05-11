@@ -1,9 +1,8 @@
 extends Control
 
-signal script_entries_changed(entries: Array[ScriptEntry])
-
 @export var script_entries: Array[ScriptEntry]
 @export var edit: ClassScriptCodeEdit
+var editor_signals: EditorEventBus
 
 var section_counter := 1
 var slide_counter := 1
@@ -11,9 +10,17 @@ var slide_counter := 1
 
 func _ready():
     %SaveButton.pressed.connect(parse)
+    editor_signals = Engine.get_singleton(&"EditorSignals") as EditorEventBus
+    editor_signals.class_index_changed.connect(_on_class_index_changed)
+    editor_signals.class_script_changed.connect(_on_class_script_changed)
 
-func on_class_index_changed(index: ClassIndex):
-    script_entries = index.class_script
+func _on_class_index_changed(index: ClassIndex):
+    _on_class_script_changed(index.class_script)
+
+func _on_class_script_changed(entries: Array[ScriptEntry]):
+    if script_entries == entries:
+        return
+    script_entries = entries
     _load.call_deferred()
 
 func _load():
@@ -22,9 +29,9 @@ func _load():
         var line := entry.content
         if entry is CommentEntry:
             if line.begins_with("Slide"):
-                line = "==" + remove_until(line, ": ")
+                line = "\n==" + remove_until(line, ": ")
             elif line.begins_with("Sec"):
-                line = "=" + remove_until(line, ": ")
+                line = "\n=" + remove_until(line, ": ")
             else:
                 line = "#" + line
         elif entry is AltTextEntry:
@@ -40,7 +47,7 @@ func remove_until(line: String, until: String) -> String:
 
 func parse():
     script_entries = parse_text()
-    script_entries_changed.emit(script_entries)
+    editor_signals.class_script_changed.emit(script_entries)
 
 func parse_text() -> Array[ScriptEntry]:
     var entries: Array[ScriptEntry] = []

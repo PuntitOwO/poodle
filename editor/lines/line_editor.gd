@@ -4,6 +4,7 @@ extends Control
 const SQUARED_THRESHOLD = 25.0
 
 @export var entities: Array[LineEntity] = []
+var editor_signals: EditorEventBus
 
 var pressed = false:
     set(value):
@@ -17,6 +18,7 @@ var idx: int = 0
 func _ready():
     %Remove.pressed.connect(_remove_items)
     %Save.pressed.connect(_save_items)
+    editor_signals = Engine.get_singleton(&"EditorSignals") as EditorEventBus
 
 #region Drawing
 
@@ -109,6 +111,7 @@ func _remove_items() -> void:
 
 func _save_items() -> void:
     entities = items.map(func (i): return i._generate_entity())
+    editor_signals.class_entities_add_requested.emit(entities)
 
 class LineItem:
     var thumbnail: Texture2D
