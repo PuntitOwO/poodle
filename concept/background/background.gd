@@ -10,7 +10,10 @@ const MULTIPLIER = 5
 		queue_redraw()
 @export var show_grid: bool = true:
 	set(value):
+		if value == show_grid:
+			return
 		show_grid = value
+		print("Show grid: ", show_grid)
 		queue_redraw()
 
 func _ready():
