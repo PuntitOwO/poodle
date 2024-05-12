@@ -5,6 +5,8 @@ extends IndexedNode2D
 
 var absolute_slide_id: int = -1
 
+static var hide_on_finished: bool = false
+
 func _ready():
     add_to_group("slide_nodes")
 
@@ -32,7 +34,8 @@ func on_slide_finished() -> void:
     if !is_instance_valid(next):
         return
     next.play()
-    hide()
+    if hide_on_finished:
+        hide()
 
 ## Called when a slide has been seeked to.
 func on_seek(prev_slide_id: int, new_slide_id: int) -> void:

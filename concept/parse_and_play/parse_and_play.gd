@@ -1,6 +1,8 @@
 class_name ConceptClassScene
 extends Node2D
 
+const PAGE_SIZE = Vector2(1080, 720)
+
 var file: String
 @export var class_index: ClassIndex
 var entities: Array
@@ -53,19 +55,25 @@ func _parse() -> bool:
 func _instantiate() -> bool:
 	section_manager = SectionManager.new()
 	entities = class_index.entities
+	var section_y_position := 0.0
 	for section in class_index.sections:
 		var node: Node2D = _instantiate_section(section)
+		node.position.y = section_y_position
+		section_y_position += PAGE_SIZE.y
 		root.add_child(node)
 	return true
 
 func _instantiate_section(section: ClassSection) -> Node2D:
 	var node: Node2D = Node2D.new()
 	var section_tree_item := section_manager.register_section(section.name)
+	var slide_x_position := 0.0
 	for slide in section.slides:
 		var slide_node: SlideNode = _instantiate_slide(slide)
 		var slide_tree_item := section_manager.register_slide(section_tree_item, slide_node.name)
 		slide_node.tree_item = slide_tree_item
 		slide_node.absolute_slide_id = slide_count
+		slide_node.position.x = slide_x_position
+		slide_x_position += PAGE_SIZE.x
 		slide_count += 1
 		node.add_child(slide_node)
 	section_tree_item.set_metadata(0, node.get_child(0))
