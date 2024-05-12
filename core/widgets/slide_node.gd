@@ -8,6 +8,11 @@ var absolute_slide_id: int = -1
 static var hide_on_finished: bool = false
 
 func _ready():
+    var notifier := VisibleOnScreenNotifier2D.new()
+    add_child(notifier, false, INTERNAL_MODE_FRONT)
+    var root := get_child(0) as GroupController
+    notifier.screen_entered.connect(root.show)
+    notifier.screen_exited.connect(root.hide)
     add_to_group("slide_nodes")
 
 ## Passes the play call to the first child node.
