@@ -5,12 +5,13 @@
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(1160, 680)
+motion_mirroring = Vector2(3240, 2160)
 
 [node name="Background" type="Node2D" parent="ParallaxLayer"]
 texture_repeat = 2
 script = ExtResource("1_iau34")
-grid_size = 50
+grid_size = 30
+show_grid = null
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxLayer/Background"]
 visible = false
@@ -18,7 +19,7 @@ show_behind_parent = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1150.0
-offset_bottom = 650.0
+offset_right = 1080.0
+offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
