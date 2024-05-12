@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://boddxdrkli1e5"]
+[gd_scene load_steps=5 format=3 uid="uid://boddxdrkli1e5"]
 
 [ext_resource type="Script" path="res://editor/entities/entities_editor.gd" id="1_u6ssc"]
 [ext_resource type="Script" path="res://utils/custom_control/switcher_container.gd" id="2_aoubr"]
+[ext_resource type="PackedScene" uid="uid://c0vjf6c6pu6r6" path="res://editor/entities/entity_wrapper_editor_window.tscn" id="3_c7g16"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4rtn"]
 
@@ -116,33 +117,51 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer"]
+[node name="Title" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer"]
 layout_mode = 2
 text = "EntityWrapper"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer"]
 layout_mode = 2
+columns = 3
 
-[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/HBoxContainer"]
+[node name="EntityLabel" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Entity: "
 
-[node name="EntityName" type="LineEdit" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/HBoxContainer"]
+[node name="EntityName" type="LineEdit" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "No entity"
 editable = false
 
-[node name="SetEntityButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/HBoxContainer"]
+[node name="SetEntityButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "Set"
+
+[node name="PropertiesLabel" type="Label" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Properties: "
+
+[node name="Spacer" type="Control" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EditPropertiesButton" type="Button" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer/EntityWrapperPanel/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Edit"
 
 [node name="EntityTree" type="Tree" parent="HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 hide_root = true
+
+[node name="EntityWrapperEditorWindow" parent="." instance=ExtResource("3_c7g16")]
+unique_name_in_owner = true
+visible = false

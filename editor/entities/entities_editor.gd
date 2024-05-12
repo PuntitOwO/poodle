@@ -24,6 +24,8 @@ func _ready():
     (%AddGroupButton as Button).pressed.connect(_add_new_item_to_group)
     (%RemoveGroupButton as Button).pressed.connect(_remove_item_from_group)
     (%SetEntityButton as Button).pressed.connect(_set_entity)
+    (%EditPropertiesButton as Button).pressed.connect(_edit_properties)
+    (%EntityWrapperEditorWindow as Window).close_requested.connect(_handle_property_editor_close)
 
 func _on_class_index_changed(index: ClassIndex):
     _on_sections_changed(index.sections)
@@ -96,6 +98,18 @@ func _set_entity():
         return
     selected_entity_wrapper.entity = selected.get_metadata(0)
     _update_entity_editor()
+
+func _edit_properties():
+    if not is_instance_valid(selected_entity_wrapper):
+        printerr("No entity selected")
+        return
+    %EntityWrapperEditorWindow.entity_wrapper = selected_entity_wrapper
+    %EntityWrapperEditorWindow.popup()
+
+func _handle_property_editor_close():
+    %EntityWrapperEditorWindow.hide()
+    %EntityWrapperEditorWindow.set_deferred(&"entity_wrapper", null)
+
 
 func _update_slide_tree():
     var tree := %SlideTree as Tree
@@ -217,7 +231,7 @@ func _update_entities_tree():
         var entity_item := type_item.create_child()
         entity_item.set_text(0, entity.get_editor_name())
         entity_item.set_metadata(0, entity)
-        
+
 
 func _get_type_list() -> PackedStringArray:
     var types := PackedStringArray()

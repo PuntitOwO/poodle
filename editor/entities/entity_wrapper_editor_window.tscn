@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0vjf6c6pu6r6"]
+
+[ext_resource type="Script" path="res://editor/entities/entity_wrapper_editor_window.gd" id="1_j3vkp"]
+[ext_resource type="PackedScene" uid="uid://k6e56lrpnnla" path="res://concept/background/background.tscn" id="2_umlet"]
+
+[node name="EntityWrapperEditorWindow" type="Window"]
+title = "Edit Entity Properties"
+initial_position = 2
+size = Vector2i(972, 648)
+transient = true
+exclusive = true
+script = ExtResource("1_j3vkp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Editor" type="VBoxContainer" parent="PanelContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/HSplitContainer/Editor"]
+layout_mode = 2
+text = "Properties"
+horizontal_alignment = 1
+
+[node name="PropertyEditor" type="VBoxContainer" parent="PanelContainer/HSplitContainer/Editor"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Preview" type="VBoxContainer" parent="PanelContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Label" type="Label" parent="PanelContainer/HSplitContainer/Preview"]
+layout_mode = 2
+text = "Preview"
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/HSplitContainer/Preview"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/HSplitContainer/Preview/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(723, 621)
+render_target_update_mode = 4
+
+[node name="ParallaxBackground" parent="PanelContainer/HSplitContainer/Preview/SubViewportContainer/SubViewport" instance=ExtResource("2_umlet")]
+
+[node name="PreviewWhiteboard" type="Node2D" parent="PanelContainer/HSplitContainer/Preview/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
