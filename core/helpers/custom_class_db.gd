@@ -6,7 +6,7 @@ extends Object
 ## It is used to store the classes info to expose an API similar to the [ClassDB] API.
 
 static var classes: Dictionary = {}
-static var groups: PackedStringArray = PackedStringArray()
+static var class_hierarchy: Dictionary = {}
 
 static func _static_init():
     _update_classes()
@@ -28,10 +28,22 @@ static func class_exists(_class: StringName) -> bool:
 static func instantiate(_class: StringName) -> Variant:
     return load(classes[_class].path).new()
 
+## Returns the names of all the classes that directly or indirectly inherit from the specified class.
+static func get_inheriters_from_class(_class: StringName) -> PackedStringArray:
+    if not class_hierarchy.has(_class):
+        return []
+    var inheriters: PackedStringArray = PackedStringArray()
+    for inheriter in class_hierarchy[_class]:
+        inheriters.push_back(inheriter)
+        inheriters.append_array(get_inheriters_from_class(inheriter))
+    return inheriters
+
 static func _update_classes():
     classes.clear()
     var class_list: Array[Dictionary] = ProjectSettings.get_global_class_list()
     for class_info in class_list:
         classes[class_info["class"]] = class_info
-        if "Class" in class_info["class"] and "Group" in class_info["class"]:
-            groups.push_back(class_info["class"])
+        if class_hierarchy.has(class_info["base"]):
+            class_hierarchy[class_info["base"]].push_back(class_info["class"])
+        else:
+            class_hierarchy[class_info["base"]] = [class_info["class"]]

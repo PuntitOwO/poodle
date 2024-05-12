@@ -147,9 +147,7 @@ func _add_entities(parent: TreeItem, _entities: Array[EntityWrapper]):
 
 func _configure_groups_dropdown():
     var dropdown := %GroupDropdown as OptionButton
-    for type in CustomClassDB.groups:
-        if type == "ClassGroup":
-            continue
+    for type in CustomClassDB.get_inheriters_from_class("ClassGroup"):
         dropdown.add_item(type)
 
 func _add_new_item_to_group():
