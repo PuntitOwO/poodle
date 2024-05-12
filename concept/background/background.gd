@@ -1,4 +1,3 @@
-@tool
 class_name Background
 extends Node2D
 
@@ -15,9 +14,6 @@ const MULTIPLIER = 5
 		queue_redraw()
 
 func _ready():
-	if Engine.is_editor_hint():
-		$ColorRect.hide()
-		return
 	get_parent().motion_mirroring = SCREEN_SIZE * MULTIPLIER
 	$ColorRect.size = SCREEN_SIZE * MULTIPLIER
 	$ColorRect.show()
@@ -41,17 +37,6 @@ func _generate_lines() -> PackedVector2Array:
 		points.append(Vector2(0, y * grid_size))
 		points.append(Vector2(window_size.x, y * grid_size))
 	return points
-
-func _normalize_viewport_size() -> Vector2:
-	var window_size: Vector2 = get_viewport_rect().size
-	var new_size: Vector2 = window_size / grid_size
-	new_size.x = ceil(new_size.x)
-	new_size.y = ceil(new_size.y)
-	new_size *= grid_size
-	if !Engine.is_editor_hint():
-		get_parent().motion_mirroring = new_size
-	$ColorRect.size = new_size
-	return new_size
 
 ## Set the background color of the scene.
 func set_background_color(color: Color) -> void:
