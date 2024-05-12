@@ -15,7 +15,7 @@ func _ready():
     %NewFileButton.pressed.connect(_new_class)
     %LoadFileButton.pressed.connect(_open_class)
     get_tree().root.files_dropped.connect(_on_files_selected)
-    %ExportButton.pressed.connect(_export_class)
+    %ExportButton.pressed.connect(export_class)
     # Handle update requests
     editor_signals.class_index_change_requested.connect(_change_index)
     editor_signals.class_metadata_change_requested.connect(_change_metadata)
@@ -102,6 +102,27 @@ func _on_file_selected(path: String) -> void:
     _change_index(ClassIndex.deserialize(index))
 
 #endregion
+
+func export_class():
+    _compute_wrapper_index()
+    _export_class()
+
+func _compute_wrapper_index():
+    for section in class_index.sections:
+        for slide in section.slides:
+            _compute_wrapper_index_in_group(slide.content_root)
+
+func _compute_wrapper_index_in_group(group: ClassGroup):
+    for inner_group in group.groups:
+        _compute_wrapper_index_in_group(inner_group)
+    for wrapper in group.entities:
+        if not is_instance_valid(wrapper.entity):
+            continue
+        var index := class_index.entities.find(wrapper.entity)
+        if index == -1:
+            printerr("Entity not found in class index: " + wrapper.entity.get_name())
+            continue
+        wrapper.entity_id = index
 
 func _export_class():
     var path: String = %ExportPath.text

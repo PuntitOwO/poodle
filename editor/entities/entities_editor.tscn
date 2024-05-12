@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://boddxdrkli1e5"]
+[gd_scene load_steps=4 format=3 uid="uid://boddxdrkli1e5"]
 
 [ext_resource type="Script" path="res://editor/entities/entities_editor.gd" id="1_u6ssc"]
 [ext_resource type="Script" path="res://utils/custom_control/switcher_container.gd" id="2_aoubr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xa50m"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnrfw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4rtn"]
 
 [node name="Entities" type="MarginContainer"]
 anchors_preset = 15
@@ -37,7 +35,7 @@ size_flags_stretch_ratio = 2.0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_xa50m")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d4rtn")
 current_tab = 1
 tabs_visible = false
 script = ExtResource("2_aoubr")
@@ -89,7 +87,7 @@ text = "Remove"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_wnrfw")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d4rtn")
 current_tab = 1
 tabs_visible = false
 script = ExtResource("2_aoubr")
@@ -110,7 +108,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-columns = 2
 
 [node name="EntityWrapperPanel" type="PanelContainer" parent="HSplitContainer/HSplitContainer/SlideTreeSwitcher/VSplitContainer/SlideTreeContainer/EmptyTreeSwitcher/VBoxContainer"]
 unique_name_in_owner = true

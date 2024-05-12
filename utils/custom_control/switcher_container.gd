@@ -2,6 +2,8 @@
 class_name SwitcherContainer
 extends TabContainer
 
+static var stylebox = StyleBoxEmpty.new()
+
 ## SwitcherContainer is a Container that can be used to switch between two different views.
 ## It shows one of the two views at a time, and provides a way to switch between them.
 
@@ -13,4 +15,4 @@ extends TabContainer
 func _ready():
     current_tab = 1 if show_second else 0
     tabs_visible = false
-    add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+    add_theme_stylebox_override("panel", stylebox)
