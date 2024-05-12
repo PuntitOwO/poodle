@@ -72,12 +72,13 @@ icon = SubResource("AtlasTexture_jc6kw")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/HSplitContainer/Preview"]
 layout_mode = 2
-size_flags_vertical = 3
-stretch = true
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
 [node name="SubViewport" type="SubViewport" parent="PanelContainer/HSplitContainer/Preview/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(723, 613)
+size = Vector2i(720, 480)
+size_2d_override = Vector2i(1080, 720)
 render_target_update_mode = 4
 
 [node name="ParallaxBackground" parent="PanelContainer/HSplitContainer/Preview/SubViewportContainer/SubViewport" instance=ExtResource("2_umlet")]

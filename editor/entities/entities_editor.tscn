@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://utils/custom_control/switcher_container.gd" id="2_aoubr"]
 [ext_resource type="PackedScene" uid="uid://c0vjf6c6pu6r6" path="res://editor/entities/entity_wrapper_editor_window.tscn" id="3_c7g16"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eh8y4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6b6v"]
 
 [node name="Entities" type="MarginContainer"]
 anchors_preset = 15
@@ -36,7 +36,7 @@ size_flags_stretch_ratio = 2.0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_eh8y4")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l6b6v")
 current_tab = 1
 tabs_visible = false
 script = ExtResource("2_aoubr")
@@ -88,7 +88,7 @@ text = "Remove"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_eh8y4")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l6b6v")
 current_tab = 1
 tabs_visible = false
 script = ExtResource("2_aoubr")
