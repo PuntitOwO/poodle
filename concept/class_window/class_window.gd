@@ -23,10 +23,10 @@ func _play_section(selected: TreeItem) -> void:
     var current_slide: SlideNode = (get_tree().get_first_node_in_group("current_slide") as SlideNode)
     var current_slide_index: int = 0
     if is_instance_valid(current_slide):
-        current_slide.stop()
+        # current_slide.stop()
         current_slide_index = current_slide.absolute_slide_id
     get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, "slide_nodes", "on_seek", current_slide_index, slide.absolute_slide_id)
-    slide.play()
+    slide.call_deferred(&"play")
 #endregion
 
 #region Whiteboard

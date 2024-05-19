@@ -50,16 +50,18 @@ func on_seek(prev_slide_id: int, new_slide_id: int) -> void:
     # there is no need to do anything.
     if _outside_slide_range(prev_slide_id, new_slide_id):
         return
-    if new_slide_id > prev_slide_id:
+    if new_slide_id > absolute_slide_id:
         skip_to_end()
     else:
         skip_to_start()
 
 func skip_to_end() -> void:
+    stop()
     var root: GroupController = get_child(0) as GroupController
     root.skip_to_end()
 
 func skip_to_start() -> void:
+    stop()
     var root: GroupController = get_child(0) as GroupController
     root.reset()
 
@@ -69,11 +71,9 @@ func stop() -> void:
         root.animation_finished.disconnect(on_slide_finished)
     remove_from_group("current_slide")
     current = false
-    root.reset()
-    hide()
+    # root.reset()
+    # hide()
 
 ## Returns whether this slide is outside the range of the previous slide and the new slide.
 func _outside_slide_range(prev_slide_id: int, new_slide_id: int) -> bool:
-    if absolute_slide_id == prev_slide_id or absolute_slide_id == new_slide_id:
-        return true
-    return absolute_slide_id < mini(prev_slide_id, new_slide_id) or absolute_slide_id > max(prev_slide_id, new_slide_id)
+    return absolute_slide_id < mini(prev_slide_id, new_slide_id) or absolute_slide_id > maxi(prev_slide_id, new_slide_id)

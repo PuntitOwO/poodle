@@ -25,6 +25,9 @@ func reset():
 		audio.finished.disconnect(_emit_animation_finished)
 	audio.stop()
 
+func skip_to_end():
+	reset()
+
 ## Returns the duration of the audio in seconds.
 func compute_duration() -> float:
 	return audio.stream.get_length()

@@ -15,4 +15,6 @@ static var stylebox = StyleBoxEmpty.new()
 func _ready():
     current_tab = 1 if show_second else 0
     tabs_visible = false
+    if has_theme_stylebox_override("panel"):
+        return
     add_theme_stylebox_override("panel", stylebox)

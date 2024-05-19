@@ -32,3 +32,7 @@ func play(__duration: float = _duration) -> void:
 func reset() -> void:
     _cancelled = true
     super.reset()
+
+func skip_to_end() -> void:
+    _cancelled = true
+    super.skip_to_end()
