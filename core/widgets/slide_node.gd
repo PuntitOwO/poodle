@@ -6,9 +6,11 @@ extends IndexedNode2D
 var absolute_slide_id: int = -1
 
 static var hide_on_finished: bool = false
+const SCREEN_SIZE: Vector2 = Vector2(1080, 720)
 
 func _ready():
     var notifier := VisibleOnScreenNotifier2D.new()
+    notifier.rect = Rect2(Vector2(0, 0), SCREEN_SIZE)
     add_child(notifier, false, INTERNAL_MODE_FRONT)
     var root := get_child(0) as GroupController
     notifier.screen_entered.connect(root.show)
