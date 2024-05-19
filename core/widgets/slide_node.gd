@@ -48,7 +48,6 @@ func on_slide_finished() -> void:
 func on_seek(prev_slide_id: int, new_slide_id: int) -> void:
     # If the slide is outside the range of the previous slide and the new slide,
     # there is no need to do anything.
-    prints("Slide", absolute_slide_id, ": Seeked to", new_slide_id, "from", prev_slide_id)
     if _outside_slide_range(prev_slide_id, new_slide_id):
         return
     if new_slide_id == absolute_slide_id:
@@ -78,8 +77,6 @@ func stop() -> void:
         root.animation_finished.disconnect(on_slide_finished)
     remove_from_group("current_slide")
     current = false
-    # root.reset()
-    # hide()
 
 ## Returns whether this slide is outside the range of the previous slide and the new slide.
 func _outside_slide_range(prev_slide_id: int, new_slide_id: int) -> bool:

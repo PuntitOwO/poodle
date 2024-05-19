@@ -11,9 +11,12 @@ var depth: int = -1:
 
 func _init():
     tree = Tree.new()
+    tree.hide_root = true
+    tree.create_item()
 
 func reset() -> void:
     tree.clear()
+    tree.create_item()
     depth = -1
     counter = []
 
@@ -22,6 +25,7 @@ func register_section(section_name: String) -> TreeItem:
         depth = 0
     var numbering := _get_numbering(0)
     var section := tree.create_item()
+    section.set_selectable(0, false)
     section.set_text(0, numbering + ": " + section_name)
     return section
 
