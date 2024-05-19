@@ -67,3 +67,6 @@ func _has_widget(entity: Entity) -> bool:
 func _get_widget(entity: Entity) -> Widget:
     var _class: String = entity.get_class_name().replace("Entity", "Widget")
     return CustomClassDB.instantiate(_class)
+
+func _emit_animation_finished() -> void:
+    animation_finished.emit()

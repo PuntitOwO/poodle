@@ -25,9 +25,13 @@ func play(duration: float = _duration) -> void:
 
 ## Disconnects the animation finished method and calls [method GroupController.reset].
 func reset() -> void:
-    if is_instance_valid(_timer) and _timer.timeout.is_connected(_emit_animation_finished):
-        _timer.timeout.disconnect(_emit_animation_finished)
+    _disconnect_signal()
     super.reset()
 
-func _emit_animation_finished() -> void:
-    animation_finished.emit()
+func skip_to_end() -> void:
+    _disconnect_signal()
+    super.skip_to_end()
+
+func _disconnect_signal() -> void:
+    if is_instance_valid(_timer) and _timer.timeout.is_connected(_emit_animation_finished):
+        _timer.timeout.disconnect(_emit_animation_finished)

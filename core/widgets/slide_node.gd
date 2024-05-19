@@ -48,9 +48,12 @@ func on_slide_finished() -> void:
 func on_seek(prev_slide_id: int, new_slide_id: int) -> void:
     # If the slide is outside the range of the previous slide and the new slide,
     # there is no need to do anything.
+    prints("Slide", absolute_slide_id, ": Seeked to", new_slide_id, "from", prev_slide_id)
     if _outside_slide_range(prev_slide_id, new_slide_id):
         return
-    if new_slide_id > absolute_slide_id:
+    if new_slide_id == absolute_slide_id:
+        restart()
+    elif new_slide_id > absolute_slide_id:
         skip_to_end()
     else:
         skip_to_start()
@@ -64,6 +67,10 @@ func skip_to_start() -> void:
     stop()
     var root: GroupController = get_child(0) as GroupController
     root.reset()
+
+func restart() -> void:
+    skip_to_start()
+    play()
 
 func stop() -> void:
     var root: GroupController = get_child(0) as GroupController
