@@ -6,7 +6,13 @@ extends IndexedNode2D
 var absolute_slide_id: int = -1
 
 static var hide_on_finished: bool = false
-const SCREEN_SIZE: Vector2 = Vector2(1080, 720)
+var SCREEN_SIZE: Vector2i
+
+func _enter_tree():
+    SCREEN_SIZE = _load_whiteboard_size()
+
+func _load_whiteboard_size() -> Vector2i:
+    return ProjectSettings.get_setting("display/whiteboard/size") as Vector2i
 
 func _ready():
     var notifier := VisibleOnScreenNotifier2D.new()

@@ -1,7 +1,7 @@
 class_name ConceptClassScene
 extends Node2D
 
-const PAGE_SIZE = Vector2(1080, 720)
+var WHITEBOARD_SIZE: Vector2i
 
 var file: String
 @export var class_index: ClassIndex
@@ -19,6 +19,9 @@ var slide_count: int = 0
 
 var timestamps: Array[GroupController] = []
 
+func _enter_tree():
+	WHITEBOARD_SIZE = _load_whiteboard_size()
+
 func _ready():
 	if !_parse():
 		push_error("Error parsing file: " + file)
@@ -28,6 +31,10 @@ func _ready():
 		return
 	zip_file.close()
 	print("parse_and_play._ready")
+
+
+func _load_whiteboard_size() -> Vector2i:
+	return ProjectSettings.get_setting("display/whiteboard/size") as Vector2i
 
 func _parse() -> bool:
 	zip_file = ZIPReader.new()
@@ -59,7 +66,7 @@ func _instantiate() -> bool:
 	for section in class_index.sections:
 		var node: Node2D = _instantiate_section(section)
 		node.position.y = section_y_position
-		section_y_position += PAGE_SIZE.y
+		section_y_position += WHITEBOARD_SIZE.y
 		root.add_child(node)
 	return true
 
@@ -73,7 +80,7 @@ func _instantiate_section(section: ClassSection) -> Node2D:
 		slide_node.tree_item = slide_tree_item
 		slide_node.absolute_slide_id = slide_count
 		slide_node.position.x = slide_x_position
-		slide_x_position += PAGE_SIZE.x
+		slide_x_position += WHITEBOARD_SIZE.x
 		slide_count += 1
 		node.add_child(slide_node)
 	section_tree_item.set_metadata(0, node.get_child(0))
