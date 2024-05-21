@@ -25,7 +25,6 @@ func _play_section(selected: TreeItem) -> void:
     if is_instance_valid(current_slide):
         # current_slide.stop()
         current_slide_index = current_slide.absolute_slide_id
-    _update_stopwatch(slide)
     get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, "slide_nodes", "on_seek", current_slide_index, slide.absolute_slide_id)
     slide.call_deferred(&"play")
 #endregion
@@ -105,16 +104,6 @@ func _slider_value_selected(seconds: float) -> void:
     var slide: SlideNode = group.get_parent() as SlideNode
     _play_section(slide.tree_item)
 
-func _update_stopwatch(slide: SlideNode) -> void:
-    if !is_instance_valid(slide):
-        stopwatch.resume()
-        return
-    var group := slide.get_child(0) as GroupController
-    if !is_instance_valid(group):
-        stopwatch.resume()
-        return
-    stopwatch.start(group.timestamp)
-
 #endregion
 
 #region UI
@@ -133,6 +122,10 @@ func _toggle_fullscreen(toggled_on: bool) -> void:
 #endregion
 
 func _ready():
+    if !is_instance_valid(ClassUI.context):
+        printerr("ClassUI context is not valid")
+    else:
+        ClassUI.context.stopwatch = stopwatch
     fullscreen_button.toggled.connect(_toggle_fullscreen)
     play_button.pressed.connect(_toggle_playback)
     prev_button.pressed.connect(_play_prev_section)

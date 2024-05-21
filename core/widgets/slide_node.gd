@@ -31,6 +31,8 @@ func play() -> void:
     if !root.animation_finished.is_connected(on_slide_finished):
         root.animation_finished.connect(on_slide_finished)
     current = true
+    if is_instance_valid(ClassUI.context):
+        ClassUI.context.stopwatch.start(root.timestamp)
     root.play()
 
 ## Called when the slide has finished playing.

@@ -1,7 +1,13 @@
+class_name ClassUI
 extends Node
+
+static var context: ClassContext
 
 @onready var class_scene: ConceptClassScene = $ParseAndPlay
 @onready var window: ConceptClassWindow = $ClassWindow
+
+func _enter_tree():
+    context = ClassContext.new()
 
 func _ready():
     DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
@@ -16,3 +22,7 @@ func _setup_scene():
     window.set_total_time(ceili(class_scene.total_duration))
     window.stopwatch.start()
     class_scene.play()
+
+class ClassContext:
+    var camera: Camera2D
+    var stopwatch: Stopwatch
