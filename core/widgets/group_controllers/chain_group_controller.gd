@@ -4,6 +4,7 @@ extends GroupController
 ## A [GroupController] that runs its children in sequence.
 
 var _durations: Array[float] = []
+var _connections: Array[Callable] = []
 
 ## Computes the duration of this group.
 ## It is the sum of the duration of all the children.
@@ -35,19 +36,20 @@ func _connect_signals() -> void:
     last_child.connect(&"animation_finished", _emit_animation_finished, CONNECT_ONE_SHOT)
     if get_child_count() == 1:
         return
+    _connections.clear()
     for child_idx in get_child_count() - 1:
         var child = get_child(child_idx)
         var next_child = get_child(child_idx + 1)
-        child.connect(&"animation_finished", next_child.play.bind(_durations[child_idx + 1]), CONNECT_ONE_SHOT)
+        _connections.append(next_child.play.bind(_durations[child_idx + 1]))
+        child.connect(&"animation_finished", _connections[child_idx], CONNECT_ONE_SHOT)
 
 func _disconnect_signals() -> void:
     var last_child = get_child(get_child_count() - 1)
     if last_child.is_connected(&"animation_finished", _emit_animation_finished):
         last_child.disconnect(&"animation_finished", _emit_animation_finished)
-    if get_child_count() == 1:
+    if get_child_count() == 1 or len(_connections) < get_child_count() - 1:
         return
     for child_idx in get_child_count() - 1:
         var child = get_child(child_idx)
-        var next_child = get_child(child_idx + 1)
-        if child.is_connected(&"animation_finished", next_child.play.bind(_durations[child_idx + 1])):
-            child.disconnect(&"animation_finished", next_child.play.bind(_durations[child_idx + 1]))
+        if child.is_connected(&"animation_finished", _connections[child_idx]):
+            child.disconnect(&"animation_finished", _connections[child_idx])
