@@ -21,25 +21,26 @@ func _ready():
     var root := get_child(0) as GroupController
     notifier.screen_entered.connect(root.show)
     notifier.screen_exited.connect(root.hide)
-    add_to_group("slide_nodes")
+    add_to_group(&"slide_nodes")
 
 ## Passes the play call to the first child node.
 func play() -> void:
     show()
-    add_to_group("current_slide")
+    add_to_group(&"current_slide")
     var root: GroupController = get_child(0) as GroupController
     if !root.animation_finished.is_connected(on_slide_finished):
         root.animation_finished.connect(on_slide_finished)
     current = true
     if is_instance_valid(ClassUI.context):
         ClassUI.context.stopwatch.start(root.timestamp)
+        ClassUI.context.camera.move_to(get_camera_target_position())
     root.play()
 
 ## Called when the slide has finished playing.
 ## If the next slide is valid, it will be played.
 func on_slide_finished() -> void:
     current = false
-    remove_from_group("current_slide")
+    remove_from_group(&"current_slide")
     if !is_instance_valid(tree_item):
         return
     var next_item: TreeItem = tree_item.get_next_in_tree()
@@ -83,8 +84,12 @@ func stop() -> void:
     var root: GroupController = get_child(0) as GroupController
     if root.animation_finished.is_connected(on_slide_finished):
         root.animation_finished.disconnect(on_slide_finished)
-    remove_from_group("current_slide")
+    remove_from_group(&"current_slide")
     current = false
+
+## Returns the position to center the camera on.
+func get_camera_target_position() -> Vector2:
+    return get_global_position() + Vector2(SCREEN_SIZE) / 2
 
 ## Returns whether this slide is outside the range of the previous slide and the new slide.
 func _outside_slide_range(prev_slide_id: int, new_slide_id: int) -> bool:

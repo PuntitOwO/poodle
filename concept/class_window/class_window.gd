@@ -109,6 +109,7 @@ func _slider_value_selected(seconds: float) -> void:
 #region UI
 
 @onready var fullscreen_button: Button = %FullscreenButton
+@onready var center_camera_button: Button = %RecenterCameraButton
 @onready var enter_fullscreen_icon: Texture2D = get_theme_icon("enter", fullscreen_button.theme_type_variation)
 @onready var exit_fullscreen_icon: Texture2D = get_theme_icon("exit", fullscreen_button.theme_type_variation)
 @onready var panels: Array[Control] = [%LeftPanel, %BottomPanel, %RightPanel]
@@ -119,6 +120,9 @@ func _toggle_fullscreen(toggled_on: bool) -> void:
         panels[i].visible = not toggled_on and panel_visible[i]
     fullscreen_button.icon = exit_fullscreen_icon if toggled_on else enter_fullscreen_icon
 
+func _toggle_camera_button(user_controlled_camera: bool) -> void:
+    center_camera_button.visible = user_controlled_camera
+
 #endregion
 
 func _ready():
@@ -126,7 +130,9 @@ func _ready():
         printerr("ClassUI context is not valid")
     else:
         ClassUI.context.stopwatch = stopwatch
+        ClassUI.context.camera.user_controlled_changed.connect(_toggle_camera_button)
     fullscreen_button.toggled.connect(_toggle_fullscreen)
+    center_camera_button.pressed.connect(func (): ClassUI.context.camera.user_controlled = false)
     play_button.pressed.connect(_toggle_playback)
     prev_button.pressed.connect(_play_prev_section)
     next_button.pressed.connect(_play_next_section)

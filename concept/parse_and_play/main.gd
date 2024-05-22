@@ -24,5 +24,5 @@ func _setup_scene():
     class_scene.play()
 
 class ClassContext:
-    var camera: Camera2D
+    var camera: ClassCamera
     var stopwatch: Stopwatch

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdf57hapkw603"]
+[gd_scene load_steps=12 format=3 uid="uid://cdf57hapkw603"]
 
 [ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
 [ext_resource type="Script" path="res://concept/class_window/class_window.gd" id="1_s0jgr"]
@@ -13,7 +13,7 @@ script/source = "extends Control
 const WARP_OFFSET = -10
 var dragging := false
 var warped := false
-var camera : Camera2D
+var camera : ClassCamera
 
 func _gui_input(event):
     if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -29,6 +29,7 @@ func _gui_input(event):
             if not is_instance_valid(camera):
                 printerr(\"Trying to move but no camera available\")
                 return
+        camera.user_controlled = true
         camera.position -= event.relative #* camera.zoom
         var mouse_pos: Vector2 = event.global_position
         var view := get_global_rect().grow(WARP_OFFSET)
@@ -48,6 +49,10 @@ func _gui_input(event):
 [sub_resource type="AtlasTexture" id="AtlasTexture_ai0gx"]
 atlas = ExtResource("2_caqkq")
 region = Rect2(300, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1sm7"]
+atlas = ExtResource("2_caqkq")
+region = Rect2(350, 400, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw2kf"]
 atlas = ExtResource("2_caqkq")
@@ -121,18 +126,29 @@ render_target_update_mode = 4
 layout_mode = 1
 mouse_filter = 2
 
-[node name="FullscreenButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -18.0
-offset_bottom = 31.0
+offset_left = -40.0
+offset_bottom = 40.0
 grow_horizontal = 0
+
+[node name="FullscreenButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_type_variation = &"FullscreenIconButton"
 toggle_mode = true
 icon = SubResource("AtlasTexture_ai0gx")
+flat = true
+
+[node name="RecenterCameraButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"FullscreenIconButton"
+icon = SubResource("AtlasTexture_s1sm7")
 flat = true
 
 [node name="BottomPanel" type="PanelContainer" parent="HSplitContainer/HSplitContainer/Viewport"]
