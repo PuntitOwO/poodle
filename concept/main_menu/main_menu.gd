@@ -2,11 +2,13 @@ extends Control
 
 @onready var open_button: Button = %Open
 @onready var open_tutorial_button: Button = %OpenTutorial
+@onready var drop_label: Label = %DropLabel
 
 func _ready():
     open_button.pressed.connect(_select_file)
     open_tutorial_button.pressed.connect(_on_file_selected.bind("res://concept/example_class/clase_ejemplo.poodle"))
     get_tree().root.files_dropped.connect(_on_files_dropped)
+    drop_label.visible = not OS.has_feature("mobile")
 
 func _select_file():
     if OS.has_feature("android"):
@@ -23,7 +25,8 @@ func _select_file():
 func _android_dialog():
     if Engine.has_singleton("GodotFilePicker"):
         var picker = Engine.get_singleton("GodotFilePicker")
-        picker.file_picked.connect(_on_android_file_selected)
+        if not picker.file_picked.is_connected(_on_android_file_selected):
+            picker.file_picked.connect(_on_android_file_selected)
         picker.openFilePicker("*/*")
     else:
         printerr("GodotFilePicker singleton not found")
@@ -43,7 +46,7 @@ func _built_in_dialog():
     dialog.add_filter("*.poodle, *.zip", "Poodle Class Files")
     dialog.files_selected.connect(_on_files_dropped)
     dialog.file_selected.connect(_on_file_selected)
-    dialog.popup_centered()
+    dialog.popup()
 
 func _on_native_dialog_file_selected(status: bool, selected_paths: PackedStringArray, _selected_filter_index: int) -> void:
     if status == false:

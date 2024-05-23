@@ -35,7 +35,9 @@ gdscript/warnings/integer_division=0
 window/size/viewport_width=1080
 window/size/viewport_height=720
 window/subwindows/embed_subwindows=false
+window/handheld/orientation=4
 whiteboard/size=Vector2i(1080, 720)
+window/stretch/scale.android=2.0
 
 [editor]
 
