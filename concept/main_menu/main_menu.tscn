@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://i30xjnoql0qa"]
+[gd_scene load_steps=8 format=3 uid="uid://i30xjnoql0qa"]
 
 [ext_resource type="Script" path="res://concept/main_menu/main_menu.gd" id="1_84qk8"]
 [ext_resource type="Texture2D" uid="uid://du38vhykfugub" path="res://icon.svg" id="1_yp1lf"]
@@ -10,6 +10,10 @@ font_size = 48
 [sub_resource type="AtlasTexture" id="AtlasTexture_u376q"]
 atlas = ExtResource("2_cpc24")
 region = Rect2(300, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm84m"]
+atlas = ExtResource("2_cpc24")
+region = Rect2(50, 300, 50, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ima8"]
 atlas = ExtResource("2_cpc24")
@@ -74,6 +78,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Open Class"
 icon = SubResource("AtlasTexture_u376q")
+
+[node name="OpenDebug" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Open (Debug)"
+icon = SubResource("AtlasTexture_mm84m")
 
 [node name="OpenTutorial" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true

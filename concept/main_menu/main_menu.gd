@@ -1,14 +1,17 @@
 extends Control
 
 @onready var open_button: Button = %Open
+@onready var open_debug_button: Button = %OpenDebug
 @onready var open_tutorial_button: Button = %OpenTutorial
 @onready var drop_label: Label = %DropLabel
 
 func _ready():
     open_button.pressed.connect(_select_file)
+    open_debug_button.pressed.connect(_built_in_dialog.bind(false))
     open_tutorial_button.pressed.connect(_on_file_selected.bind("res://concept/example_class/clase_ejemplo.poodle"))
     get_tree().root.files_dropped.connect(_on_files_dropped)
     drop_label.visible = not OS.has_feature("mobile")
+    open_debug_button.visible = OS.has_feature("debug")
 
 func _select_file():
     if OS.has_feature("android"):
@@ -38,15 +41,16 @@ func _on_android_file_selected(path: String, _mime_type: String) -> void:
 func _native_dialog():
     DisplayServer.file_dialog_show("Open File", "", "", false, DisplayServer.FILE_DIALOG_MODE_OPEN_FILE, ["*.poodle", "*.zip"], _on_native_dialog_file_selected)
 
-func _built_in_dialog():
+func _built_in_dialog(try_native: bool = true):
     var dialog := FileDialog.new()
     add_child(dialog)
-    dialog.use_native_dialog = true
+    dialog.use_native_dialog = try_native
+    dialog.access = FileDialog.ACCESS_USERDATA
     dialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
     dialog.add_filter("*.poodle, *.zip", "Poodle Class Files")
     dialog.files_selected.connect(_on_files_dropped)
     dialog.file_selected.connect(_on_file_selected)
-    dialog.popup()
+    dialog.popup_centered(Vector2i(540, 360))
 
 func _on_native_dialog_file_selected(status: bool, selected_paths: PackedStringArray, _selected_filter_index: int) -> void:
     if status == false:
@@ -61,6 +65,9 @@ func _on_files_dropped(files: PackedStringArray) -> void:
             return
 
 func _on_file_selected(path: String) -> void:
+    if not path.ends_with(".poodle") and not path.ends_with(".zip"):
+        printerr("Invalid file type: ", path)
+        return
     Persistence.class_path = path
     print("Selected file: ", Persistence.class_path)
     get_tree().change_scene_to_file("res://concept/parse_and_play/parse_and_play.tscn")
