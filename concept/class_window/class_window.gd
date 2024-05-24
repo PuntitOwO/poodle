@@ -9,6 +9,8 @@ var find_group_by_timestamp: Callable
 func set_section_tree(tree: Tree) -> void:
     section_tree_parent.add_child(tree)
     tree.item_activated.connect(_on_tree_section_clicked.bind(tree))
+    %LeftSplit.split_offset = tree.size.x + 10
+    tree.scroll_horizontal_enabled = true
 
 func _on_tree_section_clicked(tree: Tree) -> void:
     var selected: TreeItem = tree.get_selected()

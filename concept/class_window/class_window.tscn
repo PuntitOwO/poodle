@@ -84,7 +84,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_s0jgr")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="LeftSplit" type="HSplitContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,26 +95,29 @@ grow_vertical = 2
 mouse_filter = 2
 split_offset = 200
 
-[node name="LeftPanel" type="PanelContainer" parent="HSplitContainer"]
+[node name="LeftPanel" type="PanelContainer" parent="LeftSplit"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+[node name="RightSplit" type="HSplitContainer" parent="LeftSplit"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Viewport" type="VSplitContainer" parent="HSplitContainer/HSplitContainer"]
+[node name="BottomSplit" type="VSplitContainer" parent="LeftSplit/RightSplit"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
+dragger_visibility = 1
 
-[node name="Whiteboard" type="Control" parent="HSplitContainer/HSplitContainer/Viewport"]
+[node name="Whiteboard" type="Control" parent="LeftSplit/RightSplit/BottomSplit"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_vertical = 3
 script = SubResource("GDScript_b0r1l")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,18 +127,18 @@ grow_vertical = 2
 mouse_filter = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard/SubViewportContainer"]
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(400, 400)
+size = Vector2i(868, 623)
 render_target_update_mode = 4
 
-[node name="PlayerScreenIndicator" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard" instance=ExtResource("1_61jat")]
+[node name="PlayerScreenIndicator" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard" instance=ExtResource("1_61jat")]
 layout_mode = 1
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -143,7 +147,7 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="FullscreenButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/VBoxContainer"]
+[node name="FullscreenButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"FullscreenIconButton"
@@ -151,7 +155,7 @@ toggle_mode = true
 icon = SubResource("AtlasTexture_ai0gx")
 flat = true
 
-[node name="RecenterCameraButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/Whiteboard/VBoxContainer"]
+[node name="RecenterCameraButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -159,29 +163,29 @@ theme_type_variation = &"FullscreenIconButton"
 icon = SubResource("AtlasTexture_s1sm7")
 flat = true
 
-[node name="BottomPanel" type="PanelContainer" parent="HSplitContainer/HSplitContainer/Viewport"]
+[node name="BottomPanel" type="PanelContainer" parent="LeftSplit/RightSplit/BottomSplit"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ControlRow" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer"]
+[node name="ControlRow" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="CameraZoom" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow"]
+[node name="CameraZoom" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ZoomButton" type="TextureButton" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/CameraZoom"]
+[node name="ZoomButton" type="TextureButton" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/CameraZoom"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_uioh1")
 
-[node name="ZoomSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/CameraZoom"]
+[node name="ZoomSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/CameraZoom"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -192,47 +196,47 @@ max_value = 3.0
 step = 0.1
 value = 1.0
 
-[node name="Spacer" type="Control" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow"]
+[node name="Spacer" type="Control" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlaybackControls" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow"]
+[node name="PlaybackControls" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
 layout_mode = 2
 alignment = 1
 
-[node name="PreviousButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
+[node name="PreviousButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_mw2kf")
 
-[node name="PlayPauseButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
+[node name="PlayPauseButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_ar7p2")
 
-[node name="NextButton" type="Button" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
+[node name="NextButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_o2vqn")
 
-[node name="Spacer2" type="Control" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow"]
+[node name="Spacer2" type="Control" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedControls" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow"]
+[node name="SpeedControls" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="SpeedButton" type="TextureButton" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/SpeedControls"]
+[node name="SpeedButton" type="TextureButton" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/SpeedControls"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_8b6xy")
 
-[node name="SpeedSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/ControlRow/SpeedControls"]
+[node name="SpeedSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/SpeedControls"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -243,16 +247,16 @@ max_value = 3.0
 step = 0.1
 value = 1.0
 
-[node name="TimeRow" type="HBoxContainer" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer"]
+[node name="TimeRow" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="CurrentTimeLabel" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/TimeRow"]
+[node name="CurrentTimeLabel" type="Label" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/TimeRow"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 
-[node name="TimeSlider" type="HSlider" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/TimeRow"]
+[node name="TimeSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/TimeRow"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -260,21 +264,21 @@ step = 0.25
 scrollable = false
 script = ExtResource("4_733sw")
 
-[node name="TotalTimeLabel" type="Label" parent="HSplitContainer/HSplitContainer/Viewport/BottomPanel/VBoxContainer/TimeRow"]
+[node name="TotalTimeLabel" type="Label" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/TimeRow"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 
-[node name="RightPanel" type="PanelContainer" parent="HSplitContainer/HSplitContainer"]
+[node name="RightPanel" type="PanelContainer" parent="LeftSplit/RightSplit"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/RightPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftSplit/RightSplit/RightPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HSplitContainer/HSplitContainer/RightPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="LeftSplit/RightSplit/RightPanel/VBoxContainer"]
 layout_mode = 2
 text = "lol"
 
