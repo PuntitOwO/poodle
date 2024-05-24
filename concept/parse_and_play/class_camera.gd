@@ -71,7 +71,7 @@ func _recenter():
     var target_node := get_tree().get_first_node_in_group(&"current_slide") as SlideNode
     if not is_instance_valid(target_node):
         return
-    move_to(target_node.get_camera_target_position(), 1.0)
+    move_to(target_node.get_camera_target_position())
 
 func interpolate_zoom(target_zoom: float):
     if is_instance_valid(tween):

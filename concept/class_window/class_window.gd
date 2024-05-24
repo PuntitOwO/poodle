@@ -30,8 +30,12 @@ func _play_section(selected: TreeItem) -> void:
 #endregion
 
 #region Whiteboard
+
+@onready var viewport: SubViewport = %SubViewport
+
 func set_class_node(node: Node) -> void:
-    node.reparent(%SubViewport)
+    node.reparent(viewport)
+
 #endregion
 
 #region Playback
@@ -55,6 +59,7 @@ func _get_time_string(time: int) -> String:
 
 @onready var zoom_slider: HSlider = %ZoomSlider
 @onready var zoom_button: TextureButton = %ZoomButton
+@onready var slide_size: Vector2 = ProjectSettings.get_setting("display/whiteboard/size") as Vector2
 
 func _update_zoom_slider_value() -> void:
     if !is_instance_valid(ClassUI.context) or !is_instance_valid(ClassUI.context.camera):
@@ -71,7 +76,9 @@ func _zoom_slider_value_selected(value: float) -> void:
 func _zoom_reset() -> void:
     if !is_instance_valid(ClassUI.context) or !is_instance_valid(ClassUI.context.camera):
         return
-    ClassUI.context.camera.reset_zoom()
+    var viewport_size := viewport.size
+    var zoom := minf(viewport_size.x / slide_size.x, viewport_size.y / slide_size.y)
+    ClassUI.context.camera.interpolate_zoom(zoom)
 
 #endregion
 

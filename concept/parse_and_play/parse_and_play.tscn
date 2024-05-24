@@ -19,6 +19,7 @@ script = ExtResource("1_owwge")
 [node name="ParallaxBackground" parent="ParseAndPlay" instance=ExtResource("2_thsiq")]
 
 [node name="Camera2D" type="Camera2D" parent="ParseAndPlay" node_paths=PackedStringArray("background")]
+process_mode = 3
 position = Vector2(540, 360)
 script = ExtResource("5_0ru87")
 background = NodePath("../ParallaxBackground/ParallaxLayer/Background")
