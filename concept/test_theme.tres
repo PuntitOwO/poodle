@@ -55,5 +55,6 @@ PlayerScreenIndicator/base_type = &"Panel"
 PlayerScreenIndicator/colors/paused = Color(0.815686, 0.356863, 0.211765, 1)
 PlayerScreenIndicator/colors/playing = Color(0.196078, 0.803922, 0.196078, 1)
 PlayerScreenIndicator/styles/panel = SubResource("StyleBoxFlat_6bjw7")
+SplitContainer/constants/autohide = 0
 TabBar/styles/button_highlight = SubResource("StyleBoxFlat_c821a")
 TabBar/styles/tab_selected = SubResource("StyleBoxFlat_0hpmv")

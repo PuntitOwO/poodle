@@ -51,7 +51,32 @@ func _get_time_string(time: int) -> String:
     return str(minutes).lpad(2, "0") + ":" + str(seconds).lpad(2, "0")
 #endregion
 
+#region Camera Zoom
+
+@onready var zoom_slider: HSlider = %ZoomSlider
+@onready var zoom_button: TextureButton = %ZoomButton
+
+func _update_zoom_slider_value() -> void:
+    if !is_instance_valid(ClassUI.context) or !is_instance_valid(ClassUI.context.camera):
+        return
+    var value: float = ClassUI.context.camera.zoom.x
+    zoom_slider.set_value_no_signal(value)
+
+func _zoom_slider_value_selected(value: float) -> void:
+    if !is_instance_valid(ClassUI.context) or !is_instance_valid(ClassUI.context.camera):
+        return
+    ClassUI.context.camera.zoom = Vector2(value, value)
+    ClassUI.context.camera.update_grid_visibility()
+
+func _zoom_reset() -> void:
+    if !is_instance_valid(ClassUI.context) or !is_instance_valid(ClassUI.context.camera):
+        return
+    ClassUI.context.camera.reset_zoom()
+
+#endregion
+
 #region Playback Controls
+
 @onready var play_button: Button = %PlayPauseButton
 @onready var prev_button: Button = %PreviousButton
 @onready var next_button: Button = %NextButton
@@ -137,7 +162,10 @@ func _ready():
     prev_button.pressed.connect(_play_prev_section)
     next_button.pressed.connect(_play_next_section)
     time_slider.value_selected.connect(_slider_value_selected)
+    zoom_slider.value_changed.connect(_zoom_slider_value_selected)
+    zoom_button.pressed.connect(_zoom_reset)
 
 func _process(_delta: float):
     time_slider.change_value(stopwatch.running_time)
     current_time_label.text = _get_time_string(floori(stopwatch.running_time))
+    _update_zoom_slider_value()

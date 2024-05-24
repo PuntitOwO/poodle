@@ -5,7 +5,10 @@ extends Camera2D
 signal user_controlled_changed(value: bool)
 
 const KEY_MOVEMENT_SPEED = 20
-const GRID_ZOOM_THRESHOLD = 0.6
+const GRID_ZOOM_THRESHOLD = 0.85
+const MIN_ZOOM = 0.5
+const MAX_ZOOM = 3.0
+
 var velocity := Vector2.ZERO
 var tween: Tween
 var user_controlled: bool = false:
@@ -38,19 +41,36 @@ func _process(_delta):
         return
     zoom_input = zoom_input * 0.005 + 1.0
     zoom *= zoom_input
+    zoom = zoom.clamp(Vector2.ONE * MIN_ZOOM, Vector2.ONE * MAX_ZOOM)
+    update_grid_visibility()
+
+func update_grid_visibility():
     background.show_grid = zoom.x > GRID_ZOOM_THRESHOLD
 
 ## Move the camera to the target position in global coordinates
-func move_to(target: Vector2) -> void:
+func move_to(target_position: Vector2, target_zoom: float = -1.0) -> void:
     if user_controlled:
         return
     if is_instance_valid(tween):
         tween.kill()
-    tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-    tween.tween_property(self, ^"global_position", target, 1.0)
+    tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT).set_parallel()
+    tween.tween_property(self, ^"global_position", target_position, 1.0)
+    if target_zoom > 0.0:
+        tween.tween_property(self, ^"zoom", Vector2.ONE * target_zoom, 1.0)
+        tween.chain().tween_callback(update_grid_visibility)
 
 func _recenter():
     var target_node := get_tree().get_first_node_in_group(&"current_slide") as SlideNode
     if not is_instance_valid(target_node):
         return
-    move_to(target_node.get_camera_target_position())
+    move_to(target_node.get_camera_target_position(), 1.0)
+
+func interpolate_zoom(target_zoom: float):
+    if is_instance_valid(tween):
+        tween.kill()
+    tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
+    tween.tween_property(self, ^"zoom", Vector2.ONE * target_zoom, 1.0)
+    tween.tween_callback(update_grid_visibility)
+
+func reset_zoom():
+    interpolate_zoom(1.0)
