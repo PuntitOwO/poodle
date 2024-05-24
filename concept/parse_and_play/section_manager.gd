@@ -12,6 +12,7 @@ var depth: int = -1:
 func _init():
     tree = Tree.new()
     tree.hide_root = true
+    tree.scroll_horizontal_enabled = false
     tree.create_item()
 
 func reset() -> void:

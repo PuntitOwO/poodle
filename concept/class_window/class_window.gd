@@ -165,6 +165,9 @@ func _toggle_fullscreen(toggled_on: bool) -> void:
     for i in panels.size():
         panels[i].visible = not toggled_on and panel_visible[i]
     fullscreen_button.icon = exit_fullscreen_icon if toggled_on else enter_fullscreen_icon
+    if !is_instance_valid(ClassUI.context) or !is_instance_valid(ClassUI.context.camera): return
+    if ClassUI.context.camera.user_controlled: return
+    call_deferred(&"_zoom_reset")
 
 func _toggle_camera_button(user_controlled_camera: bool) -> void:
     center_camera_button.visible = user_controlled_camera
@@ -177,6 +180,7 @@ func _ready():
     else:
         ClassUI.context.stopwatch = stopwatch
         ClassUI.context.camera.user_controlled_changed.connect(_toggle_camera_button)
+        get_tree().process_frame.connect(_zoom_reset, CONNECT_ONE_SHOT)
     fullscreen_button.toggled.connect(_toggle_fullscreen)
     center_camera_button.pressed.connect(func (): ClassUI.context.camera.user_controlled = false)
     play_button.pressed.connect(_toggle_playback)
