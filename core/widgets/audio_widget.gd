@@ -12,6 +12,7 @@ func init(_properties: Dictionary) -> void:
 	var packet_sequence := AudioStreamOggVorbis.load_from_buffer(data)
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
+	audio.bus = &"AudioWidget"
 	audio.stream = packet_sequence
 
 func play(_duration: float) -> void:
@@ -27,6 +28,12 @@ func reset():
 
 func skip_to_end():
 	reset()
+
+func _ready():
+	add_to_group(&"speed_scale_handler")
+
+func set_speed_scale(_speed: float) -> void:
+	audio.pitch_scale = _speed
 
 ## Returns the duration of the audio in seconds.
 func compute_duration() -> float:

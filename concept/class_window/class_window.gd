@@ -131,6 +131,20 @@ func _slider_value_selected(seconds: float) -> void:
 
 #endregion
 
+#region Speed Controls
+
+@onready var speed_slider: HSlider = %SpeedSlider
+@onready var speed_button: TextureButton = %SpeedButton
+@onready var pitch_shift: AudioEffectPitchShift = AudioServer.get_bus_effect(AudioServer.get_bus_index(&"AudioWidget"), 0)
+
+func _speed_slider_value_selected(value: float) -> void:
+    Engine.time_scale = value
+    get_tree().call_group(&"speed_scale_handler", &"set_speed_scale", value)
+    AudioServer.set_bus_effect_enabled(AudioServer.get_bus_index(&"AudioWidget"), 0, not is_equal_approx(value, 1.0))
+    pitch_shift.pitch_scale = 1.0 / value
+
+#endregion
+
 #region UI
 
 @onready var fullscreen_button: Button = %FullscreenButton
@@ -164,6 +178,8 @@ func _ready():
     time_slider.value_selected.connect(_slider_value_selected)
     zoom_slider.value_changed.connect(_zoom_slider_value_selected)
     zoom_button.pressed.connect(_zoom_reset)
+    speed_button.pressed.connect(func (): speed_slider.value = 1.0)
+    speed_slider.value_changed.connect(_speed_slider_value_selected)
 
 func _process(_delta: float):
     time_slider.change_value(stopwatch.running_time)

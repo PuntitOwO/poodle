@@ -1,7 +1,10 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cnxcdj5jd45eg"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cnxcdj5jd45eg"]
 
 [sub_resource type="AudioEffectRecord" id="AudioEffectRecord_dtuem"]
 resource_name = "Record"
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_aevl7"]
+resource_name = "PitchShift"
 
 [resource]
 bus/1/name = &"RecordPlayback"
@@ -24,3 +27,17 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/4/name = &"ClassAudio"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"
+bus/5/name = &"AudioWidget"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"ClassAudio"
+bus/5/effect/0/effect = SubResource("AudioEffectPitchShift_aevl7")
+bus/5/effect/0/enabled = false
