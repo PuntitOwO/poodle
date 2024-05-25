@@ -11,6 +11,10 @@ static var class_hierarchy: Dictionary = {}
 static func _static_init():
     _update_classes()
 
+## Forces the update of the classes.
+static func force_update_classes():
+    _update_classes()
+
 ## Returns the names of all the custom classes available.
 static func get_class_list() -> Array:
     var classes_keys: Array = classes.keys()
@@ -41,6 +45,7 @@ static func get_inheriters_from_class(_class: StringName) -> PackedStringArray:
 static func _update_classes():
     classes.clear()
     var class_list: Array[Dictionary] = ProjectSettings.get_global_class_list()
+    print("Found %d classes" % len(class_list))
     for class_info in class_list:
         classes[class_info["class"]] = class_info
         if class_hierarchy.has(class_info["base"]):

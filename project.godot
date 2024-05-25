@@ -24,6 +24,7 @@ driver/enable_input=true
 [autoload]
 
 Persistence="*res://concept/main_menu/persistence.gd"
+ModLoader="*res://core/mods/module_loader.tscn"
 
 [debug]
 
