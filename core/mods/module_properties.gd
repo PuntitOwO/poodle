@@ -1,5 +1,5 @@
 class_name ModProperties
-extends RefCounted
+extends Resource
 
 ## This class is used to store properties of a mod.
 ## 
