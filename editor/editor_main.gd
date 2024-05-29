@@ -22,6 +22,8 @@ func _ready():
     editor_signals.class_script_change_requested.connect(_change_script)
     editor_signals.class_entities_add_requested.connect(_append_entities)
     editor_signals.class_sections_change_requested.connect(_change_sections)
+    # Load mod tabs
+    _load_mod_tabs()
     # Update UI
     _update_tabs()
 
@@ -50,11 +52,23 @@ func _change_sections(sections: Array[ClassSection]):
 
 #endregion
 
+#region Tabs
+
+func _load_mod_tabs():
+    for mod in ModLoader.mods_loaded:
+        for scene in mod.editor_scenes:
+            var instance = scene.instantiate()
+            if not is_instance_valid(instance):
+                continue
+            %EntityEditors.add_child(instance)
+
 func _update_tabs():
     var valid_file = is_instance_valid(class_index)
     var tabs := %TabContainer as TabContainer
     for i in tabs.get_tab_count() - 1:
         tabs.set_tab_disabled(i + 1, not valid_file)
+
+#endregion
 
 #region Create/Load File
 
