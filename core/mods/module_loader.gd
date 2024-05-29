@@ -2,6 +2,8 @@ extends Node
 
 var mod_folder_exists = false
 
+var mods_loaded: Array[ModProperties] = []
+
 ## Returns the mods folder, creating it if it doesn't exist.
 ## If the folder couldn't be created, mod_folder_exists will be false.
 func get_mods_folder() -> DirAccess:
@@ -35,13 +37,43 @@ func load_all_mods() -> int:
     var mods := get_mods_list()
     var success = 0
     for mod in mods:
-        if load_mod(mod):
+        if load_mod(mod) and add_loaded_mod(mod):
             success += 1
     CustomClassDB.force_update_classes()
     return success
 
+func add_loaded_mod(mod_path: ModPath) -> bool:
+    var full_path := "res://mods/" + mod_path.folder + "/manifest.tres"
+    var manifest := load(full_path) as ModProperties
+    if manifest == null: return false
+    mods_loaded.append(manifest)
+    return true
+
 func _ready():
     load_all_mods()
+    if OS.has_feature("editor"):
+        load_local_mods()
+
+#region Local Mods
+
+func load_local_mods():
+    print("Loading local mods")
+    var mods := get_local_mods_folder().get_directories()
+    for mod in mods:
+        var mod_path := ModPath.new()
+        mod_path.folder = mod
+        if add_loaded_mod(mod_path):
+            print("Loaded local mod: " + mod)
+
+## Returns the local mods folder, creating it if it doesn't exist.
+func get_local_mods_folder() -> DirAccess:
+    var dir := DirAccess.open("res://")
+    if not dir.dir_exists("mods"):
+        dir.make_dir_recursive("mods")
+    dir.change_dir("mods")
+    return dir
+
+#endregion
 
 ## Class representing a mod in the mods folder.
 class ModPath:
