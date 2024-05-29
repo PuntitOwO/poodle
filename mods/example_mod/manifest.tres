@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ModProperties" load_steps=3 format=3 uid="uid://b1ea0yj41wn1c"]
+
+[ext_resource type="PackedScene" uid="uid://ju3qxlac7uq1" path="res://mods/example_mod/editor/example_editor_tab.tscn" id="1_58ssu"]
+[ext_resource type="Script" path="res://core/mods/module_properties.gd" id="1_h63rg"]
+
+[resource]
+script = ExtResource("1_h63rg")
+unique_name = "example_mod"
+display_name = "Example Mod"
+version = "1.0"
+description = "An example mod that adds an example of:
+- Entity
+- EntityProperty
+- EditorTab
+- PlayerTab"
+types = 7
+player_scenes = Array[PackedScene]([])
+editor_scenes = Array[PackedScene]([ExtResource("1_58ssu")])

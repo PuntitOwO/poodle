@@ -55,6 +55,7 @@ folder_colors={
 "res://concept/": "gray",
 "res://core/": "green",
 "res://editor/": "purple",
+"res://mods/": "red",
 "res://script_templates/": "gray"
 }
 
