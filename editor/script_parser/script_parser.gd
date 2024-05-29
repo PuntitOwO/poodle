@@ -47,7 +47,7 @@ func remove_until(line: String, until: String) -> String:
 
 func parse():
     script_entries = parse_text()
-    editor_signals.class_script_changed.emit(script_entries)
+    editor_signals.class_script_change_requested.emit(script_entries)
 
 func parse_text() -> Array[ScriptEntry]:
     var entries: Array[ScriptEntry] = []
