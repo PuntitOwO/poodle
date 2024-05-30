@@ -44,6 +44,7 @@ static func get_inheriters_from_class(_class: StringName) -> PackedStringArray:
 
 static func _update_classes():
     classes.clear()
+    class_hierarchy.clear()
     var class_list: Array[Dictionary] = ProjectSettings.get_global_class_list()
     print("Found %d classes" % len(class_list))
     for class_info in class_list:
