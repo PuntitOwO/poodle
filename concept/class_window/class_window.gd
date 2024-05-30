@@ -184,6 +184,8 @@ func _toggle_camera_button(user_controlled_camera: bool) -> void:
 func setup_mods() -> void:
     if add_mod_tabs():
         right_panel.show()
+        mod_tabs.current_tab = 1
+        right_panel.size.x = 300
     mod_tabs.set_tab_hidden(0, true)
 
 func add_mod_tabs() -> int:
