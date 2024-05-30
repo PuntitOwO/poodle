@@ -131,7 +131,7 @@ stretch = true
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(868, 623)
+size = Vector2i(868, 603)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard" instance=ExtResource("1_61jat")]
@@ -168,24 +168,31 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ControlRow" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer"]
+[node name="ControlRow" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="CameraZoom" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
+[node name="CameraZoom" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ZoomButton" type="TextureButton" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/CameraZoom"]
+[node name="ZoomButton" type="TextureButton" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/CameraZoom"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_uioh1")
 
-[node name="ZoomSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/CameraZoom"]
+[node name="ZoomSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/CameraZoom"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -196,47 +203,47 @@ max_value = 3.0
 step = 0.1
 value = 1.0
 
-[node name="Spacer" type="Control" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
+[node name="Spacer" type="Control" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PlaybackControls" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
+[node name="PlaybackControls" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow"]
 layout_mode = 2
 alignment = 1
 
-[node name="PreviousButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
+[node name="PreviousButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/PlaybackControls"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_mw2kf")
 
-[node name="PlayPauseButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
+[node name="PlayPauseButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/PlaybackControls"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_ar7p2")
 
-[node name="NextButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/PlaybackControls"]
+[node name="NextButton" type="Button" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/PlaybackControls"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"PlayerIconButton"
 icon = SubResource("AtlasTexture_o2vqn")
 
-[node name="Spacer2" type="Control" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
+[node name="Spacer2" type="Control" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SpeedControls" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow"]
+[node name="SpeedControls" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="SpeedButton" type="TextureButton" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/SpeedControls"]
+[node name="SpeedButton" type="TextureButton" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/SpeedControls"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_8b6xy")
 
-[node name="SpeedSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/ControlRow/SpeedControls"]
+[node name="SpeedSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/ControlRow/SpeedControls"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -247,16 +254,16 @@ max_value = 3.0
 step = 0.1
 value = 1.0
 
-[node name="TimeRow" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer"]
+[node name="TimeRow" type="HBoxContainer" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="CurrentTimeLabel" type="Label" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/TimeRow"]
+[node name="CurrentTimeLabel" type="Label" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/TimeRow"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"
 
-[node name="TimeSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/TimeRow"]
+[node name="TimeSlider" type="HSlider" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/TimeRow"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -264,7 +271,7 @@ step = 0.25
 scrollable = false
 script = ExtResource("4_733sw")
 
-[node name="TotalTimeLabel" type="Label" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/VBoxContainer/TimeRow"]
+[node name="TotalTimeLabel" type="Label" parent="LeftSplit/RightSplit/BottomSplit/BottomPanel/MarginContainer/VBoxContainer/TimeRow"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00"

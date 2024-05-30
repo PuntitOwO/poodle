@@ -186,6 +186,7 @@ func setup_mods() -> void:
         right_panel.show()
         mod_tabs.current_tab = 1
         right_panel.size.x = 300
+        panel_visible[2] = true
     mod_tabs.set_tab_hidden(0, true)
 
 func add_mod_tabs() -> int:
