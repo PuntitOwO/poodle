@@ -176,6 +176,29 @@ func _toggle_camera_button(user_controlled_camera: bool) -> void:
 
 #endregion
 
+#region Mod Tabs
+
+@onready var mod_tabs: TabContainer = %ModTabContainer
+@onready var right_panel: PanelContainer = %RightPanel
+
+func setup_mods() -> void:
+    if add_mod_tabs():
+        right_panel.show()
+
+func add_mod_tabs() -> int:
+    var tab_idx: int = 0
+    for mod in ModLoader.mods_loaded:
+        for scene in mod.player_scenes:
+            var instance = scene.instantiate()
+            if !is_instance_valid(instance):
+                continue
+            mod_tabs.add_child(instance)
+            tab_idx += 1
+            # mod_tabs.set_tab_hidden(tab_idx, true)
+    return tab_idx
+
+#endregion
+
 func _ready():
     if !is_instance_valid(ClassUI.context):
         printerr("ClassUI context is not valid")
