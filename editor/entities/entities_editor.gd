@@ -34,13 +34,13 @@ func _on_class_index_changed(index: ClassIndex):
 func _on_sections_changed(new_sections: Array[ClassSection]):
     if new_sections == sections:
         return
-    sections = new_sections
+    sections = new_sections.duplicate()
     _update_section_tree.call_deferred()
 
 func _on_entities_changed(new_entities: Array[Entity]):
     if new_entities == entities:
         return
-    entities = new_entities
+    entities = new_entities.duplicate()
     _update_entities_tree.call_deferred()
 
 #region Section Tree
