@@ -3,7 +3,7 @@ extends Control
 
 const SQUARED_THRESHOLD = 25.0
 
-@export var entities: Array[LineEntity] = []
+@export var entities: Array[Entity] = []
 var editor_signals: EditorEventBus
 
 var pressed = false:
@@ -110,7 +110,9 @@ func _remove_items() -> void:
         item.call_deferred("free")
 
 func _save_items() -> void:
-    entities = items.map(func (i): return i._generate_entity())
+    entities.clear()
+    for i in items:
+        entities.append(i._generate_entity())
     editor_signals.class_entities_add_requested.emit(entities)
 
 class LineItem:
