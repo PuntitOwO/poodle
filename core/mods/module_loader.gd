@@ -34,10 +34,12 @@ func load_mod(mod_path: ModPath) -> bool:
 
 ## Loads all mods from the mods folder. Returns the quantity of mods loaded.
 func load_all_mods() -> int:
+    print("Loading mods")
     var mods := get_mods_list()
     var success = 0
     for mod in mods:
         if load_mod(mod) and add_loaded_mod(mod):
+            print("Loaded mod: " + mod.folder)
             success += 1
     CustomClassDB.force_update_classes()
     return success
@@ -80,7 +82,7 @@ class ModPath:
     var folder: String
     var mod_file: String
 
-    var has_mod_file: bool:
+    var is_valid: bool:
         get:
             return mod_file != ""
 
@@ -88,7 +90,6 @@ class ModPath:
         var mod_path := ModPath.new()
         mod_path.folder = _folder
         mod_path.mod_file = ""
-        mod_path.editor_mod_file = ""
         dir.change_dir(_folder)
         for file in dir.get_files():
             if file.ends_with("_mod.pck"):
