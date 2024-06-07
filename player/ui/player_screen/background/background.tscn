@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://k6e56lrpnnla"]
 
-[ext_resource type="Script" path="res://concept/background/background.gd" id="1_iau34"]
+[ext_resource type="Script" path="res://player/ui/player_screen/background/background.gd" id="1_iau34"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 

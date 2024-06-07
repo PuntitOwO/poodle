@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://editor/entities/entity_wrapper_editor_window.gd" id="1_j3vkp"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_frj0j"]
-[ext_resource type="PackedScene" uid="uid://k6e56lrpnnla" path="res://concept/background/background.tscn" id="2_umlet"]
+[ext_resource type="PackedScene" uid="uid://k6e56lrpnnla" path="res://player/ui/player_screen/background/background.tscn" id="2_umlet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jc6kw"]
 atlas = ExtResource("2_frj0j")

@@ -75,4 +75,4 @@ func _on_file_selected(path: String) -> void:
 		return
 	Persistence.class_path = path
 	print("Selected file: ", Persistence.class_path)
-	get_tree().change_scene_to_file("res://concept/parse_and_play/parse_and_play.tscn")
+	get_tree().change_scene_to_file("res://player/ui/player_screen/main/main.tscn")
