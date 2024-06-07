@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://i30xjnoql0qa"]
+[gd_scene load_steps=10 format=3 uid="uid://i30xjnoql0qa"]
 
 [ext_resource type="Script" path="res://concept/main_menu/main_menu.gd" id="1_84qk8"]
 [ext_resource type="Texture2D" uid="uid://du38vhykfugub" path="res://icon.svg" id="1_yp1lf"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_cpc24"]
+[ext_resource type="PackedScene" uid="uid://vrnvpsgwwxv6" path="res://player/ui/settings/settings_window.tscn" id="4_ki675"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vbknp"]
 font_size = 48
@@ -18,6 +19,10 @@ region = Rect2(50, 300, 50, 50)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ima8"]
 atlas = ExtResource("2_cpc24")
 region = Rect2(200, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqqi5"]
+atlas = ExtResource("2_cpc24")
+region = Rect2(350, 50, 50, 50)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -39,61 +44,76 @@ grow_vertical = 2
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_yp1lf")
 expand_mode = 4
 
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "POODLE"
 label_settings = SubResource("LabelSettings_vbknp")
 horizontal_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Open" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Open" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Open Class"
 icon = SubResource("AtlasTexture_u376q")
 
-[node name="OpenDebug" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="OpenDebug" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Open (Debug)"
 icon = SubResource("AtlasTexture_mm84m")
 
-[node name="OpenTutorial" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="OpenTutorial" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Open Tutorial Class"
 icon = SubResource("AtlasTexture_3ima8")
 
-[node name="DropLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="DropLabel" type="Label" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
@@ -101,3 +121,22 @@ text = "You can also drop
 a file to this window"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 50
+
+[node name="OpenSettings" type="Button" parent="CenterContainer/PanelContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+icon = SubResource("AtlasTexture_uqqi5")
+
+[node name="SettingsWindow" parent="." instance=ExtResource("4_ki675")]
+visible = false
