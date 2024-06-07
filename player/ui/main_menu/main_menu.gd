@@ -8,6 +8,14 @@ extends Control
 @onready var drop_label: Label = %DropLabel
 @onready var settings_window: Window = $SettingsWindow
 
+@onready var menu_bar: MenuBar = %MenuBar
+@onready var file_menu: PopupMenu = $MenuBar/File
+@onready var edit_menu: PopupMenu = $MenuBar/Edit
+@onready var settings_menu: PopupMenu = $MenuBar/Settings
+
+@export var player_scene: PackedScene
+@export var editor_scene: PackedScene
+
 func _ready():
 	open_button.pressed.connect(_select_file)
 	open_debug_button.pressed.connect(_built_in_dialog.bind(false))
@@ -16,7 +24,36 @@ func _ready():
 	settings_window.close_requested.connect(settings_window.hide)
 	get_tree().root.files_dropped.connect(_on_files_dropped)
 	drop_label.visible = not OS.has_feature("mobile")
+	menu_bar.visible = not OS.has_feature("mobile")
 	open_debug_button.visible = OS.has_feature("debug")
+	file_menu.index_pressed.connect(_on_file_menu_pressed)
+	edit_menu.index_pressed.connect(_on_edit_menu_pressed)
+	settings_menu.index_pressed.connect(_on_settings_menu_pressed)
+
+#region MenuBar
+
+func _on_file_menu_pressed(index: int):
+	match index:
+		0: # Open Class
+			_select_file()
+		1: # Open Class (Alt dialog)
+			_built_in_dialog(false)
+		2: # Open Tutorial Class
+			_on_file_selected("res://concept/example_class/clase_ejemplo.poodle")
+
+func _on_edit_menu_pressed(index: int):
+	match index:
+		0: # Open editor
+			get_tree().change_scene_to_packed(editor_scene)
+
+func _on_settings_menu_pressed(index: int):
+	match index:
+		0: # Open Settings
+			settings_window.show()
+
+#endregion
+
+#region File selection
 
 func _select_file():
 	if OS.has_feature("android"):
@@ -75,4 +112,6 @@ func _on_file_selected(path: String) -> void:
 		return
 	Persistence.class_path = path
 	print("Selected file: ", Persistence.class_path)
-	get_tree().change_scene_to_file("res://player/ui/player_screen/main/main.tscn")
+	get_tree().change_scene_to_packed(player_scene)
+
+#endregion

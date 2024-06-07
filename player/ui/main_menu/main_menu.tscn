@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://i30xjnoql0qa"]
+[gd_scene load_steps=12 format=3 uid="uid://i30xjnoql0qa"]
 
 [ext_resource type="Script" path="res://player/ui/main_menu/main_menu.gd" id="1_84qk8"]
 [ext_resource type="Texture2D" uid="uid://du38vhykfugub" path="res://icon.svg" id="1_yp1lf"]
+[ext_resource type="PackedScene" uid="uid://wb0c848uqu1l" path="res://player/ui/player_screen/main/main.tscn" id="2_6g8rs"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_cpc24"]
+[ext_resource type="PackedScene" uid="uid://c2uarei8kd036" path="res://editor/editor_main.tscn" id="3_slc50"]
 [ext_resource type="PackedScene" uid="uid://vrnvpsgwwxv6" path="res://player/ui/settings/settings_window.tscn" id="4_ki675"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vbknp"]
@@ -32,6 +34,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_84qk8")
+player_scene = ExtResource("2_6g8rs")
+editor_scene = ExtResource("3_slc50")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -137,6 +141,31 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 icon = SubResource("AtlasTexture_uqqi5")
+
+[node name="MenuBar" type="MenuBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="File" type="PopupMenu" parent="MenuBar"]
+item_count = 3
+item_0/text = "Open Class"
+item_0/id = 0
+item_1/text = "Open Class (Alt dialog)"
+item_1/id = 2
+item_2/text = "Open Tutorial Class"
+item_2/id = 1
+
+[node name="Edit" type="PopupMenu" parent="MenuBar"]
+item_count = 1
+item_0/text = "Open Editor"
+item_0/id = 0
+
+[node name="Settings" type="PopupMenu" parent="MenuBar"]
+item_count = 1
+item_0/text = "Open Settings"
+item_0/id = 0
 
 [node name="SettingsWindow" parent="." instance=ExtResource("4_ki675")]
 visible = false

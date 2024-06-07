@@ -163,7 +163,7 @@ func _add_new_item_to_group():
 		elif item_type == 1:
 			printerr("Cannot add entity as root")
 		else:
-			_add_root_group(dropdown.get_item_text(item_type))            
+			_add_root_group(dropdown.get_item_text(item_type))
 		return
 	if item_type == 1:
 		_add_new_entity(parent)

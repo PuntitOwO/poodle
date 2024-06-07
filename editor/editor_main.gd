@@ -48,7 +48,7 @@ func _append_entities(entities: Array[Entity]):
 
 func _change_sections(sections: Array[ClassSection]):
 	class_index.sections = sections
-	editor_signals.class_sections_changed.emit(sections)    
+	editor_signals.class_sections_changed.emit(sections)
 
 #endregion
 
