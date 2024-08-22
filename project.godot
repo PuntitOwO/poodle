@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/chris/Documents/poodle/.recordings/recording.a
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_file_picker/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_file_picker/plugin.cfg", "res://addons/html5_file_dialog/plugin.cfg")
 
 [file_customization]
 

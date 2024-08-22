@@ -60,6 +60,10 @@ func _select_file():
 		print("Android detected. Using Android file picker.")
 		_android_dialog()
 		return
+	if OS.has_feature("web"):
+		print("Web detected. Using browser file picker.")
+		_web_dialog()
+		return
 	if DisplayServer.has_feature(DisplayServer.FEATURE_NATIVE_DIALOG):
 		_native_dialog()
 		print("Native dialog support detected. Using native file picker.")
@@ -67,6 +71,7 @@ func _select_file():
 	print("No custom dialog support detected. Using built-in file picker.")
 	_built_in_dialog()
 
+#region Android
 func _android_dialog():
 	if Engine.has_singleton("GodotFilePicker"):
 		var picker = Engine.get_singleton("GodotFilePicker")
@@ -79,10 +84,39 @@ func _android_dialog():
 
 func _on_android_file_selected(path: String, _mime_type: String) -> void:
 	_on_file_selected(path)
+#endregion
 
+#region Web
+func _web_dialog():
+	var dialog := HTML5FileDialog.new()
+	dialog.file_mode = dialog.FileMode.OPEN_FILE
+	dialog.filters = PackedStringArray([".zip", ".poodle"])
+	add_child(dialog)
+	dialog.file_selected.connect(_on_web_file_selected)
+	dialog.show()
+
+func _on_web_file_selected(file: HTML5FileHandle):
+	print("File", file.name, "found")
+	var file_buffer := await file.as_buffer()
+	var path := "user://" + file.name
+	var tmp_file = FileAccess.open(path, FileAccess.WRITE)
+	tmp_file.store_buffer(file_buffer)
+	tmp_file.close()
+	_on_file_selected(path)
+#endregion
+
+#region Native
 func _native_dialog():
 	DisplayServer.file_dialog_show("Open File", "", "", false, DisplayServer.FILE_DIALOG_MODE_OPEN_FILE, ["*.poodle", "*.zip"], _on_native_dialog_file_selected)
 
+func _on_native_dialog_file_selected(status: bool, selected_paths: PackedStringArray, _selected_filter_index: int) -> void:
+	if status == false:
+		return
+	var path := selected_paths[0]
+	_on_file_selected(path)
+#endregion
+
+#region Godot
 func _built_in_dialog(try_native: bool = true):
 	var dialog := FileDialog.new()
 	add_child(dialog)
@@ -93,13 +127,9 @@ func _built_in_dialog(try_native: bool = true):
 	dialog.files_selected.connect(_on_files_dropped)
 	dialog.file_selected.connect(_on_file_selected)
 	dialog.popup_centered(Vector2i(540, 360))
+#endregion
 
-func _on_native_dialog_file_selected(status: bool, selected_paths: PackedStringArray, _selected_filter_index: int) -> void:
-	if status == false:
-		return
-	var path := selected_paths[0]
-	_on_file_selected(path)
-
+#region Process file
 func _on_files_dropped(files: PackedStringArray) -> void:
 	for file in files:
 		if file.ends_with(".poodle") or file.ends_with(".zip"):
@@ -113,5 +143,5 @@ func _on_file_selected(path: String) -> void:
 	Persistence.class_path = path
 	print("Selected file: ", Persistence.class_path)
 	get_tree().change_scene_to_packed(player_scene)
-
+#endregion
 #endregion

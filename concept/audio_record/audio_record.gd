@@ -4,7 +4,7 @@ extends Node
 ##
 ## A sample scene to test microphone audio recording.
 ## It has three toggle buttons: record, mute and playback.
-## 
+##
 ## It also has a list of all recordings in this session.
 ## All recordings can be played by selecting (double click or enter).
 ## Recordings can also be saved to disk.

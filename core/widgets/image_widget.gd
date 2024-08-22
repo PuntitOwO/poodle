@@ -35,7 +35,7 @@ func _create_texture(data: PackedByteArray) -> Texture2D:
 	match entity.image_path.split(".")[-1]:
 		"png": _image.load_png_from_buffer(data)
 		"jpg": _image.load_jpg_from_buffer(data)
-		"svg": _image.load_svg_from_buffer(data)			
-		"bmp": _image.load_bmp_from_buffer(data)			
+		"svg": _image.load_svg_from_buffer(data)
+		"bmp": _image.load_bmp_from_buffer(data)
 		_: push_error("Unsupported image format: " + entity.image_path.split(".")[-1])
 	return ImageTexture.create_from_image(_image)
