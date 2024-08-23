@@ -28,7 +28,7 @@ extends TextEntity
 
 # 12. public methods: define all public methods here
 func get_class_name() -> String:
-    return "CodeTextEntity"
+	return "CodeTextEntity"
 
 # 13. private methods: define all private methods here, use _ as preffix
 
