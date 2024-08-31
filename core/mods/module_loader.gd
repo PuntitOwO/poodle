@@ -36,13 +36,13 @@ func load_mod(mod_path: ModPath) -> bool:
 
 ## Loads all mods from the mods folder. Returns the quantity of mods loaded.
 func load_all_mods() -> int:
-    var mods := get_mods_list()
-    var success = 0
-    for mod in mods:
-        if load_mod(mod) and add_loaded_mod(mod):
-            success += 1
-    CustomClassDB.force_update_classes()
-    return success
+	var mods := get_mods_list()
+	var success = 0
+	for mod in mods:
+		if load_mod(mod) and add_loaded_mod(mod):
+			success += 1
+	CustomClassDB.force_update_classes()
+	return success
 
 func add_loaded_mod(mod_path: ModPath) -> bool:
 	var full_path := "res://mods/" + mod_path.folder + "/manifest.tres"
