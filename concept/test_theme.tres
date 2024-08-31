@@ -58,3 +58,4 @@ PlayerScreenIndicator/styles/panel = SubResource("StyleBoxFlat_6bjw7")
 SplitContainer/constants/autohide = 0
 TabBar/styles/button_highlight = SubResource("StyleBoxFlat_c821a")
 TabBar/styles/tab_selected = SubResource("StyleBoxFlat_0hpmv")
+TextEdit/colors/background_color = Color(0.0980392, 0.0980392, 0.0980392, 1)

@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://vrnvpsgwwxv6"]
+
+[ext_resource type="Script" path="res://player/ui/settings/settings_window.gd" id="1_6r6b0"]
+[ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="1_tgwy1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2beh"]
+atlas = ExtResource("1_tgwy1")
+region = Rect2(50, 300, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl472"]
+atlas = ExtResource("1_tgwy1")
+region = Rect2(50, 350, 50, 50)
+
+[node name="SettingsWindow" type="Window"]
+title = "Settings"
+initial_position = 2
+size = Vector2i(540, 360)
+transient = true
+script = ExtResource("1_6r6b0")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ManageModsButton" type="Button" parent="Panel/MarginContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Mods"
+icon = SubResource("AtlasTexture_d2beh")
+
+[node name="SecurityAlertWindow" type="Window" parent="."]
+title = "Security Alert"
+initial_position = 2
+size = Vector2i(800, 400)
+visible = false
+transient = true
+unresizable = true
+
+[node name="Panel" type="PanelContainer" parent="SecurityAlertWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SecurityAlertWindow/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SecurityAlertWindow/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = SubResource("AtlasTexture_rl472")
+stretch_mode = 5
+
+[node name="WarningTitle" type="Label" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Warning"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Loading modules is a dangerous system, since this allows external code to be executed in the application. If you activate it, modules can:
+- Access and edit files on this device
+- Run http calls to internet services
+- Run calls on a device terminal
+
+Only install modules that come from reliable sources."
+shortcut_keys_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "I am aware of the possible risks and assume all possible consequences voluntarily."
+fit_content = true
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cancel" type="Button" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cancel"
+
+[node name="Spacer2" type="Control" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accept" type="Button" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Accept"
+
+[node name="Spacer3" type="Control" parent="SecurityAlertWindow/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Alert" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Alert"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Alert/MarginContainer"]
+layout_mode = 2
+text = "Mods Loaded!"

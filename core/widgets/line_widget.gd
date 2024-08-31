@@ -38,4 +38,6 @@ func skip_to_end() -> void:
 	line.show()
 
 func _add_points(i: int) -> void:
+	if not line.points.is_empty() and line.points[-1] == entity.points[i]:
+		return # to avoid duplicate points
 	line.add_point(entity.points[i])

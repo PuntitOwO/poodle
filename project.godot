@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="POODLE"
-run/main_scene="res://concept/main_menu/main_menu.tscn"
+run/main_scene="res://player/ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 run/main_scene.poodle-editor="res://editor/editor_main.tscn"
@@ -23,7 +23,7 @@ driver/enable_input=true
 
 [autoload]
 
-Persistence="*res://concept/main_menu/persistence.gd"
+Persistence="*res://player/ui/main_menu/persistence.gd"
 ModLoader="*res://core/mods/module_loader.tscn"
 
 [debug]
@@ -46,7 +46,7 @@ movie_writer/movie_file="C:/Users/chris/Documents/poodle/.recordings/recording.a
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_file_picker/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_file_picker/plugin.cfg", "res://addons/html5_file_dialog/plugin.cfg")
 
 [file_customization]
 
@@ -56,6 +56,7 @@ folder_colors={
 "res://core/": "green",
 "res://editor/": "purple",
 "res://mods/": "red",
+"res://player/": "yellow",
 "res://script_templates/": "gray"
 }
 

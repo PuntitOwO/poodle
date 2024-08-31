@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://dyh75vkj58pw3"]
 
 [node name="Line" type="Line2D"]
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true

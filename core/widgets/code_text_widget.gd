@@ -17,7 +17,7 @@ func init(properties: Dictionary) -> void:
 
 func play(_duration: float) -> void:
 	text_edit.show()
-	_emit_animation_finished()	
+	_emit_animation_finished()
 
 func reset():
 	text_edit.hide()

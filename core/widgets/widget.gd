@@ -18,7 +18,7 @@ func compute_duration() -> float:
 ## Called when the node enters the scene tree for the first time.
 ## It is a good place to initialize the node with the entity's properties
 ## and instantiate any children.
-## 
+##
 ## Custom [param properties] are passed as a dictionary.
 func init(_properties: Dictionary) -> void:
 	pass

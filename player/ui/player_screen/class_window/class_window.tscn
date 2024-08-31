@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://cdf57hapkw603"]
 
-[ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://concept/class_window/player_screen_indicator.tscn" id="1_61jat"]
-[ext_resource type="Script" path="res://concept/class_window/class_window.gd" id="1_s0jgr"]
+[ext_resource type="PackedScene" uid="uid://cl6gcu3ckai1r" path="res://player/ui/player_screen/class_window/player_screen_indicator.tscn" id="1_61jat"]
+[ext_resource type="Script" path="res://player/ui/player_screen/class_window/class_window.gd" id="1_s0jgr"]
 [ext_resource type="Texture2D" uid="uid://jws2w5wpfvw7" path="res://assets/sprites/ui/sheet_white1x.png" id="2_caqkq"]
-[ext_resource type="Script" path="res://concept/class_window/player_slider.gd" id="4_733sw"]
+[ext_resource type="Script" path="res://player/ui/player_screen/class_window/player_slider.gd" id="4_733sw"]
 [ext_resource type="Script" path="res://utils/stopwatch.gd" id="4_ufhj5"]
 
 [sub_resource type="GDScript" id="GDScript_b0r1l"]
@@ -131,7 +131,7 @@ stretch = true
 unique_name_in_owner = true
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(400, 400)
+size = Vector2i(868, 603)
 render_target_update_mode = 4
 
 [node name="PlayerScreenIndicator" parent="LeftSplit/RightSplit/BottomSplit/Whiteboard" instance=ExtResource("1_61jat")]
