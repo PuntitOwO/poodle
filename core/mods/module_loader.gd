@@ -99,7 +99,7 @@ class ModPath:
 	var folder: String
 	var mod_file: String
 
-	var has_mod_file: bool:
+	var is_valid: bool:
 		get:
 			return mod_file != ""
 
@@ -107,7 +107,6 @@ class ModPath:
 		var mod_path := ModPath.new()
 		mod_path.folder = _folder
 		mod_path.mod_file = ""
-		mod_path.editor_mod_file = ""
 		dir.change_dir(_folder)
 		for file in dir.get_files():
 			if file.ends_with("_mod.pck"):
